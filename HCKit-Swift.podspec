@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
 # XC配置
 s.preserve_path = "Module/module.modulemap"
 s.module_map = "Module/module.modulemap"
-s.xcconfig = { "IMPORT_PATHS" => "$(PODS_ROOT)/HCKit-Swift/Module"}
+s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/HCKit-Swift/Module"}
 # 依赖库
   # s.dependency "JSONKit", "~> 1.4"
 
