@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
 # 项目名
   s.name         = "HCKit-Swift"
 # 版本号
-  s.version      = "0.0.11"
+  s.version      = "0.0.12"
 # 摘要
   s.summary      = "一个简单的Swift库"
 # 描述
@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
 # XC配置
 s.preserve_path = "Module/module.modulemap"
 s.module_map = "Module/module.modulemap"
-s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/HCKit-Swift/Module"}
+s.xcconfig = { "IMPORT_PATHS" => "$(PODS_ROOT)/HCKit-Swift/Module"}
 # 依赖库
   # s.dependency "JSONKit", "~> 1.4"
 
