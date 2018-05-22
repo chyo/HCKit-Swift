@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
 # 来源
   s.source       = { :git => "https://github.com/chyo/HCKit-Swift.git", :tag => "#{s.version}" }
 # 源代码
-  s.source_files  = "Classes/*.{h,m,swift}"
+  s.source_files  = "Classes/*.swift"
 # 资源文件
   # s.resources = "Resources/*.png"
 # 依赖系统库
