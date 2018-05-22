@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
 # 项目名
   s.name         = "HCKit-Swift"
 # 版本号
-  s.version      = "0.0.8"
+  s.version      = "0.0.9"
 # 摘要
   s.summary      = "一个简单的Swift库"
 # 描述
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 # 依赖系统库
   # s.framework  = "SomeFramework"
   # s.frameworks = "SomeFramework", "AnotherFramework"
-   s.library   = "libapple_crypto"
+   s.library   = "apple_crypto"
   # s.libraries = "iconv", "xml2"
 # ARC
   s.requires_arc = true
