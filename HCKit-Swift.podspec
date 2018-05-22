@@ -35,7 +35,9 @@ Pod::Spec.new do |s|
 # ARC
   s.requires_arc = true
 # XC配置
-  # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
+  s.preserve_path = "Module/module.modulemap"
+  s.module_map = "Module/module.modulemap"
+  s.xcconfig = { "HEADER_SEARCH_PATHS" => "${SDKROOT}/usr/include/CommonCrypto $(PODS_ROOT)/HCKit-Swift/Module"}
 # 依赖库
   # s.dependency "JSONKit", "~> 1.4"
 

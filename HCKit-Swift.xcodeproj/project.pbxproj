@@ -6,20 +6,6 @@
 	objectVersion = 50;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		00643B5720B3F16E00649894 /* CommonCryptoModuleMap */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 00643B5820B3F16E00649894 /* Build configuration list for PBXAggregateTarget "CommonCryptoModuleMap" */;
-			buildPhases = (
-				00643B5B20B3F18000649894 /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = CommonCryptoModuleMap;
-			productName = CommonCryptoModuleMap;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		004F969720B3ABDE000D3548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004F969620B3ABDE000D3548 /* AppDelegate.swift */; };
 		004F969920B3ABDE000D3548 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004F969820B3ABDE000D3548 /* ViewController.swift */; };
@@ -37,16 +23,6 @@
 		57C444BA9EB5627F6CECDB90 /* Pods_HCKit_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48CFB3F0B27F7E8549B23B84 /* Pods_HCKit_Swift.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		00643B5C20B3F1FB00649894 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 004F968B20B3ABDE000D3548 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 00643B5720B3F16E00649894;
-			remoteInfo = CommonCryptoModuleMap;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		004F969320B3ABDE000D3548 /* HCKit-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HCKit-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		004F969620B3ABDE000D3548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +39,7 @@
 		00643B6720B3F34700649894 /* HCConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCConfig.swift; sourceTree = "<group>"; };
 		00643B6820B3F34700649894 /* HCTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCTimer.swift; sourceTree = "<group>"; };
 		00643B6C20B3F39200649894 /* hcTransparent@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hcTransparent@2x.png"; sourceTree = "<group>"; };
+		00643B6F20B406A400649894 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		48CFB3F0B27F7E8549B23B84 /* Pods_HCKit_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HCKit_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70116F2D84AEE204B0DFB907 /* Pods-HCKit-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCKit-Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCKit-Swift/Pods-HCKit-Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		E2A8FB934236294D2F9EDB5C /* Pods-HCKit-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCKit-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-HCKit-Swift/Pods-HCKit-Swift.release.xcconfig"; sourceTree = "<group>"; };
@@ -83,6 +60,7 @@
 		004F968A20B3ABDE000D3548 = {
 			isa = PBXGroup;
 			children = (
+				00643B6E20B4067E00649894 /* Module */,
 				00643B6B20B3F37F00649894 /* Resources */,
 				004F96A820B3B0CF000D3548 /* Classes */,
 				004F969520B3ABDE000D3548 /* HCKit-Swift */,
@@ -151,6 +129,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		00643B6E20B4067E00649894 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				00643B6F20B406A400649894 /* module.modulemap */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
 		06B12DD61CF0C6A2FA770905 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,7 +169,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				00643B5D20B3F1FB00649894 /* PBXTargetDependency */,
 			);
 			name = "HCKit-Swift";
 			productName = "HCKit-Swift";
@@ -203,9 +188,6 @@
 					004F969220B3ABDE000D3548 = {
 						CreatedOnToolsVersion = 9.3.1;
 					};
-					00643B5720B3F16E00649894 = {
-						CreatedOnToolsVersion = 9.3.1;
-					};
 				};
 			};
 			buildConfigurationList = 004F968E20B3ABDE000D3548 /* Build configuration list for PBXProject "HCKit-Swift" */;
@@ -222,7 +204,6 @@
 			projectRoot = "";
 			targets = (
 				004F969220B3ABDE000D3548 /* HCKit-Swift */,
-				00643B5720B3F16E00649894 /* CommonCryptoModuleMap */,
 			);
 		};
 /* End PBXProject section */
@@ -242,19 +223,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		00643B5B20B3F18000649894 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This if-statement means we'll only run the main script if the CommonCryptoModuleMap directory doesn't exist\n# Because otherwise the rest of the script causes a full recompile for anything where CommonCrypto is a dependency\n# Do a \"Clean Build Folder\" to remove this directory and trigger the rest of the script to run\nif [ -d \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap\" ]; then\necho \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap directory already exists, so skipping the rest of the script.\"\nexit 0\nfi\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap\"\ncat <<EOF > \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap/module.modulemap\"\nmodule CommonCrypto [system] {\n    header \"${SDKROOT}/usr/include/CommonCrypto/CommonCrypto.h\"\n    export *\n}\nEOF";
-		};
 		FCA2C7E0E88AA4A4F5D511DA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -293,14 +261,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		00643B5D20B3F1FB00649894 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 00643B5720B3F16E00649894 /* CommonCryptoModuleMap */;
-			targetProxy = 00643B5C20B3F1FB00649894 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		004F969A20B3ABDE000D3548 /* Main.storyboard */ = {
@@ -444,8 +404,8 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6N7AL8F6KC;
 				HEADER_SEARCH_PATHS = (
-					"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap",
 					"$(inherited)",
+					"$(PROJECT_DIR)/HCKit-Swift/Module",
 				);
 				INFOPLIST_FILE = "HCKit-Swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -456,6 +416,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "47fff206-8e55-4ece-9b71-42ae425b1755";
 				PROVISIONING_PROFILE_SPECIFIER = "HCKit-Dev";
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -470,8 +431,8 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6N7AL8F6KC;
 				HEADER_SEARCH_PATHS = (
-					"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap",
 					"$(inherited)",
+					"$(PROJECT_DIR)/HCKit-Swift/Module",
 				);
 				INFOPLIST_FILE = "HCKit-Swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -482,26 +443,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9a0c069d-f896-44d4-8afa-32a82485615f";
 				PROVISIONING_PROFILE_SPECIFIER = "HCKit-AppStore";
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		00643B5920B3F16E00649894 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6N7AL8F6KC;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		00643B5A20B3F16E00649894 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6N7AL8F6KC;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -522,15 +466,6 @@
 			buildConfigurations = (
 				004F96A620B3ABE0000D3548 /* Debug */,
 				004F96A720B3ABE0000D3548 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		00643B5820B3F16E00649894 /* Build configuration list for PBXAggregateTarget "CommonCryptoModuleMap" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				00643B5920B3F16E00649894 /* Debug */,
-				00643B5A20B3F16E00649894 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
