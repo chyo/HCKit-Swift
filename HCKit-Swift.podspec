@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
 # 项目名
   s.name         = "HCKit-Swift"
 # 版本号
-  s.version      = "0.0.1"
+  s.version      = "0.0.4"
 # 摘要
   s.summary      = "一个简单的Swift库"
 # 描述
@@ -19,12 +19,14 @@ Pod::Spec.new do |s|
   s.author             = { "ChenHongchao" => "xmchc@hotmail.com" }
 # 平台
   s.platform     = :ios, "8.0"
+# Swift版本
+  s.swift_version = "4.0"
 # 来源
   s.source       = { :git => "https://github.com/chyo/HCKit-Swift.git", :tag => "#{s.version}" }
 # 源代码
-  s.source_files  = "Classes/*.swift"
+  s.source_files  = "Classes/**/*.swift"
 # 资源文件
-  # s.resources = "Resources/*.png"
+  s.resources = "Resources/*"
 # 依赖系统库
   # s.framework  = "SomeFramework"
   # s.frameworks = "SomeFramework", "AnotherFramework"

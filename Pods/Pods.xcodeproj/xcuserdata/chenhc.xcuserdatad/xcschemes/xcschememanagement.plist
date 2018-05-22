@@ -4,16 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>CommonCryptoModuleMap.xcscheme</key>
+		<key>Pods-HCKit-Swift.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
-		<key>HCKit-Swift.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict/>
 </dict>
 </plist>
