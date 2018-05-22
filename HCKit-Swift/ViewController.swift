@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import libxml2
 
 class ViewController: UIViewController {
 

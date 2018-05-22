@@ -20,6 +20,7 @@
 		00643B6920B3F34700649894 /* HCConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B6720B3F34700649894 /* HCConfig.swift */; };
 		00643B6A20B3F34700649894 /* HCTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B6820B3F34700649894 /* HCTimer.swift */; };
 		00643B6D20B3F39200649894 /* hcTransparent@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00643B6C20B3F39200649894 /* hcTransparent@2x.png */; };
+		00643B7120B4128B00649894 /* libapple_crypto.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 00643B7020B4128B00649894 /* libapple_crypto.tbd */; };
 		57C444BA9EB5627F6CECDB90 /* Pods_HCKit_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48CFB3F0B27F7E8549B23B84 /* Pods_HCKit_Swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +40,8 @@
 		00643B6720B3F34700649894 /* HCConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCConfig.swift; sourceTree = "<group>"; };
 		00643B6820B3F34700649894 /* HCTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCTimer.swift; sourceTree = "<group>"; };
 		00643B6C20B3F39200649894 /* hcTransparent@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hcTransparent@2x.png"; sourceTree = "<group>"; };
-		00643B6F20B406A400649894 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		00643B7020B4128B00649894 /* libapple_crypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libapple_crypto.tbd; path = usr/lib/libapple_crypto.tbd; sourceTree = SDKROOT; };
+		00643B7220B4130B00649894 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		48CFB3F0B27F7E8549B23B84 /* Pods_HCKit_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HCKit_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70116F2D84AEE204B0DFB907 /* Pods-HCKit-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCKit-Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCKit-Swift/Pods-HCKit-Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		E2A8FB934236294D2F9EDB5C /* Pods-HCKit-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCKit-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-HCKit-Swift/Pods-HCKit-Swift.release.xcconfig"; sourceTree = "<group>"; };
@@ -50,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00643B7120B4128B00649894 /* libapple_crypto.tbd in Frameworks */,
 				57C444BA9EB5627F6CECDB90 /* Pods_HCKit_Swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -60,7 +63,6 @@
 		004F968A20B3ABDE000D3548 = {
 			isa = PBXGroup;
 			children = (
-				00643B6E20B4067E00649894 /* Module */,
 				00643B6B20B3F37F00649894 /* Resources */,
 				004F96A820B3B0CF000D3548 /* Classes */,
 				004F969520B3ABDE000D3548 /* HCKit-Swift */,
@@ -129,17 +131,11 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		00643B6E20B4067E00649894 /* Module */ = {
-			isa = PBXGroup;
-			children = (
-				00643B6F20B406A400649894 /* module.modulemap */,
-			);
-			path = Module;
-			sourceTree = "<group>";
-		};
 		06B12DD61CF0C6A2FA770905 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00643B7220B4130B00649894 /* libxml2.tbd */,
+				00643B7020B4128B00649894 /* libapple_crypto.tbd */,
 				48CFB3F0B27F7E8549B23B84 /* Pods_HCKit_Swift.framework */,
 			);
 			name = Frameworks;
@@ -403,10 +399,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6N7AL8F6KC;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/HCKit-Swift/Module",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "HCKit-Swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -430,10 +423,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6N7AL8F6KC;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/HCKit-Swift/Module",
-				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "HCKit-Swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

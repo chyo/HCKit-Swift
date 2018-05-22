@@ -30,14 +30,14 @@ Pod::Spec.new do |s|
 # 依赖系统库
   # s.framework  = "SomeFramework"
   # s.frameworks = "SomeFramework", "AnotherFramework"
-  # s.library   = "iconv"
+   s.library   = "libapple_crypto"
   # s.libraries = "iconv", "xml2"
 # ARC
   s.requires_arc = true
 # XC配置
-  s.preserve_path = "Module/module.modulemap"
-  s.module_map = "Module/module.modulemap"
-#s.xcconfig = { "HEADER_SEARCH_PATHS" => "${SDKROOT}/usr/include/CommonCrypto"}
+#s.preserve_path = "Module/module.modulemap"
+#s.module_map = "Module/module.modulemap"
+#s.xcconfig = { "HEADER_SEARCH_PATHS" => "${SDKROOT}/usr/include/CommonCrypto $(PODS_ROOT)/HCKit-Swift/Module"}
 # 依赖库
   # s.dependency "JSONKit", "~> 1.4"
 
