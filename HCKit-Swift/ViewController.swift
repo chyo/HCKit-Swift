@@ -7,13 +7,12 @@
 //
 
 import UIKit
-import libxml2
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let text = "ABC"
+        let text = "1"
         print(text.hc_md5())
     }
 

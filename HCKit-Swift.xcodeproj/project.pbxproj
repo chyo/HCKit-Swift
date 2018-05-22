@@ -7,160 +7,149 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		004F969720B3ABDE000D3548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004F969620B3ABDE000D3548 /* AppDelegate.swift */; };
-		004F969920B3ABDE000D3548 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004F969820B3ABDE000D3548 /* ViewController.swift */; };
-		004F969C20B3ABDE000D3548 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 004F969A20B3ABDE000D3548 /* Main.storyboard */; };
-		004F969E20B3ABE0000D3548 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 004F969D20B3ABE0000D3548 /* Assets.xcassets */; };
-		004F96A120B3ABE0000D3548 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 004F969F20B3ABE0000D3548 /* LaunchScreen.storyboard */; };
-		00643B5220B3F0F500649894 /* UINavigationController+HCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B4D20B3F0F400649894 /* UINavigationController+HCExtension.swift */; };
-		00643B5320B3F0F500649894 /* String+HCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B4E20B3F0F400649894 /* String+HCExtension.swift */; };
-		00643B5420B3F0F500649894 /* Date+HCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B4F20B3F0F400649894 /* Date+HCExtension.swift */; };
-		00643B5520B3F0F500649894 /* Dictionary+HCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B5020B3F0F400649894 /* Dictionary+HCExtension.swift */; };
-		00643B5620B3F0F500649894 /* UIViewController+HCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B5120B3F0F500649894 /* UIViewController+HCExtension.swift */; };
-		00643B6920B3F34700649894 /* HCConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B6720B3F34700649894 /* HCConfig.swift */; };
-		00643B6A20B3F34700649894 /* HCTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B6820B3F34700649894 /* HCTimer.swift */; };
-		00643B6D20B3F39200649894 /* hcTransparent@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00643B6C20B3F39200649894 /* hcTransparent@2x.png */; };
-		00643B7120B4128B00649894 /* libapple_crypto.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 00643B7020B4128B00649894 /* libapple_crypto.tbd */; };
-		57C444BA9EB5627F6CECDB90 /* Pods_HCKit_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48CFB3F0B27F7E8549B23B84 /* Pods_HCKit_Swift.framework */; };
+		00643B8120B416BA00649894 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B8020B416BA00649894 /* AppDelegate.swift */; };
+		00643B8320B416BA00649894 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B8220B416BA00649894 /* ViewController.swift */; };
+		00643B8620B416BA00649894 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00643B8420B416BA00649894 /* Main.storyboard */; };
+		00643B8820B416BB00649894 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00643B8720B416BB00649894 /* Assets.xcassets */; };
+		00643B8B20B416BB00649894 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00643B8920B416BB00649894 /* LaunchScreen.storyboard */; };
+		00643B9E20B416F200649894 /* Date+HCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B9420B416F200649894 /* Date+HCExtension.swift */; };
+		00643B9F20B416F200649894 /* String+HCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B9520B416F200649894 /* String+HCExtension.swift */; };
+		00643BA020B416F200649894 /* UINavigationController+HCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B9620B416F200649894 /* UINavigationController+HCExtension.swift */; };
+		00643BA120B416F200649894 /* Dictionary+HCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B9720B416F200649894 /* Dictionary+HCExtension.swift */; };
+		00643BA220B416F200649894 /* UIViewController+HCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B9820B416F200649894 /* UIViewController+HCExtension.swift */; };
+		00643BA320B416F200649894 /* HCTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B9A20B416F200649894 /* HCTimer.swift */; };
+		00643BA420B416F200649894 /* HCConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B9B20B416F200649894 /* HCConfig.swift */; };
+		00643BA520B416F200649894 /* hcTransparent@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00643B9D20B416F200649894 /* hcTransparent@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		004F969320B3ABDE000D3548 /* HCKit-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HCKit-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		004F969620B3ABDE000D3548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		004F969820B3ABDE000D3548 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		004F969B20B3ABDE000D3548 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		004F969D20B3ABE0000D3548 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		004F96A020B3ABE0000D3548 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		004F96A220B3ABE0000D3548 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00643B4D20B3F0F400649894 /* UINavigationController+HCExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+HCExtension.swift"; sourceTree = "<group>"; };
-		00643B4E20B3F0F400649894 /* String+HCExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+HCExtension.swift"; sourceTree = "<group>"; };
-		00643B4F20B3F0F400649894 /* Date+HCExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+HCExtension.swift"; sourceTree = "<group>"; };
-		00643B5020B3F0F400649894 /* Dictionary+HCExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+HCExtension.swift"; sourceTree = "<group>"; };
-		00643B5120B3F0F500649894 /* UIViewController+HCExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+HCExtension.swift"; sourceTree = "<group>"; };
-		00643B6720B3F34700649894 /* HCConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCConfig.swift; sourceTree = "<group>"; };
-		00643B6820B3F34700649894 /* HCTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCTimer.swift; sourceTree = "<group>"; };
-		00643B6C20B3F39200649894 /* hcTransparent@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hcTransparent@2x.png"; sourceTree = "<group>"; };
-		00643B7020B4128B00649894 /* libapple_crypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libapple_crypto.tbd; path = usr/lib/libapple_crypto.tbd; sourceTree = SDKROOT; };
-		00643B7220B4130B00649894 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
-		48CFB3F0B27F7E8549B23B84 /* Pods_HCKit_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HCKit_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		70116F2D84AEE204B0DFB907 /* Pods-HCKit-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCKit-Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCKit-Swift/Pods-HCKit-Swift.debug.xcconfig"; sourceTree = "<group>"; };
-		E2A8FB934236294D2F9EDB5C /* Pods-HCKit-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCKit-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-HCKit-Swift/Pods-HCKit-Swift.release.xcconfig"; sourceTree = "<group>"; };
+		00643B7D20B416BA00649894 /* HCKit-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HCKit-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00643B8020B416BA00649894 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		00643B8220B416BA00649894 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		00643B8520B416BA00649894 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		00643B8720B416BB00649894 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		00643B8A20B416BB00649894 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		00643B8C20B416BB00649894 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00643B9420B416F200649894 /* Date+HCExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+HCExtension.swift"; sourceTree = "<group>"; };
+		00643B9520B416F200649894 /* String+HCExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+HCExtension.swift"; sourceTree = "<group>"; };
+		00643B9620B416F200649894 /* UINavigationController+HCExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+HCExtension.swift"; sourceTree = "<group>"; };
+		00643B9720B416F200649894 /* Dictionary+HCExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+HCExtension.swift"; sourceTree = "<group>"; };
+		00643B9820B416F200649894 /* UIViewController+HCExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+HCExtension.swift"; sourceTree = "<group>"; };
+		00643B9A20B416F200649894 /* HCTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCTimer.swift; sourceTree = "<group>"; };
+		00643B9B20B416F200649894 /* HCConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCConfig.swift; sourceTree = "<group>"; };
+		00643B9D20B416F200649894 /* hcTransparent@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hcTransparent@2x.png"; sourceTree = "<group>"; };
+		00643BA720B4170000649894 /* libapple_crypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libapple_crypto.tbd; path = usr/lib/libapple_crypto.tbd; sourceTree = SDKROOT; };
+		00643BAA20B4173400649894 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		004F969020B3ABDE000D3548 /* Frameworks */ = {
+		00643B7A20B416BA00649894 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00643B7120B4128B00649894 /* libapple_crypto.tbd in Frameworks */,
-				57C444BA9EB5627F6CECDB90 /* Pods_HCKit_Swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		004F968A20B3ABDE000D3548 = {
+		00643B7420B416BA00649894 = {
 			isa = PBXGroup;
 			children = (
-				00643B6B20B3F37F00649894 /* Resources */,
-				004F96A820B3B0CF000D3548 /* Classes */,
-				004F969520B3ABDE000D3548 /* HCKit-Swift */,
-				004F969420B3ABDE000D3548 /* Products */,
-				92E18E232F12A58E69606641 /* Pods */,
-				06B12DD61CF0C6A2FA770905 /* Frameworks */,
+				00643BA920B4171900649894 /* Module */,
+				00643B9220B416F200649894 /* Classes */,
+				00643B9C20B416F200649894 /* Resources */,
+				00643B7F20B416BA00649894 /* HCKit-Swift */,
+				00643B7E20B416BA00649894 /* Products */,
+				00643BA620B4170000649894 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		004F969420B3ABDE000D3548 /* Products */ = {
+		00643B7E20B416BA00649894 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				004F969320B3ABDE000D3548 /* HCKit-Swift.app */,
+				00643B7D20B416BA00649894 /* HCKit-Swift.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		004F969520B3ABDE000D3548 /* HCKit-Swift */ = {
+		00643B7F20B416BA00649894 /* HCKit-Swift */ = {
 			isa = PBXGroup;
 			children = (
-				004F969620B3ABDE000D3548 /* AppDelegate.swift */,
-				004F969820B3ABDE000D3548 /* ViewController.swift */,
-				004F969A20B3ABDE000D3548 /* Main.storyboard */,
-				004F969D20B3ABE0000D3548 /* Assets.xcassets */,
-				004F969F20B3ABE0000D3548 /* LaunchScreen.storyboard */,
-				004F96A220B3ABE0000D3548 /* Info.plist */,
+				00643B8020B416BA00649894 /* AppDelegate.swift */,
+				00643B8220B416BA00649894 /* ViewController.swift */,
+				00643B8420B416BA00649894 /* Main.storyboard */,
+				00643B8720B416BB00649894 /* Assets.xcassets */,
+				00643B8920B416BB00649894 /* LaunchScreen.storyboard */,
+				00643B8C20B416BB00649894 /* Info.plist */,
 			);
 			path = "HCKit-Swift";
 			sourceTree = "<group>";
 		};
-		004F96A820B3B0CF000D3548 /* Classes */ = {
+		00643B9220B416F200649894 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				00643B6620B3F33400649894 /* Util */,
-				00643B6520B3F31C00649894 /* Extension */,
+				00643B9320B416F200649894 /* Extension */,
+				00643B9920B416F200649894 /* Util */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		00643B6520B3F31C00649894 /* Extension */ = {
+		00643B9320B416F200649894 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				00643B4F20B3F0F400649894 /* Date+HCExtension.swift */,
-				00643B5020B3F0F400649894 /* Dictionary+HCExtension.swift */,
-				00643B4E20B3F0F400649894 /* String+HCExtension.swift */,
-				00643B4D20B3F0F400649894 /* UINavigationController+HCExtension.swift */,
-				00643B5120B3F0F500649894 /* UIViewController+HCExtension.swift */,
+				00643B9420B416F200649894 /* Date+HCExtension.swift */,
+				00643B9520B416F200649894 /* String+HCExtension.swift */,
+				00643B9620B416F200649894 /* UINavigationController+HCExtension.swift */,
+				00643B9720B416F200649894 /* Dictionary+HCExtension.swift */,
+				00643B9820B416F200649894 /* UIViewController+HCExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		00643B6620B3F33400649894 /* Util */ = {
+		00643B9920B416F200649894 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				00643B6720B3F34700649894 /* HCConfig.swift */,
-				00643B6820B3F34700649894 /* HCTimer.swift */,
+				00643B9A20B416F200649894 /* HCTimer.swift */,
+				00643B9B20B416F200649894 /* HCConfig.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
 		};
-		00643B6B20B3F37F00649894 /* Resources */ = {
+		00643B9C20B416F200649894 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				00643B6C20B3F39200649894 /* hcTransparent@2x.png */,
+				00643B9D20B416F200649894 /* hcTransparent@2x.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		06B12DD61CF0C6A2FA770905 /* Frameworks */ = {
+		00643BA620B4170000649894 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				00643B7220B4130B00649894 /* libxml2.tbd */,
-				00643B7020B4128B00649894 /* libapple_crypto.tbd */,
-				48CFB3F0B27F7E8549B23B84 /* Pods_HCKit_Swift.framework */,
+				00643BA720B4170000649894 /* libapple_crypto.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		92E18E232F12A58E69606641 /* Pods */ = {
+		00643BA920B4171900649894 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				70116F2D84AEE204B0DFB907 /* Pods-HCKit-Swift.debug.xcconfig */,
-				E2A8FB934236294D2F9EDB5C /* Pods-HCKit-Swift.release.xcconfig */,
+				00643BAA20B4173400649894 /* module.modulemap */,
 			);
-			name = Pods;
+			path = Module;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		004F969220B3ABDE000D3548 /* HCKit-Swift */ = {
+		00643B7C20B416BA00649894 /* HCKit-Swift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 004F96A520B3ABE0000D3548 /* Build configuration list for PBXNativeTarget "HCKit-Swift" */;
+			buildConfigurationList = 00643B8F20B416BB00649894 /* Build configuration list for PBXNativeTarget "HCKit-Swift" */;
 			buildPhases = (
-				FCA2C7E0E88AA4A4F5D511DA /* [CP] Check Pods Manifest.lock */,
-				004F968F20B3ABDE000D3548 /* Sources */,
-				004F969020B3ABDE000D3548 /* Frameworks */,
-				004F969120B3ABDE000D3548 /* Resources */,
+				00643B7920B416BA00649894 /* Sources */,
+				00643B7A20B416BA00649894 /* Frameworks */,
+				00643B7B20B416BA00649894 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -168,25 +157,25 @@
 			);
 			name = "HCKit-Swift";
 			productName = "HCKit-Swift";
-			productReference = 004F969320B3ABDE000D3548 /* HCKit-Swift.app */;
+			productReference = 00643B7D20B416BA00649894 /* HCKit-Swift.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		004F968B20B3ABDE000D3548 /* Project object */ = {
+		00643B7520B416BA00649894 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "陈宏超";
 				TargetAttributes = {
-					004F969220B3ABDE000D3548 = {
+					00643B7C20B416BA00649894 = {
 						CreatedOnToolsVersion = 9.3.1;
 					};
 				};
 			};
-			buildConfigurationList = 004F968E20B3ABDE000D3548 /* Build configuration list for PBXProject "HCKit-Swift" */;
+			buildConfigurationList = 00643B7820B416BA00649894 /* Build configuration list for PBXProject "HCKit-Swift" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -194,83 +183,62 @@
 				en,
 				Base,
 			);
-			mainGroup = 004F968A20B3ABDE000D3548;
-			productRefGroup = 004F969420B3ABDE000D3548 /* Products */;
+			mainGroup = 00643B7420B416BA00649894;
+			productRefGroup = 00643B7E20B416BA00649894 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				004F969220B3ABDE000D3548 /* HCKit-Swift */,
+				00643B7C20B416BA00649894 /* HCKit-Swift */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		004F969120B3ABDE000D3548 /* Resources */ = {
+		00643B7B20B416BA00649894 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				004F96A120B3ABE0000D3548 /* LaunchScreen.storyboard in Resources */,
-				004F969E20B3ABE0000D3548 /* Assets.xcassets in Resources */,
-				00643B6D20B3F39200649894 /* hcTransparent@2x.png in Resources */,
-				004F969C20B3ABDE000D3548 /* Main.storyboard in Resources */,
+				00643B8B20B416BB00649894 /* LaunchScreen.storyboard in Resources */,
+				00643B8820B416BB00649894 /* Assets.xcassets in Resources */,
+				00643BA520B416F200649894 /* hcTransparent@2x.png in Resources */,
+				00643B8620B416BA00649894 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		FCA2C7E0E88AA4A4F5D511DA /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HCKit-Swift-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		004F968F20B3ABDE000D3548 /* Sources */ = {
+		00643B7920B416BA00649894 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00643B5620B3F0F500649894 /* UIViewController+HCExtension.swift in Sources */,
-				00643B5520B3F0F500649894 /* Dictionary+HCExtension.swift in Sources */,
-				00643B6920B3F34700649894 /* HCConfig.swift in Sources */,
-				004F969920B3ABDE000D3548 /* ViewController.swift in Sources */,
-				00643B5320B3F0F500649894 /* String+HCExtension.swift in Sources */,
-				00643B5420B3F0F500649894 /* Date+HCExtension.swift in Sources */,
-				00643B5220B3F0F500649894 /* UINavigationController+HCExtension.swift in Sources */,
-				00643B6A20B3F34700649894 /* HCTimer.swift in Sources */,
-				004F969720B3ABDE000D3548 /* AppDelegate.swift in Sources */,
+				00643BA220B416F200649894 /* UIViewController+HCExtension.swift in Sources */,
+				00643BA420B416F200649894 /* HCConfig.swift in Sources */,
+				00643BA120B416F200649894 /* Dictionary+HCExtension.swift in Sources */,
+				00643B8320B416BA00649894 /* ViewController.swift in Sources */,
+				00643B9F20B416F200649894 /* String+HCExtension.swift in Sources */,
+				00643BA320B416F200649894 /* HCTimer.swift in Sources */,
+				00643BA020B416F200649894 /* UINavigationController+HCExtension.swift in Sources */,
+				00643B8120B416BA00649894 /* AppDelegate.swift in Sources */,
+				00643B9E20B416F200649894 /* Date+HCExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		004F969A20B3ABDE000D3548 /* Main.storyboard */ = {
+		00643B8420B416BA00649894 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				004F969B20B3ABDE000D3548 /* Base */,
+				00643B8520B416BA00649894 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		004F969F20B3ABE0000D3548 /* LaunchScreen.storyboard */ = {
+		00643B8920B416BB00649894 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				004F96A020B3ABE0000D3548 /* Base */,
+				00643B8A20B416BB00649894 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -278,7 +246,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		004F96A320B3ABE0000D3548 /* Debug */ = {
+		00643B8D20B416BB00649894 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -338,7 +306,7 @@
 			};
 			name = Debug;
 		};
-		004F96A420B3ABE0000D3548 /* Release */ = {
+		00643B8E20B416BB00649894 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -392,14 +360,13 @@
 			};
 			name = Release;
 		};
-		004F96A620B3ABE0000D3548 /* Debug */ = {
+		00643B9020B416BB00649894 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70116F2D84AEE204B0DFB907 /* Pods-HCKit-Swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6N7AL8F6KC;
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "HCKit-Swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -409,21 +376,20 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "47fff206-8e55-4ece-9b71-42ae425b1755";
 				PROVISIONING_PROFILE_SPECIFIER = "HCKit-Dev";
-				SWIFT_INCLUDE_PATHS = "";
+				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/Module";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		004F96A720B3ABE0000D3548 /* Release */ = {
+		00643B9120B416BB00649894 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2A8FB934236294D2F9EDB5C /* Pods-HCKit-Swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6N7AL8F6KC;
-				HEADER_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "HCKit-Swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -433,7 +399,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9a0c069d-f896-44d4-8afa-32a82485615f";
 				PROVISIONING_PROFILE_SPECIFIER = "HCKit-AppStore";
-				SWIFT_INCLUDE_PATHS = "";
+				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/Module";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -442,25 +408,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		004F968E20B3ABDE000D3548 /* Build configuration list for PBXProject "HCKit-Swift" */ = {
+		00643B7820B416BA00649894 /* Build configuration list for PBXProject "HCKit-Swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				004F96A320B3ABE0000D3548 /* Debug */,
-				004F96A420B3ABE0000D3548 /* Release */,
+				00643B8D20B416BB00649894 /* Debug */,
+				00643B8E20B416BB00649894 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		004F96A520B3ABE0000D3548 /* Build configuration list for PBXNativeTarget "HCKit-Swift" */ = {
+		00643B8F20B416BB00649894 /* Build configuration list for PBXNativeTarget "HCKit-Swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				004F96A620B3ABE0000D3548 /* Debug */,
-				004F96A720B3ABE0000D3548 /* Release */,
+				00643B9020B416BB00649894 /* Debug */,
+				00643B9120B416BB00649894 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 004F968B20B3ABDE000D3548 /* Project object */;
+	rootObject = 00643B7520B416BA00649894 /* Project object */;
 }
