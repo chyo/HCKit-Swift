@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
 # 源代码
   s.source_files  = "Classes/**/*.swift"
 # 资源文件
-  s.resources = "Resources/*"
+  s.resources = "Resources/*.png"
 # 依赖系统库
   # s.framework  = "SomeFramework"
   # s.frameworks = "SomeFramework", "AnotherFramework"
