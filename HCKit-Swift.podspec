@@ -6,10 +6,10 @@ Pod::Spec.new do |s|
 # 版本号
   s.version      = "0.0.1"
 # 摘要
-  s.summary      = "A short description of HCKit-Swift."
+  s.summary      = "一个简单的Swift库"
 # 描述
   s.description  = <<-DESC
-                    描述
+                    一个森罗万象的Swift库
                    DESC
 # 主页
   s.homepage     = "https://github.com/chyo/HCKit-Swift"
