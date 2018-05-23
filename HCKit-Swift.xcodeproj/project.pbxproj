@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00555F2520B541A10008A368 /* NavC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00555F2420B541A10008A368 /* NavC.swift */; };
+		00555F2720B541AF0008A368 /* VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00555F2620B541AF0008A368 /* VC.swift */; };
+		00555F2B20B549300008A368 /* resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 00555F2A20B549300008A368 /* resources.bundle */; };
 		00643B8120B416BA00649894 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B8020B416BA00649894 /* AppDelegate.swift */; };
 		00643B8320B416BA00649894 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B8220B416BA00649894 /* ViewController.swift */; };
 		00643B8620B416BA00649894 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00643B8420B416BA00649894 /* Main.storyboard */; };
@@ -19,10 +22,12 @@
 		00643BA220B416F200649894 /* UIViewController+HCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B9820B416F200649894 /* UIViewController+HCExtension.swift */; };
 		00643BA320B416F200649894 /* HCTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B9A20B416F200649894 /* HCTimer.swift */; };
 		00643BA420B416F200649894 /* HCConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B9B20B416F200649894 /* HCConfig.swift */; };
-		00643BA520B416F200649894 /* hcTransparent@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00643B9D20B416F200649894 /* hcTransparent@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00555F2420B541A10008A368 /* NavC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavC.swift; sourceTree = "<group>"; };
+		00555F2620B541AF0008A368 /* VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.swift; sourceTree = "<group>"; };
+		00555F2A20B549300008A368 /* resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = resources.bundle; sourceTree = "<group>"; };
 		00643B7D20B416BA00649894 /* HCKit-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HCKit-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00643B8020B416BA00649894 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00643B8220B416BA00649894 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,7 +42,6 @@
 		00643B9820B416F200649894 /* UIViewController+HCExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+HCExtension.swift"; sourceTree = "<group>"; };
 		00643B9A20B416F200649894 /* HCTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCTimer.swift; sourceTree = "<group>"; };
 		00643B9B20B416F200649894 /* HCConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCConfig.swift; sourceTree = "<group>"; };
-		00643B9D20B416F200649894 /* hcTransparent@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hcTransparent@2x.png"; sourceTree = "<group>"; };
 		00643BA720B4170000649894 /* libapple_crypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libapple_crypto.tbd; path = usr/lib/libapple_crypto.tbd; sourceTree = SDKROOT; };
 		00643BAA20B4173400649894 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -53,9 +57,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00555F2320B541740008A368 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
 		00643B7420B416BA00649894 = {
 			isa = PBXGroup;
 			children = (
+				00555F2320B541740008A368 /* Examples */,
 				00643BA920B4171900649894 /* Module */,
 				00643B9220B416F200649894 /* Classes */,
 				00643B9C20B416F200649894 /* Resources */,
@@ -82,6 +94,8 @@
 				00643B8720B416BB00649894 /* Assets.xcassets */,
 				00643B8920B416BB00649894 /* LaunchScreen.storyboard */,
 				00643B8C20B416BB00649894 /* Info.plist */,
+				00555F2420B541A10008A368 /* NavC.swift */,
+				00555F2620B541AF0008A368 /* VC.swift */,
 			);
 			path = "HCKit-Swift";
 			sourceTree = "<group>";
@@ -119,7 +133,7 @@
 		00643B9C20B416F200649894 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				00643B9D20B416F200649894 /* hcTransparent@2x.png */,
+				00555F2A20B549300008A368 /* resources.bundle */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -199,8 +213,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				00643B8B20B416BB00649894 /* LaunchScreen.storyboard in Resources */,
+				00555F2B20B549300008A368 /* resources.bundle in Resources */,
 				00643B8820B416BB00649894 /* Assets.xcassets in Resources */,
-				00643BA520B416F200649894 /* hcTransparent@2x.png in Resources */,
 				00643B8620B416BA00649894 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,11 +230,13 @@
 				00643BA420B416F200649894 /* HCConfig.swift in Sources */,
 				00643BA120B416F200649894 /* Dictionary+HCExtension.swift in Sources */,
 				00643B8320B416BA00649894 /* ViewController.swift in Sources */,
+				00555F2720B541AF0008A368 /* VC.swift in Sources */,
 				00643B9F20B416F200649894 /* String+HCExtension.swift in Sources */,
 				00643BA320B416F200649894 /* HCTimer.swift in Sources */,
 				00643BA020B416F200649894 /* UINavigationController+HCExtension.swift in Sources */,
 				00643B8120B416BA00649894 /* AppDelegate.swift in Sources */,
 				00643B9E20B416F200649894 /* Date+HCExtension.swift in Sources */,
+				00555F2520B541A10008A368 /* NavC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

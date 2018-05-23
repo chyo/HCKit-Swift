@@ -11,7 +11,25 @@ import AVFoundation
 import Photos
 import CoreLocation
 
+let FrameworkName = "HCKit_Swift"
+
 public class HCConfig : NSObject {
+    
+    /// 获取资源文件bundle
+    ///
+    /// - Returns: nil or bundle
+    static public func hc_resourceBundle () -> Bundle?{
+        let mainBundle = Bundle.init(for: HCConfig.self)
+        // 作为pods引入的库时编译后会被打包进Frameworks文件夹里。
+        var resourcePath:String? = mainBundle.path(forResource: FrameworkName, ofType: "framework", inDirectory: "Frameworks")
+        if resourcePath != nil {
+            let bundle = Bundle.init(path: resourcePath!)
+            resourcePath = bundle?.path(forResource: "resources", ofType: "bundle")
+        } else {
+            resourcePath = mainBundle.path(forResource: "resources", ofType: "bundle")
+        }
+        return Bundle.init(path: resourcePath!)
+    }
     
     /// 弹出常规的UIAlertController
     ///

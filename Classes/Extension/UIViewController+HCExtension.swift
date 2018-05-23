@@ -13,13 +13,13 @@ public extension UIViewController {
     /// 设置导航栏背景色是否透明
     ///
     /// - Parameter transparent: ture 透明 false 不透明
-    public func hc_setNavigationBarTransparent (transparent:Bool) {
+    public func hc_setNavigationBarTransparent (_ transparent:Bool) {
         if !transparent {
             self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
             self.navigationController?.navigationBar.shadowImage = nil
             return
         }
-        let bundle = Bundle.main
+        let bundle = HCConfig.hc_resourceBundle()
         let image = UIImage.init(named: "hcTransparent", in: bundle, compatibleWith: nil)
         self.navigationController?.navigationBar.setBackgroundImage(image, for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = image
