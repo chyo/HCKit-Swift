@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
 # 项目名
   s.name         = "HCKit-Swift"
 # 版本号
-  s.version      = "0.0.12"
+  s.version      = "0.0.13"
 # 摘要
   s.summary      = "一个简单的Swift库"
 # 描述
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
 # 来源
   s.source       = { :git => "https://github.com/chyo/HCKit-Swift.git", :tag => "#{s.version}" }
 # 源代码
-  s.source_files  = "Classes/**/*.swift"
+  s.source_files  = "Classes/**/*.swift", "Module/*"
 # 资源文件
   s.resources = "Resources/*"
 # 依赖系统库
@@ -36,8 +36,8 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 # XC配置
 s.preserve_path = "Module/module.modulemap"
-s.module_map = "Module/module.modulemap"
-s.xcconfig = { "IMPORT_PATHS" => "$(PODS_ROOT)/HCKit-Swift/Module"}
+# s.module_map = "Module/module.modulemap"
+s.xcconfig = { "SWIFT_INCLUDE_PATHS" => "$(PODS_ROOT)/CommonCryptoSwift/Module"}
 # 依赖库
   # s.dependency "JSONKit", "~> 1.4"
 

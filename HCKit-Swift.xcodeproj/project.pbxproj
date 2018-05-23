@@ -368,6 +368,7 @@
 				DEVELOPMENT_TEAM = 6N7AL8F6KC;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "HCKit-Swift/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -391,6 +392,7 @@
 				DEVELOPMENT_TEAM = 6N7AL8F6KC;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "HCKit-Swift/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
