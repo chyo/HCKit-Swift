@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--轮播组件-->
+        <scene sceneID="44I-2z-ym6">
+            <objects>
+                <viewController storyboardIdentifier="BannerViewVC" title="轮播组件" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cf8-rX-fAd" customClass="BannerViewVC" customModule="HCKit_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YoE-Jh-Cn2"/>
+                        <viewControllerLayoutGuide type="bottom" id="ora-Fq-fk5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Td8-kX-HBE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="seu-WD-vFb" customClass="HCBannerView" customModule="HCKit_Swift" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="bqx-rW-6Ub"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="seu-WD-vFb" firstAttribute="top" secondItem="YoE-Jh-Cn2" secondAttribute="bottom" id="CaK-z0-8SB"/>
+                            <constraint firstItem="seu-WD-vFb" firstAttribute="leading" secondItem="Td8-kX-HBE" secondAttribute="leading" id="rXh-db-60B"/>
+                            <constraint firstAttribute="trailing" secondItem="seu-WD-vFb" secondAttribute="trailing" id="xuV-NS-0wD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bannerView" destination="seu-WD-vFb" id="rYY-fF-wR5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bv8-av-ZI6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="143" y="-140"/>
+        </scene>
+    </scenes>
+</document>

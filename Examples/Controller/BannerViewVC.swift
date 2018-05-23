@@ -1,5 +1,5 @@
 //
-//  VC.swift
+//  BannerViewVC.swift
 //  HCKit-Swift
 //
 //  Created by 陈宏超 on 2018/5/23.
@@ -8,19 +8,29 @@
 
 import UIKit
 
-class VC: UIViewController {
+class BannerViewVC: UIViewController {
 
+    @IBOutlet weak var bannerView: HCBannerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.automaticallyAdjustsScrollViewInsets = false
+        var itemArray = [HCBannerItem]()
+        for _ in 0..<10 {
+            var item = HCBannerItem.init(data: nil, imgUrl: nil)
+            itemArray.append(item)
+        }
+        
+        let queue = DispatchQueue.main
+        queue.asyncAfter(deadline: DispatchTime.now()+2){
+            self.bannerView.itemArray = itemArray
+            self.bannerView.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        self.hc_setNavigationBarTransparent(true)
+        // Dispose of any resources that can be recreated.
     }
     
 
