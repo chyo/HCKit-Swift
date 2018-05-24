@@ -17,7 +17,7 @@ s.license      = "MIT"
 # 作者
 s.author             = { "ChenHongchao" => "xmchc@hotmail.com" }
 # 平台
-s.platform     = :ios, "8.0"
+s.platform     = :ios, "8.2"
 # Swift版本
 s.swift_version = "4.0"
 # 来源

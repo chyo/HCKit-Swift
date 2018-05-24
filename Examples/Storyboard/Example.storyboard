@@ -28,9 +28,17 @@
                                     <constraint firstAttribute="height" constant="200" id="bqx-rW-6Ub"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击图片触发事件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLa-t3-kiw">
+                                <rect key="frame" x="130.5" y="240" width="114.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.41568627450000001" green="0.43529411759999997" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="oLa-t3-kiw" firstAttribute="top" secondItem="seu-WD-vFb" secondAttribute="bottom" constant="20" id="8iv-7S-gUU"/>
+                            <constraint firstItem="oLa-t3-kiw" firstAttribute="centerX" secondItem="Td8-kX-HBE" secondAttribute="centerX" id="BhT-4u-KjQ"/>
                             <constraint firstItem="seu-WD-vFb" firstAttribute="top" secondItem="YoE-Jh-Cn2" secondAttribute="bottom" id="CaK-z0-8SB"/>
                             <constraint firstItem="seu-WD-vFb" firstAttribute="leading" secondItem="Td8-kX-HBE" secondAttribute="leading" id="rXh-db-60B"/>
                             <constraint firstAttribute="trailing" secondItem="seu-WD-vFb" secondAttribute="trailing" id="xuV-NS-0wD"/>

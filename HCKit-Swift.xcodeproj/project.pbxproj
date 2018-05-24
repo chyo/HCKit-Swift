@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0034FAB520B6B2B800BB4344 /* Timer+HCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0034FAB420B6B2B800BB4344 /* Timer+HCExtension.swift */; };
+		0034FAB720B6B60600BB4344 /* HCWeakTimerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0034FAB620B6B60600BB4344 /* HCWeakTimerProxy.swift */; };
 		00555F2B20B549300008A368 /* resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 00555F2A20B549300008A368 /* resources.bundle */; };
 		00555F2F20B550E50008A368 /* HCBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00555F2E20B550E50008A368 /* HCBannerView.swift */; };
 		00555F3220B559650008A368 /* HCBannerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00555F3120B559650008A368 /* HCBannerItem.swift */; };
@@ -29,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0034FAAC20B65FC100BB4344 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0034FAB420B6B2B800BB4344 /* Timer+HCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+HCExtension.swift"; sourceTree = "<group>"; };
+		0034FAB620B6B60600BB4344 /* HCWeakTimerProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCWeakTimerProxy.swift; sourceTree = "<group>"; };
 		00555F2A20B549300008A368 /* resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = resources.bundle; sourceTree = "<group>"; };
 		00555F2E20B550E50008A368 /* HCBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCBannerView.swift; sourceTree = "<group>"; };
 		00555F3120B559650008A368 /* HCBannerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCBannerItem.swift; sourceTree = "<group>"; };
@@ -90,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				00555F3120B559650008A368 /* HCBannerItem.swift */,
+				0034FAB620B6B60600BB4344 /* HCWeakTimerProxy.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -164,6 +170,7 @@
 				00643B9620B416F200649894 /* UINavigationController+HCExtension.swift */,
 				00643B9720B416F200649894 /* Dictionary+HCExtension.swift */,
 				00643B9820B416F200649894 /* UIViewController+HCExtension.swift */,
+				0034FAB420B6B2B800BB4344 /* Timer+HCExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -188,6 +195,7 @@
 		00643BA620B4170000649894 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0034FAAC20B65FC100BB4344 /* CFNetwork.framework */,
 				00643BA720B4170000649894 /* libapple_crypto.tbd */,
 				8D4E0BCBF5D52B2952C39E22 /* Pods_HCKit_Swift.framework */,
 			);
@@ -307,10 +315,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HCKit-Swift/Pods-HCKit-Swift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,10 +341,12 @@
 				00643BA120B416F200649894 /* Dictionary+HCExtension.swift in Sources */,
 				00643B8320B416BA00649894 /* ViewController.swift in Sources */,
 				00643B9F20B416F200649894 /* String+HCExtension.swift in Sources */,
+				0034FAB720B6B60600BB4344 /* HCWeakTimerProxy.swift in Sources */,
 				00643BA320B416F200649894 /* HCTimer.swift in Sources */,
 				00643BA020B416F200649894 /* UINavigationController+HCExtension.swift in Sources */,
 				00555F2F20B550E50008A368 /* HCBannerView.swift in Sources */,
 				00555F3220B559650008A368 /* HCBannerItem.swift in Sources */,
+				0034FAB520B6B2B800BB4344 /* Timer+HCExtension.swift in Sources */,
 				00643B8120B416BA00649894 /* AppDelegate.swift in Sources */,
 				00643B9E20B416F200649894 /* Date+HCExtension.swift in Sources */,
 				00555F3A20B55DF30008A368 /* BannerViewVC.swift in Sources */,
@@ -486,7 +498,7 @@
 				DEVELOPMENT_TEAM = 6N7AL8F6KC;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "HCKit-Swift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -512,7 +524,7 @@
 				DEVELOPMENT_TEAM = 6N7AL8F6KC;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "HCKit-Swift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
