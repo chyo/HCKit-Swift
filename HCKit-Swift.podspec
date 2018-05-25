@@ -39,5 +39,6 @@ s.preserve_path = "Module/module.modulemap"
 s.xcconfig = { "SWIFT_INCLUDE_PATHS" => "$(PODS_ROOT)/HCKit-Swift/Module"}
 # 依赖库
 s.dependency "SnapKit", "~> 4.0.0"
+s.dependency "Kingfisher", "~> 4.8.0"
 
 end
