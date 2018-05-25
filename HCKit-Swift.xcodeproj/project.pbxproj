@@ -27,6 +27,7 @@
 		00643BA220B416F200649894 /* UIViewController+HCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B9820B416F200649894 /* UIViewController+HCExtension.swift */; };
 		00643BA320B416F200649894 /* HCTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B9A20B416F200649894 /* HCTimer.swift */; };
 		00643BA420B416F200649894 /* HCConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B9B20B416F200649894 /* HCConfig.swift */; };
+		008927E420B7AB2000B5FA8B /* HCBannerIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008927E320B7AB2000B5FA8B /* HCBannerIndicatorView.swift */; };
 		85BF71D359815301E721BDA9 /* Pods_HCKit_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4E0BCBF5D52B2952C39E22 /* Pods_HCKit_Swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		00643B9B20B416F200649894 /* HCConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCConfig.swift; sourceTree = "<group>"; };
 		00643BA720B4170000649894 /* libapple_crypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libapple_crypto.tbd; path = usr/lib/libapple_crypto.tbd; sourceTree = SDKROOT; };
 		00643BAA20B4173400649894 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		008927E320B7AB2000B5FA8B /* HCBannerIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCBannerIndicatorView.swift; sourceTree = "<group>"; };
 		80D3A469A67BAAE3CBC9A67D /* Pods-HCKit-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCKit-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-HCKit-Swift/Pods-HCKit-Swift.release.xcconfig"; sourceTree = "<group>"; };
 		8D4E0BCBF5D52B2952C39E22 /* Pods_HCKit_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HCKit_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8E2A70F28A1242B76F6920 /* Pods-HCKit-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCKit-Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCKit-Swift/Pods-HCKit-Swift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			children = (
 				00555F2E20B550E50008A368 /* HCBannerView.swift */,
 				00555F3320B55CD20008A368 /* HCBannerCell.swift */,
+				008927E320B7AB2000B5FA8B /* HCBannerIndicatorView.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				00643B8120B416BA00649894 /* AppDelegate.swift in Sources */,
 				00643B9E20B416F200649894 /* Date+HCExtension.swift in Sources */,
 				00555F3A20B55DF30008A368 /* BannerViewVC.swift in Sources */,
+				008927E420B7AB2000B5FA8B /* HCBannerIndicatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

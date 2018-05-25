@@ -8,12 +8,14 @@
 
 import UIKit
 
-class BannerViewVC: UIViewController {
+class BannerViewVC: UIViewController, UIScrollViewDelegate{
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var bannerView: HCBannerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         var itemArray = [HCBannerItem]()
         var item = HCBannerItem.init(data: String(0), imgUrl: "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3564877025,796183547&fm=27&gp=0.jpg")
         itemArray.append(item)
@@ -33,4 +35,7 @@ class BannerViewVC: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.bannerView.bannerViewDidZooming(scrollView)
+    }
 }

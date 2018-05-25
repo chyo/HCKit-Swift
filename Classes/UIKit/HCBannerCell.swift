@@ -18,7 +18,7 @@ class HCBannerCell: UICollectionViewCell {
     weak var item:HCBannerItem? {
         didSet {
             weak var weakImageView = imageView
-            self.imageView.backgroundColor = UIColor.yellow
+            self.imageView.backgroundColor = UIColor.clear
             self.imageView.kf.setImage(with: URL.init(string: item!.imgUrl!), placeholder: placeholder, options: [.fromMemoryCacheOrRefresh], progressBlock: nil) { (image, error, cacheType, url) in
                 weakImageView?.contentMode = UIViewContentMode.scaleAspectFill
             }

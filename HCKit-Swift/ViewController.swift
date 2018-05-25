@@ -10,11 +10,14 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    let rowArray = [["text":"轮播组件（HCBannerView）", "storyboard":"Example", "identifier":"BannerViewVC", "push":true]]
+    let rowArray = [
+        ["text":"轮播组件（HCBannerView）", "storyboard":"Example", "identifier":"BannerViewVC", "push":true]
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "HCKit-Swift"
+        self.title = "HCKit-Swift组件库"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
     }
 
     override func didReceiveMemoryWarning() {

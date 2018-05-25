@@ -22,6 +22,7 @@ public extension Timer {
     public class func hc_scheduledTimer(timeInterval ti: TimeInterval, target aTarget: NSObjectProtocol, selector aSelector: Selector, userInfo aInfo: Any?, repeats yesOrNo: Bool) -> Timer {
         let proxy = HCWeakTimerProxy.init(target: aTarget, sel: aSelector)
         let timer = Timer.scheduledTimer(timeInterval: ti, target: proxy, selector: aSelector, userInfo:aInfo, repeats: yesOrNo)
+        RunLoop.current.add(timer, forMode: RunLoopMode.commonModes)
         proxy.timer = timer
         return timer
     }

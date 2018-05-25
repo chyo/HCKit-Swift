@@ -17,35 +17,75 @@
                         <viewControllerLayoutGuide type="top" id="YoE-Jh-Cn2"/>
                         <viewControllerLayoutGuide type="bottom" id="ora-Fq-fk5"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Td8-kX-HBE">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="Td8-kX-HBE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="seu-WD-vFb" customClass="HCBannerView" customModule="HCKit_Swift" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="375" height="200"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66j-Ar-kdf">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zdo-cz-KzM">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="668"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="poR-sv-t8f" customClass="HCBannerView" customModule="HCKit_Swift" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="pJM-yk-SFH"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KkJ-gF-P3K">
+                                                <rect key="frame" x="16" y="220" width="343" height="150.5"/>
+                                                <string key="text">1. 无限循环
+
+2. 定时滚动
+
+3. 点击事件
+
+4. 拖动放大
+
+5. 可替换分页指示器，需遵循协议</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.41568627450000001" green="0.43529411759999997" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="KkJ-gF-P3K" firstAttribute="leading" secondItem="Zdo-cz-KzM" secondAttribute="leading" constant="16" id="5S8-VE-R8Q"/>
+                                            <constraint firstAttribute="trailing" secondItem="poR-sv-t8f" secondAttribute="trailing" id="C9i-6n-gj1"/>
+                                            <constraint firstAttribute="trailing" secondItem="KkJ-gF-P3K" secondAttribute="trailing" constant="16" id="LAi-3n-oIT"/>
+                                            <constraint firstItem="poR-sv-t8f" firstAttribute="leading" secondItem="Zdo-cz-KzM" secondAttribute="leading" id="gLf-6J-QSM"/>
+                                            <constraint firstItem="KkJ-gF-P3K" firstAttribute="top" secondItem="poR-sv-t8f" secondAttribute="bottom" constant="20" id="h1z-qg-LnD"/>
+                                            <constraint firstItem="poR-sv-t8f" firstAttribute="top" secondItem="Zdo-cz-KzM" secondAttribute="top" id="upZ-1t-Zy4"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="bqx-rW-6Ub"/>
+                                    <constraint firstItem="Zdo-cz-KzM" firstAttribute="height" secondItem="66j-Ar-kdf" secondAttribute="height" constant="1" id="3mx-cL-cLq"/>
+                                    <constraint firstAttribute="bottom" secondItem="Zdo-cz-KzM" secondAttribute="bottom" id="ARc-MD-bje"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zdo-cz-KzM" secondAttribute="trailing" id="Mch-tv-CQ0"/>
+                                    <constraint firstItem="Zdo-cz-KzM" firstAttribute="leading" secondItem="66j-Ar-kdf" secondAttribute="leading" id="dwS-L2-4UZ"/>
+                                    <constraint firstItem="Zdo-cz-KzM" firstAttribute="top" secondItem="66j-Ar-kdf" secondAttribute="top" id="eYV-Gs-8br"/>
+                                    <constraint firstItem="Zdo-cz-KzM" firstAttribute="centerX" secondItem="66j-Ar-kdf" secondAttribute="centerX" id="vR9-c7-Xeq"/>
                                 </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点击图片触发事件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLa-t3-kiw">
-                                <rect key="frame" x="130.5" y="240" width="114.5" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.41568627450000001" green="0.43529411759999997" blue="0.4823529412" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <connections>
+                                    <outlet property="delegate" destination="cf8-rX-fAd" id="NoK-1h-CTl"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="oLa-t3-kiw" firstAttribute="top" secondItem="seu-WD-vFb" secondAttribute="bottom" constant="20" id="8iv-7S-gUU"/>
-                            <constraint firstItem="oLa-t3-kiw" firstAttribute="centerX" secondItem="Td8-kX-HBE" secondAttribute="centerX" id="BhT-4u-KjQ"/>
-                            <constraint firstItem="seu-WD-vFb" firstAttribute="top" secondItem="YoE-Jh-Cn2" secondAttribute="bottom" id="CaK-z0-8SB"/>
-                            <constraint firstItem="seu-WD-vFb" firstAttribute="leading" secondItem="Td8-kX-HBE" secondAttribute="leading" id="rXh-db-60B"/>
-                            <constraint firstAttribute="trailing" secondItem="seu-WD-vFb" secondAttribute="trailing" id="xuV-NS-0wD"/>
+                            <constraint firstAttribute="trailing" secondItem="66j-Ar-kdf" secondAttribute="trailing" id="2Sw-IG-gWc"/>
+                            <constraint firstAttribute="bottom" secondItem="66j-Ar-kdf" secondAttribute="bottom" id="4es-W2-dxx"/>
+                            <constraint firstItem="66j-Ar-kdf" firstAttribute="top" secondItem="Td8-kX-HBE" secondAttribute="top" id="MY0-bf-ddg"/>
+                            <constraint firstItem="66j-Ar-kdf" firstAttribute="leading" secondItem="Td8-kX-HBE" secondAttribute="leading" id="dnD-1b-T27"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bannerView" destination="seu-WD-vFb" id="rYY-fF-wR5"/>
+                        <outlet property="bannerView" destination="poR-sv-t8f" id="de9-Gc-zGQ"/>
+                        <outlet property="scrollView" destination="66j-Ar-kdf" id="uER-cs-7kd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bv8-av-ZI6" userLabel="First Responder" sceneMemberID="firstResponder"/>
