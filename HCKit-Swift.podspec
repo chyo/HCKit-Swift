@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
 # 项目名
 s.name         = "HCKit-Swift"
 # 版本号
-s.version      = "0.0.19"
+s.version      = "0.0.20"
 # 摘要
 s.summary      = "一个简单的Swift库"
 # 描述
