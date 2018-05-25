@@ -19,7 +19,7 @@ public class HCBannerIndicatorView: UIPageControl, HCBannerIndicatorProtocol {
     
     public var currentIndex: Int {
         get { return self.currentPage }
-        set (newValue){ self.currentPage = newValue}
+        set (newValue){print(newValue); self.currentPage = newValue}
     }
     
     public var view: UIView {

@@ -24,6 +24,7 @@ public protocol HCBannerIndicatorProtocol {
 
 
 /// 轮播组件
+/// 无限滚动的实现方式原理 C A B C A， 前后添加一个item，当移动到第0个或最后一个item时，自动无动画移动回第3个或者1个，由于开启了pageEnabled，用户只能一页一页翻，因此对用户是无感知的。
 /// 如需开启拖动放大效果，参见 bannerViewDidZooming 方法说明
 public class HCBannerView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     
@@ -156,15 +157,17 @@ public class HCBannerView: UIView, UICollectionViewDelegate, UICollectionViewDat
         var index = Int(offsetX / self.collectionView.bounds.size.width)
         index = min(index+1, itemArray.count+1)
         self.collectionView.scrollToItem(at: IndexPath.init(item: index, section: 0), at: UICollectionViewScrollPosition.left, animated: true)
-        self.indicator?.currentIndex = index-1
         if index == itemArray.count+1 {
             self.indicator?.currentIndex = 0
+            // 当移动到最后一个item时，自动移动回第1个（不是第0个）item
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
                 guard self.timer != nil else {
                     return
                 }
                 self.collectionView.scrollToItem(at: IndexPath.init(item: 1, section: 0), at: UICollectionViewScrollPosition.left, animated: false)
             }
+        } else {
+            self.indicator?.currentIndex = index-1
         }
     }
     
