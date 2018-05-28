@@ -1,7 +1,6 @@
 //
 //  HCBannerView.swift
 //  HCKit-Swift
-//
 //  Created by 陈宏超 on 2018/5/23.
 //  Copyright © 2018年 陈宏超. All rights reserved.
 //
@@ -12,9 +11,9 @@ import SnapKit
 /// 图片点击回调
 public typealias HCBannerViewSelectionHandler = ((_ view:HCBannerView?, _ item:HCBannerItem?) -> Void)
 
-/// 指示器协议
+/// 指示器协议，参考HCBannerIndicatorView
 public protocol HCBannerIndicatorProtocol {
-    /// 返回view
+    /// 返回指示器组件self
     var view:UIView {get}
     /// 总页数
     var totalPages:Int {get set}
@@ -23,8 +22,23 @@ public protocol HCBannerIndicatorProtocol {
 }
 
 
-/// 轮播组件
-/// 无限滚动的实现方式原理 C A B C A， 前后添加一个item，当移动到第0个或最后一个item时，自动无动画移动回第3个或者1个，由于开启了pageEnabled，用户只能一页一页翻，因此对用户是无感知的。
+/**
+ # 轮播组件 V1.0.0
+ 设置完itemArray后需调用reloadData刷新界面
+ 
+ ## 支持无限滚动
+ 假设有3个item，分别为A B C，在列表中的呈现是 C A B C A， 前后添加一个item，当移动到第0个或最后一个item时，自动无动画移动回第3个或者1个，由于开启了pageEnabled，用户只能一页一页翻，因此对用户是无感知的。
+ 
+ ## 支持拖动放大
+ 当父组件是UIScrollView及其子类时，父组件滚动到顶部后继续下拉会触发拖动放大的效果。父组件会自动获取，也可以手动设置。
+ 
+ ## 支持自动播放
+ 间隔3秒会自动移动到下一页
+ 
+ ## 支持自定义页面指示器
+ 默认使用HCBannerIndicatorView，如需自定义必须遵循HCBannerIndicatorProtocol协议，并手动将View添加到HCBannerView上
+
+ */
 public class HCBannerView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     
     let collectionView:UICollectionView!
