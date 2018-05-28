@@ -8,7 +8,13 @@
 
 import UIKit
 
-/// 处理timer强引用类
+/**
+ ## 处理timer强引用类 V1.0.0
+ 
+ 用法：使用init(:,:)方法初始化后，赋值给Timer的target，再将timer赋值给此类的timer。
+ 
+ 详见Timer+HCExtension.swift
+ */
 public class HCWeakTimerProxy: NSObject {
     
     weak var target:NSObjectProtocol?
