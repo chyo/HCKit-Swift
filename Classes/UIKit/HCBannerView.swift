@@ -25,7 +25,6 @@ public protocol HCBannerIndicatorProtocol {
 
 /// 轮播组件
 /// 无限滚动的实现方式原理 C A B C A， 前后添加一个item，当移动到第0个或最后一个item时，自动无动画移动回第3个或者1个，由于开启了pageEnabled，用户只能一页一页翻，因此对用户是无感知的。
-/// 如需开启拖动放大效果，参见 bannerViewDidZooming 方法说明
 public class HCBannerView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     
     let collectionView:UICollectionView!
@@ -38,9 +37,9 @@ public class HCBannerView: UIView, UICollectionViewDelegate, UICollectionViewDat
     public var placeholder:UIImage?
     /// item 点击事件
     public var selectionHandler:HCBannerViewSelectionHandler?
-    /// 是否开启自动播放
+    /// 是否开启自动播放，默认开启
     public var enabledScrollTimer:Bool = true
-    /// 自动播放时间间隔
+    /// 自动播放时间间隔，默认3秒
     public var scrollTimerInterval:TimeInterval = 3
     /// 指示器，默认使用HCBannerIndicaotrView，可以通过协议.view获取。如果要自定义，必须遵循HCBannerIndicatorProtocol协议，并且手动将view添加到HCBannerView上。
     public var indicator:HCBannerIndicatorProtocol? {
@@ -61,7 +60,7 @@ public class HCBannerView: UIView, UICollectionViewDelegate, UICollectionViewDat
             parentScrollView?.addObserver(self, forKeyPath: "contentOffset", options: [.old, .new], context: nil)
         }
     }
-    /// 当父组件zooming的时候是否支持拖动放大的效果，默认true
+    /// 当父组件zooming的时候是否支持拖动放大的效果，默认启用
     public var dragToZoomEnabled = true
     
     /// 刷新
