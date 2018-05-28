@@ -34,8 +34,4 @@ class BannerViewVC: UIViewController, UIScrollViewDelegate{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.bannerView.bannerViewDidZooming(scrollView)
-    }
 }

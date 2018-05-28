@@ -50,6 +50,19 @@ public class HCBannerView: UIView, UICollectionViewDelegate, UICollectionViewDat
             }
         }
     }
+    /// 父组件（UIScrollView、UITableView、UICollectionView等）在layoutSubviews时会自动获取，并且监听该组件的contentOffset
+    public weak var parentScrollView:UIScrollView? {
+        willSet {
+            if parentScrollView != nil {
+                parentScrollView?.removeObserver(self, forKeyPath: "contentOffset")
+            }
+        }
+        didSet {
+            parentScrollView?.addObserver(self, forKeyPath: "contentOffset", options: [.old, .new], context: nil)
+        }
+    }
+    /// 当父组件zooming的时候是否支持拖动放大的效果，默认true
+    public var dragToZoomEnabled = true
     
     /// 刷新
     public func reloadData () {
@@ -69,7 +82,10 @@ public class HCBannerView: UIView, UICollectionViewDelegate, UICollectionViewDat
     
     /// BannerView跟随scrollView做zooming，需要在scrollViewDidScroll中调用此方法。
     /// - Parameter scrollView: scrollview
-    public func bannerViewDidZooming(_ scrollView:UIScrollView!) {
+    func bannerViewDidZooming(_ scrollView:UIScrollView!) {
+        if !self.dragToZoomEnabled {
+            return
+        }
         if itemArray.count == 0 {
             return
         }
@@ -97,6 +113,10 @@ public class HCBannerView: UIView, UICollectionViewDelegate, UICollectionViewDat
         self.zoomingScale = scale
         self.collectionView.layer.transform = CATransform3DMakeScale(scale, scale, 1)
         self.collectionView.center.y = self.bounds.size.height/2.0 - different/2.0
+    }
+    
+    deinit {
+        self.parentScrollView?.removeObserver(self, forKeyPath: "contentOffset")
     }
     
     public override init(frame: CGRect) {
@@ -153,8 +173,7 @@ public class HCBannerView: UIView, UICollectionViewDelegate, UICollectionViewDat
     }
     
     @objc func autoScroll () {
-        let offsetX = self.collectionView.contentOffset.x
-        var index = Int(offsetX / self.collectionView.bounds.size.width)
+        var index = Int(self.collectionView.contentOffset.x / self.collectionView.bounds.size.width)
         index = min(index+1, itemArray.count+1)
         self.collectionView.scrollToItem(at: IndexPath.init(item: index, section: 0), at: UICollectionViewScrollPosition.left, animated: true)
         if index == itemArray.count+1 {
@@ -176,6 +195,16 @@ public class HCBannerView: UIView, UICollectionViewDelegate, UICollectionViewDat
         collectionView.contentInset = UIEdgeInsets.zero
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.never
+        }
+        if self.parentScrollView == nil {
+            var aView = self.superview
+            while aView != nil {
+                if aView!.isKind(of: UIScrollView.classForCoder()) {
+                    self.parentScrollView = aView as? UIScrollView
+                    break
+                }
+                aView = aView?.superview
+            }
         }
         super.layoutSubviews()
     }
@@ -277,6 +306,12 @@ public class HCBannerView: UIView, UICollectionViewDelegate, UICollectionViewDat
         }
         if self.selectionHandler != nil {
             self.selectionHandler!(weakSelf, item)
+        }
+    }
+    
+    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "contentOffset" {
+            self.bannerViewDidZooming(self.parentScrollView)
         }
     }
 }
