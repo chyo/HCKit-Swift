@@ -14,6 +14,12 @@ public class HCLetterHudView: UIVisualEffectView, HCLetterHudProtocol {
     var label:UILabel!
     
     public var view: UIView { get { return self }}
+    public var font: UIFont? {
+        set (newValue){
+            self.label!.font = newValue
+        }
+        get { return self.label!.font }
+    }
     
     public override init(effect: UIVisualEffect?) {
         super.init(effect: effect)

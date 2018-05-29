@@ -16,6 +16,7 @@
 		0012547E20BBFF1400D6FFE9 /* HCLetterHudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012547D20BBFF1400D6FFE9 /* HCLetterHudView.swift */; };
 		0034FAB520B6B2B800BB4344 /* Timer+HCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0034FAB420B6B2B800BB4344 /* Timer+HCExtension.swift */; };
 		0034FAB720B6B60600BB4344 /* HCWeakTimerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0034FAB620B6B60600BB4344 /* HCWeakTimerProxy.swift */; };
+		005018F620BD314A006637A2 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 005018F520BD2CF4006637A2 /* iconfont.ttf */; };
 		00555F2B20B549300008A368 /* resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 00555F2A20B549300008A368 /* resources.bundle */; };
 		00555F2F20B550E50008A368 /* HCBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00555F2E20B550E50008A368 /* HCBannerView.swift */; };
 		00555F3220B559650008A368 /* HCBannerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00555F3120B559650008A368 /* HCBannerItem.swift */; };
@@ -49,6 +50,7 @@
 		0034FAAC20B65FC100BB4344 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0034FAB420B6B2B800BB4344 /* Timer+HCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+HCExtension.swift"; sourceTree = "<group>"; };
 		0034FAB620B6B60600BB4344 /* HCWeakTimerProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCWeakTimerProxy.swift; sourceTree = "<group>"; };
+		005018F520BD2CF4006637A2 /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
 		00555F2A20B549300008A368 /* resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = resources.bundle; sourceTree = "<group>"; };
 		00555F2E20B550E50008A368 /* HCBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCBannerView.swift; sourceTree = "<group>"; };
 		00555F3120B559650008A368 /* HCBannerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCBannerItem.swift; sourceTree = "<group>"; };
@@ -92,9 +94,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		005018F420BD2CDF006637A2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				005018F520BD2CF4006637A2 /* iconfont.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		00555F2320B541740008A368 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				005018F420BD2CDF006637A2 /* Resources */,
 				00555F3620B55DBC0008A368 /* Controller */,
 				00555F3520B55DB50008A368 /* Storyboard */,
 			);
@@ -306,6 +317,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				005018F620BD314A006637A2 /* iconfont.ttf in Resources */,
 				00643B8B20B416BB00649894 /* LaunchScreen.storyboard in Resources */,
 				00555F2B20B549300008A368 /* resources.bundle in Resources */,
 				00643B8820B416BB00649894 /* Assets.xcassets in Resources */,

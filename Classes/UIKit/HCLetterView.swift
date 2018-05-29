@@ -14,6 +14,8 @@ public protocol HCLetterHudProtocol {
     
     /// 指示器视图，return self
     var view:UIView {get}
+    /// 设置字体
+    var font:UIFont? {get set}
     /// 需要显示指示器
     func show ()
     /// 需要隐藏指示器

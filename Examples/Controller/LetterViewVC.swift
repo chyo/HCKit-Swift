@@ -11,7 +11,7 @@ import SnapKit
 
 class LetterViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let letters = ["#", "A", "B", "C", "D", "E", "F", "G", "H", "I"]
+    let letters = ["\u{e651}", "#", "A", "B", "C", "D", "E", "F", "G", "H", "I"]
     var letterView:HCLetterView?
     var tableView:UITableView?
 
@@ -44,6 +44,8 @@ class LetterViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         letterView.selectionHandler = {(view, index) in
             weakSelf?.tableView?.scrollToRow(at: IndexPath.init(row: 0, section: index), at: UITableViewScrollPosition.top, animated: false)
         }
+        letterView.letterHud?.font = UIFont.init(name: "iconfont", size: 48)
+        letterView.font = UIFont.init(name: "iconfont", size: 12)
         letterView.layer.cornerRadius = 15
         letterView.letterArray = itemArray
         letterView.reloadData()
@@ -75,15 +77,27 @@ class LetterViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         label.backgroundColor = UIColor.lightGray
         label.textColor = UIColor.white
         label.text = "  " + letters[section]
-        label.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.light)
+        label.font = UIFont.init(name: "iconfont", size: 12)
         return label
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.init(style: UITableViewCellStyle.default, reuseIdentifier: "CELL")
         cell.selectionStyle = UITableViewCellSelectionStyle.none
-        cell.textLabel?.text = "\(letters[indexPath.section])\(indexPath.row)"
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                cell.textLabel?.text = "示例采用了自定义iconfont字体"
+            }
+            else if indexPath.row == 1 {
+                    cell.textLabel?.text = "因此可以显示搜索图标"
+            }
+            else {
+                cell.textLabel?.text = "\(letters[indexPath.section])\(indexPath.row)"
+            }
+        } else {
+            cell.textLabel?.text = "\(letters[indexPath.section])\(indexPath.row)"
+        }
+        cell.textLabel?.font = UIFont.init(name: "iconfont", size: 14)
         cell.textLabel?.textColor = UIColor.black
         return cell
     }
