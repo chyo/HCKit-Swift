@@ -14,7 +14,7 @@ public protocol HCLetterHudProtocol {
     
     /// 指示器视图，return self
     var view:UIView {get}
-    /// 设置字体
+    /// 设置字体，HCLetterView本身不会调用这个属性，如果使用了iconfont来显示图标，可以通过此属性改变默认hud的字体
     var font:UIFont? {get set}
     /// 需要显示指示器
     func show ()
