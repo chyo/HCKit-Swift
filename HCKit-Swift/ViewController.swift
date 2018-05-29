@@ -11,7 +11,8 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     let rowArray = [
-        ["text":"轮播组件（HCBannerView）", "storyboard":"Example", "identifier":"BannerViewVC", "push":true]
+        ["text":"轮播组件（HCBannerView）", "storyboard":"Example", "identifier":"BannerViewVC", "push":true],
+        ["text":"字母组件（HCLetterView）", "storyboard":nil, "identifier":"LetterViewVC", "push":true]
     ]
     
     override func viewDidLoad() {
@@ -51,7 +52,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let push = item["push"] as? Bool
         let storyboard = item["storyboard"] as? String
         let identifier = item["identifier"] as? String
-        let vc = UIStoryboard.init(name: storyboard!, bundle: nil).instantiateViewController(withIdentifier: identifier!)
+        let vc:UIViewController!
+        if storyboard == nil {
+            let cls = NSClassFromString(HCConfig.hc_bundleName() + "." + identifier!) as! UIViewController.Type
+            print("cls:\(cls)")
+            vc = cls.init()
+        } else {
+            vc = UIStoryboard.init(name: storyboard!, bundle: nil).instantiateViewController(withIdentifier: identifier!)
+        }
         if push! {
             self.navigationController?.pushViewController(vc, animated: true)
         } else {

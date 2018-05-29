@@ -7,3 +7,9 @@
 ## 其他
 1. 一些以+HCExtension命名的拓展
 2. 无需invalidate也不会引起循环引用的的timer代理：HCWeakTimerProxy
+
+## 项目依赖
+1. Snapkit 4.0.0
+2. Kingfisher 4.8.0
+
+项目依赖会自动下载，无需在podfile中配置

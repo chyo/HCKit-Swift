@@ -28,7 +28,7 @@ s.source_files  = "Classes/**/*.swift", "Module/*.modulemap"
 s.resources = "Resources/*"
 # 依赖系统库
 # s.framework  = "SomeFramework"
-# s.frameworks = "SomeFramework", "AnotherFramework"
+  s.frameworks = "Photos", "CoreLocation", "AVFoundation"
 # s.library   = "apple_crypto"
 # s.libraries = "iconv", "xml2"
 # ARC

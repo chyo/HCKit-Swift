@@ -11,9 +11,9 @@ import UIKit
 public class HCBannerItem: NSObject {
 
     public var data:Any?
-    public var imgUrl:String?
+    public var imgUrl:String!
     
-    public init(data:Any?, imgUrl:String?) {
+    public init(data:Any?, imgUrl:String!) {
         self.data = data
         self.imgUrl = imgUrl
         super.init()

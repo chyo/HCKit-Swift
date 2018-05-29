@@ -15,6 +15,16 @@ let FrameworkName = "HCKit_Swift"
 
 public class HCConfig : NSObject {
     
+    static public func hc_bundleName () -> String!{
+        var bundle = Bundle.init(for: HCConfig.self)
+        let resourcePath:String? = bundle.path(forResource: FrameworkName, ofType: "framework", inDirectory: "Frameworks")
+        if resourcePath != nil {
+            bundle = Bundle.init(path: resourcePath!)!
+        }
+        let bundleName = bundle.object(forInfoDictionaryKey: "CFBundleName") as! String
+        return bundleName.replacingOccurrences(of: "-", with: "_")
+    }
+    
     /// 获取资源文件bundle
     ///
     /// - Returns: nil or bundle

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0012542B20BBA68300D6FFE9 /* HCLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012542A20BBA68300D6FFE9 /* HCLetterView.swift */; };
+		0012542F20BBAA2E00D6FFE9 /* HCLetterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012542E20BBAA2E00D6FFE9 /* HCLetterItem.swift */; };
+		0012547620BBD7E500D6FFE9 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0012547520BBD7E500D6FFE9 /* Photos.framework */; };
+		0012547820BBD83900D6FFE9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0012547720BBD83900D6FFE9 /* CoreLocation.framework */; };
+		0012547A20BBD84000D6FFE9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0012547920BBD84000D6FFE9 /* AVFoundation.framework */; };
+		0012547C20BBDBAF00D6FFE9 /* LetterViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012547B20BBDBAF00D6FFE9 /* LetterViewVC.swift */; };
+		0012547E20BBFF1400D6FFE9 /* HCLetterHudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012547D20BBFF1400D6FFE9 /* HCLetterHudView.swift */; };
 		0034FAB520B6B2B800BB4344 /* Timer+HCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0034FAB420B6B2B800BB4344 /* Timer+HCExtension.swift */; };
 		0034FAB720B6B60600BB4344 /* HCWeakTimerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0034FAB620B6B60600BB4344 /* HCWeakTimerProxy.swift */; };
 		00555F2B20B549300008A368 /* resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 00555F2A20B549300008A368 /* resources.bundle */; };
@@ -32,6 +39,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0012542A20BBA68300D6FFE9 /* HCLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCLetterView.swift; sourceTree = "<group>"; };
+		0012542E20BBAA2E00D6FFE9 /* HCLetterItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCLetterItem.swift; sourceTree = "<group>"; };
+		0012547520BBD7E500D6FFE9 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		0012547720BBD83900D6FFE9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0012547920BBD84000D6FFE9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		0012547B20BBDBAF00D6FFE9 /* LetterViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterViewVC.swift; sourceTree = "<group>"; };
+		0012547D20BBFF1400D6FFE9 /* HCLetterHudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCLetterHudView.swift; sourceTree = "<group>"; };
 		0034FAAC20B65FC100BB4344 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0034FAB420B6B2B800BB4344 /* Timer+HCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+HCExtension.swift"; sourceTree = "<group>"; };
 		0034FAB620B6B60600BB4344 /* HCWeakTimerProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCWeakTimerProxy.swift; sourceTree = "<group>"; };
@@ -68,6 +82,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0012547A20BBD84000D6FFE9 /* AVFoundation.framework in Frameworks */,
+				0012547820BBD83900D6FFE9 /* CoreLocation.framework in Frameworks */,
+				0012547620BBD7E500D6FFE9 /* Photos.framework in Frameworks */,
 				85BF71D359815301E721BDA9 /* Pods_HCKit_Swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,6 +107,8 @@
 				00555F2E20B550E50008A368 /* HCBannerView.swift */,
 				00555F3320B55CD20008A368 /* HCBannerCell.swift */,
 				008927E320B7AB2000B5FA8B /* HCBannerIndicatorView.swift */,
+				0012542A20BBA68300D6FFE9 /* HCLetterView.swift */,
+				0012547D20BBFF1400D6FFE9 /* HCLetterHudView.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -99,6 +118,7 @@
 			children = (
 				00555F3120B559650008A368 /* HCBannerItem.swift */,
 				0034FAB620B6B60600BB4344 /* HCWeakTimerProxy.swift */,
+				0012542E20BBAA2E00D6FFE9 /* HCLetterItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -115,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				00555F3920B55DF30008A368 /* BannerViewVC.swift */,
+				0012547B20BBDBAF00D6FFE9 /* LetterViewVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -198,6 +219,9 @@
 		00643BA620B4170000649894 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0012547920BBD84000D6FFE9 /* AVFoundation.framework */,
+				0012547720BBD83900D6FFE9 /* CoreLocation.framework */,
+				0012547520BBD7E500D6FFE9 /* Photos.framework */,
 				0034FAAC20B65FC100BB4344 /* CFNetwork.framework */,
 				00643BA720B4170000649894 /* libapple_crypto.tbd */,
 				8D4E0BCBF5D52B2952C39E22 /* Pods_HCKit_Swift.framework */,
@@ -338,6 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0012542B20BBA68300D6FFE9 /* HCLetterView.swift in Sources */,
 				00643BA220B416F200649894 /* UIViewController+HCExtension.swift in Sources */,
 				00643BA420B416F200649894 /* HCConfig.swift in Sources */,
 				00555F3420B55CD20008A368 /* HCBannerCell.swift in Sources */,
@@ -348,12 +373,15 @@
 				00643BA320B416F200649894 /* HCTimer.swift in Sources */,
 				00643BA020B416F200649894 /* UINavigationController+HCExtension.swift in Sources */,
 				00555F2F20B550E50008A368 /* HCBannerView.swift in Sources */,
+				0012547C20BBDBAF00D6FFE9 /* LetterViewVC.swift in Sources */,
 				00555F3220B559650008A368 /* HCBannerItem.swift in Sources */,
 				0034FAB520B6B2B800BB4344 /* Timer+HCExtension.swift in Sources */,
 				00643B8120B416BA00649894 /* AppDelegate.swift in Sources */,
 				00643B9E20B416F200649894 /* Date+HCExtension.swift in Sources */,
 				00555F3A20B55DF30008A368 /* BannerViewVC.swift in Sources */,
 				008927E420B7AB2000B5FA8B /* HCBannerIndicatorView.swift in Sources */,
+				0012542F20BBAA2E00D6FFE9 /* HCLetterItem.swift in Sources */,
+				0012547E20BBFF1400D6FFE9 /* HCLetterHudView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +536,13 @@
 					"@executable_path/Frameworks",
 				);
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Kingfisher\"",
+					"-framework",
+					"\"SnapKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.chenhc.hckit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "47fff206-8e55-4ece-9b71-42ae425b1755";
@@ -534,6 +569,13 @@
 					"@executable_path/Frameworks",
 				);
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Kingfisher\"",
+					"-framework",
+					"\"SnapKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.chenhc.hckit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9a0c069d-f896-44d4-8afa-32a82485615f";
