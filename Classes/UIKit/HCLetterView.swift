@@ -34,7 +34,7 @@ public typealias HCLetterViewSelectionHandler = ((_ view:HCLetterView?, _ select
  请尽量使用代码的方式创建此视图，并且不添加高度约束，或者添加高度约束为 >= 0，高度会根据字母数量变化
  
  ## 支持自定义Hud
- 如需自定义hud，请在视图中遵循HCLetterHudProtocol协议，协议中的view属性返回self。自定义视图需手动添加到指定的父视图上，比如viewControll.view，并且赋值给letterview
+ 如需自定义hud，请在视图中遵循HCLetterHudProtocol协议，协议中的view属性返回self。自定义视图需手动添加到指定的父视图上，比如viewControll.view，并且赋值给letterview。如果未手动添加，则会自动添加到letterView的父视图上
  */
 public class HCLetterView: UIView {
     
