@@ -16,14 +16,18 @@ class TableViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "下拉刷新TableView"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "两级下拉", style: UIBarButtonItemStyle.plain, target: self, action: #selector(enabledSecondFloor))
         weak var weakSelf = self
         self.tableView.refreshHandler = { type in
+            if type == .secondFloor {
+                return
+            }
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2) {
                 if weakSelf == nil {
                     return
                 }
                 if type == .header {
-                    weakSelf!.itemArray = ["0"]
+                    weakSelf!.itemArray = ["点击“两级下拉”按钮后，可以打开第二层级下拉效果"]
                     weakSelf!.tableView.reloadData()
                     weakSelf!.tableView.refreshFooterView?.enabled = true
                     weakSelf!.tableView.stopRefreshingAnimation(true)
@@ -46,6 +50,10 @@ class TableViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         super.didReceiveMemoryWarning()
     }
     
+    @objc func enabledSecondFloor () {
+        let headerView = SecondFloorHeaderView.init(frame: CGRect.zero)
+        self.tableView.refreshHeaderView = headerView
+    }
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -62,6 +70,7 @@ class TableViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CELL", for: indexPath)
         cell.textLabel?.text = self.itemArray[indexPath.row]
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
         return cell
     }
 }

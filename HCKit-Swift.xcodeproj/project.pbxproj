@@ -18,6 +18,9 @@
 		0034FAB720B6B60600BB4344 /* HCWeakTimerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0034FAB620B6B60600BB4344 /* HCWeakTimerProxy.swift */; };
 		004C574820C625070012551F /* HCRefreshScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C574720C625070012551F /* HCRefreshScrollView.swift */; };
 		004C574A20C628450012551F /* ScrollViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C574920C628450012551F /* ScrollViewVC.swift */; };
+		004C574C20C666400012551F /* HCRefreshCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C574B20C666400012551F /* HCRefreshCollectionView.swift */; };
+		004C574E20C666D30012551F /* CollectionViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C574D20C666D30012551F /* CollectionViewVC.swift */; };
+		004C575520C67A900012551F /* SecondFloorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C575420C67A900012551F /* SecondFloorHeaderView.swift */; };
 		005018F620BD314A006637A2 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 005018F520BD2CF4006637A2 /* iconfont.ttf */; };
 		005018F820BD46AD006637A2 /* HCPullToRefreshProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005018F720BD46AD006637A2 /* HCPullToRefreshProtocol.swift */; };
 		005018FA20BD532C006637A2 /* HCRefreshTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005018F920BD532C006637A2 /* HCRefreshTableView.swift */; };
@@ -59,6 +62,9 @@
 		0034FAB620B6B60600BB4344 /* HCWeakTimerProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCWeakTimerProxy.swift; sourceTree = "<group>"; };
 		004C574720C625070012551F /* HCRefreshScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCRefreshScrollView.swift; sourceTree = "<group>"; };
 		004C574920C628450012551F /* ScrollViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewVC.swift; sourceTree = "<group>"; };
+		004C574B20C666400012551F /* HCRefreshCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCRefreshCollectionView.swift; sourceTree = "<group>"; };
+		004C574D20C666D30012551F /* CollectionViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewVC.swift; sourceTree = "<group>"; };
+		004C575420C67A900012551F /* SecondFloorHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondFloorHeaderView.swift; sourceTree = "<group>"; };
 		005018F520BD2CF4006637A2 /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
 		005018F720BD46AD006637A2 /* HCPullToRefreshProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPullToRefreshProtocol.swift; sourceTree = "<group>"; };
 		005018F920BD532C006637A2 /* HCRefreshTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCRefreshTableView.swift; sourceTree = "<group>"; };
@@ -108,6 +114,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		004C575120C67A1D0012551F /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				004C575420C67A900012551F /* SecondFloorHeaderView.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
 		005018F420BD2CDF006637A2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +133,7 @@
 		00555F2320B541740008A368 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				004C575120C67A1D0012551F /* UIKit */,
 				005018F420BD2CDF006637A2 /* Resources */,
 				00555F3620B55DBC0008A368 /* Controller */,
 				00555F3520B55DB50008A368 /* Storyboard */,
@@ -136,6 +151,7 @@
 				0012547D20BBFF1400D6FFE9 /* HCLetterHudView.swift */,
 				005018F920BD532C006637A2 /* HCRefreshTableView.swift */,
 				004C574720C625070012551F /* HCRefreshScrollView.swift */,
+				004C574B20C666400012551F /* HCRefreshCollectionView.swift */,
 				0092604020C11B4000167EAB /* HCRefreshHeaderView.swift */,
 				0092604220C121FD00167EAB /* HCRefreshFooterView.swift */,
 			);
@@ -167,6 +183,7 @@
 				0012547B20BBDBAF00D6FFE9 /* LetterViewVC.swift */,
 				005018FB20BD545E006637A2 /* TableViewVC.swift */,
 				004C574920C628450012551F /* ScrollViewVC.swift */,
+				004C574D20C666D30012551F /* CollectionViewVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -410,8 +427,10 @@
 				0012547C20BBDBAF00D6FFE9 /* LetterViewVC.swift in Sources */,
 				00555F3220B559650008A368 /* HCBannerItem.swift in Sources */,
 				0034FAB520B6B2B800BB4344 /* Timer+HCExtension.swift in Sources */,
+				004C574E20C666D30012551F /* CollectionViewVC.swift in Sources */,
 				005018F820BD46AD006637A2 /* HCPullToRefreshProtocol.swift in Sources */,
 				00643B8120B416BA00649894 /* AppDelegate.swift in Sources */,
+				004C575520C67A900012551F /* SecondFloorHeaderView.swift in Sources */,
 				0092604320C121FD00167EAB /* HCRefreshFooterView.swift in Sources */,
 				005018FA20BD532C006637A2 /* HCRefreshTableView.swift in Sources */,
 				00643B9E20B416F200649894 /* Date+HCExtension.swift in Sources */,
@@ -420,6 +439,7 @@
 				00555F3A20B55DF30008A368 /* BannerViewVC.swift in Sources */,
 				008927E420B7AB2000B5FA8B /* HCBannerIndicatorView.swift in Sources */,
 				0012542F20BBAA2E00D6FFE9 /* HCLetterItem.swift in Sources */,
+				004C574C20C666400012551F /* HCRefreshCollectionView.swift in Sources */,
 				004C574A20C628450012551F /* ScrollViewVC.swift in Sources */,
 				0012547E20BBFF1400D6FFE9 /* HCLetterHudView.swift in Sources */,
 			);

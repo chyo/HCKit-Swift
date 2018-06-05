@@ -1,5 +1,5 @@
 //
-//  HCRefreshScrollView.swift
+//  HCRefreshCollectionView.swift
 //  HCKit-Swift
 //
 //  Created by 陈宏超 on 2018/6/5.
@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 
 /**
  # 下拉刷新组件 V1.0.0
@@ -17,15 +16,22 @@ import SnapKit
  ## 支持下拉刷新
  内置下拉刷新动画，可自定义，参考HCRefreshHeaderView实现，并赋值给refreshHeaderView。
  
+ ## 支持获取更多
+ 内置获取更多动画，可自定义，参考HCRefreshFooterView实现，并赋值给refrehsFooterView
+ 
  ## 支持两级下拉
  内置HCRefreshHeaderView未实现两级下拉，如果需要实现需自定义headerView，并设置offsetToArriveSecondFloor
  
  */
-public class HCRefreshScrollView: UIScrollView, HCPullToRefreshProtocol {
-    
+public class HCRefreshCollectionView: UICollectionView {
+
     /// 原始缩进量
     var originalContentInsets:UIEdgeInsets!
+    /// 当缩进因为拖动刷新等因素改变时，会重新赋值给此变量。此变量服务于refreshFooterView，用于重新设定底部缩进，以便footerView可以显示在视图中
+    var changedContentInsets:UIEdgeInsets!
+    /// 进入下拉第二层级后，可以通过轻扫动作关闭
     var swipGesture:UISwipeGestureRecognizer?
+    
     
     public var refreshHandler: HCPullToRefreshHandler?
     
@@ -36,10 +42,22 @@ public class HCRefreshScrollView: UIScrollView, HCPullToRefreshProtocol {
         }
     }
     
-    public var refreshState: HCPullToRefreshState! = .stop
+    public override var contentSize: CGSize {
+        didSet {
+            if refreshFooterView != nil && self.refreshState != .secondFloor{
+                refreshFooterView!.view.frame = CGRect.init(x: 0, y: self.contentSize.height, width: self.bounds.size.width, height: refreshFooterView!.heightForView)
+                self.addSubview(refreshFooterView!.view)
+                // 重新设定底部缩进，以便footerView可以显示在视图中
+                if self.changedContentInsets != nil {
+                    var insets = self.changedContentInsets
+                    insets?.bottom += refreshFooterView!.heightForView
+                    self.contentInset = insets!
+                }
+            }
+        }
+    }
     
-    /// 在HCRefreshScrollView中此对象不起作用
-    public var refreshFooterView: HCPullToRefreshViewProtocol?
+    public var refreshState: HCPullToRefreshState! = .stop
     
     public var refreshHeaderView:HCPullToRefreshViewProtocol? {
         willSet (newValue) {
@@ -59,12 +77,26 @@ public class HCRefreshScrollView: UIScrollView, HCPullToRefreshProtocol {
         }
     }
     
-    deinit {
-        print("HCRefreshScrollView deinit")
+    public var refreshFooterView: HCPullToRefreshViewProtocol? {
+        willSet (newValue) {
+            if newValue?.view != refreshFooterView?.view{
+                refreshFooterView?.view.removeFromSuperview()
+            }
+        }
+        didSet {
+            if refreshFooterView != nil {
+                refreshFooterView!.view.frame = CGRect.init(x: 0, y: self.contentSize.height, width: self.bounds.size.width, height: refreshFooterView!.heightForView)
+                self.addSubview(refreshFooterView!.view)
+            }
+        }
     }
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    deinit {
+        print("HCRefreshCollectionView deinit")
+    }
+    
+    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+        super.init(frame: frame, collectionViewLayout: layout)
         self.setup()
     }
     
@@ -78,34 +110,39 @@ public class HCRefreshScrollView: UIScrollView, HCPullToRefreshProtocol {
         if #available(iOS 11.0, *) {
             super.safeAreaInsetsDidChange()
             self.originalContentInsets = self.safeAreaInsets
+            self.changedContentInsets = self.originalContentInsets
         }
     }
     
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
+        if self.refreshFooterView != nil {
+            self.refreshFooterView?.view.frame = CGRect.init(x: 0, y: 0, width: self.bounds.size.width, height: self.refreshFooterView!.heightForView)
+        }
+        
         if self.originalContentInsets == nil {
             if #available(iOS 11.0, *) {
                 self.originalContentInsets = self.safeAreaInsets
             } else {
                 self.originalContentInsets = self.contentInset
             }
+            self.changedContentInsets = self.originalContentInsets
         }
     }
     
     func contentOffsetDidChange(_ point: CGPoint) {
         // 当下拉/上托可用，并且列表未处于加载中的动画时才判断拖动事件
-        guard originalContentInsets != nil && self.refreshHeaderView?.enabled == true && self.refreshState != .loading && self.refreshState != .secondFloor else {
+        guard originalContentInsets != nil && (self.refreshHeaderView?.enabled == true || self.refreshFooterView?.enabled == true) && self.refreshState != .loading && self.refreshState != .secondFloor else {
             return
         }
         let offsetY = point.y + self.originalContentInsets.top
         // 判断是否是下拉，并且下拉刷新是否启用
         if offsetY <= 0 && self.refreshHeaderView?.enabled == true {
-            // 进入下拉第二层级
             if !self.isDragging && self.isDecelerating && self.refreshHeaderView!.offsetToArriveSecondFloor != nil && fabs(offsetY) > self.refreshHeaderView!.offsetToArriveSecondFloor! {
                 self.showsSecondFloor()
                 return
             }
-            // 手指释放，并且处于减速状态时判断是否已经拖动到可以刷新的位置，因为reloadData等操作也会触发contentOffset的变化，所以加一个减速判断
+            // 手指释放时判断是否已经拖动到可以刷新的位置
             else if !self.isDragging && self.isDecelerating && fabs(offsetY) > self.refreshHeaderView!.offsetToBeganLoading {
                 self.startRefreshingAnimation()
                 return
@@ -117,6 +154,23 @@ public class HCRefreshScrollView: UIScrollView, HCPullToRefreshProtocol {
             self.refreshState = .pulling
             self.refreshHeaderView?.pullAnimation(fabs(offsetY))
         }
+            // 判断拖动获取更多
+        else if (offsetY > 0 && self.refreshFooterView?.enabled == true && !self.isDragging){
+            var contentHeight = self.contentSize.height
+            if self.refreshFooterView != nil {
+                contentHeight -= self.refreshFooterView!.heightForView
+            }
+            var height = self.frame.size.height
+            // 实际可视高度要减去顶部缩进高度
+            if self.originalContentInsets != nil {
+                height -= self.originalContentInsets.top
+            }
+            if (contentHeight < height && offsetY > self.refreshFooterView!.offsetToBeganLoading) || (contentHeight - height + self.refreshFooterView!.offsetToBeganLoading) < offsetY {
+                self.startLoadMoreAnimation()
+            }
+        }
+        
+        
     }
     
     public func startRefreshingAnimation() {
@@ -128,13 +182,17 @@ public class HCRefreshScrollView: UIScrollView, HCPullToRefreshProtocol {
             return
         }
         self.refreshState = .loading
+        // 隐藏底部视图
+        self.refreshFooterView?.view.isHidden = true
         DispatchQueue.main.async {
+            // 更新缩进和偏移量
             var insets = self.originalContentInsets!
             if #available(iOS 11.0, *) {
                 insets.top = self.refreshHeaderView!.offsetToBeganLoading
             } else {
                 insets.top += self.refreshHeaderView!.offsetToBeganLoading
             }
+            self.changedContentInsets = insets
             UIView.animate(withDuration: 0.2) {
                 if #available(iOS 11.0, *) {
                     self.contentInset = insets
@@ -158,28 +216,36 @@ public class HCRefreshScrollView: UIScrollView, HCPullToRefreshProtocol {
         weak var weakSelf = self
         DispatchQueue.main.async {
             if withAnimation {
+                // 执行结束动画
                 self.refreshHeaderView?.doneAnimation(){
                     if weakSelf == nil {
                         return
                     }
                     weakSelf?.refreshState = .stop
+                    weakSelf?.refreshFooterView?.view.isHidden = false
                     UIView.animate(withDuration: 0.2, animations: {
                         if #available(iOS 11.0, *) {
                             weakSelf!.contentInset = UIEdgeInsets.zero
+                            weakSelf!.changedContentInsets = UIEdgeInsets.zero
                         } else {
                             weakSelf!.contentInset = weakSelf!.originalContentInsets
+                            weakSelf!.changedContentInsets = weakSelf!.originalContentInsets
                         }
                         weakSelf!.contentOffset = CGPoint.init(x: 0, y: -weakSelf!.originalContentInsets.top)
                         weakSelf!.refreshHeaderView?.pullAnimation(0)
                     })
                 }
             } else {
+                // 不执行结束动画
                 weakSelf?.refreshState = .stop
+                weakSelf?.refreshFooterView?.view.isHidden = false
                 UIView.animate(withDuration: 0.2, animations: {
                     if #available(iOS 11.0, *) {
                         weakSelf!.contentInset = UIEdgeInsets.zero
+                        weakSelf!.changedContentInsets = UIEdgeInsets.zero
                     } else {
                         weakSelf!.contentInset = weakSelf!.originalContentInsets
+                        weakSelf!.changedContentInsets = weakSelf!.originalContentInsets
                     }
                     weakSelf!.contentOffset = CGPoint.init(x: 0, y: -weakSelf!.originalContentInsets.top)
                 })
@@ -187,14 +253,40 @@ public class HCRefreshScrollView: UIScrollView, HCPullToRefreshProtocol {
         }
     }
     
-    /// HCRefreshScrollView不支持拖动加载更多
-    public func startLoadMoreAnimation() {
-        assert(false, "HCRefreshScrollView不支持拖动加载更多")
+    public func startLoadMoreAnimation (){
+        if self.refreshHandler == nil {
+            print("未实现下拉处理函数函数")
+            return
+        }
+        if self.refreshFooterView?.enabled == false || self.refreshState == .loading {
+            return
+        }
+        self.refreshState = .loading
+        DispatchQueue.main.async {
+            self.refreshFooterView?.loadingAnimation()
+            if self.refreshHandler != nil {
+                self.refreshHandler!(HCPullToRefreshViewType.footer)
+            }
+        }
     }
     
-    /// HCRefreshScrollView不支持拖动加载更多
-    public func stopLoadMoreAnimation(_ withAnimation: Bool) {
-        assert(false, "HCRefreshScrollView不支持拖动加载更多")
+    public func stopLoadMoreAnimation (_ withAnimation: Bool) {
+        if self.refreshFooterView?.enabled == false {
+            return
+        }
+        weak var weakSelf = self
+        DispatchQueue.main.async {
+            if withAnimation {
+                weakSelf!.refreshFooterView?.doneAnimation(){
+                    if weakSelf == nil {
+                        return
+                    }
+                    weakSelf!.refreshState = .stop
+                }
+            } else {
+                weakSelf!.refreshState = .stop
+            }
+        }
     }
     
     public func showsSecondFloor() {
@@ -212,6 +304,7 @@ public class HCRefreshScrollView: UIScrollView, HCPullToRefreshProtocol {
             self.refreshHeaderView!.secondFloorAnimation()
             var insets = self.originalContentInsets!
             insets.top = self.refreshHeaderView!.heightForView
+            self.changedContentInsets = insets
             UIView.animate(withDuration: 0.35) {
                 self.contentInset = insets
                 self.contentOffset = CGPoint.init(x: 0, y: -insets.top)
@@ -234,8 +327,10 @@ public class HCRefreshScrollView: UIScrollView, HCPullToRefreshProtocol {
             UIView.animate(withDuration: 0.2, animations: {
                 if #available(iOS 11.0, *) {
                     weakSelf!.contentInset = UIEdgeInsets.zero
+                    weakSelf!.changedContentInsets = UIEdgeInsets.zero
                 } else {
                     weakSelf!.contentInset = weakSelf!.originalContentInsets
+                    weakSelf!.changedContentInsets = weakSelf!.originalContentInsets
                 }
                 weakSelf!.contentOffset = CGPoint.init(x: 0, y: -weakSelf!.originalContentInsets.top)
             })
@@ -250,5 +345,7 @@ public class HCRefreshScrollView: UIScrollView, HCPullToRefreshProtocol {
         self.bounces = true
         self.alwaysBounceVertical = true
         self.refreshHeaderView = HCRefreshHeaderView.init(frame: CGRect.zero)
+        self.refreshFooterView = HCRefreshFooterView.init(frame: CGRect.zero)
     }
+
 }

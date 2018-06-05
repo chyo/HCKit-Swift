@@ -1,36 +1,39 @@
 //
-//  HCRefreshView.swift
+//  SecondFloorHeaderView.swift
 //  HCKit-Swift
 //
-//  Created by 陈宏超 on 2018/5/30.
+//  Created by 陈宏超 on 2018/6/5.
 //  Copyright © 2018年 陈宏超. All rights reserved.
 //
 
 import UIKit
+import SnapKit
 
-public class HCRefreshHeaderView: UIView, HCPullToRefreshViewProtocol {
-    
+class SecondFloorHeaderView: UIView, HCPullToRefreshViewProtocol {
+
     let lineWidth:CGFloat = 2.0
     let shapeSize = CGSize.init(width: 32, height: 32)
     var shapeLayer:CAShapeLayer?
     var doneShapeLayer:CAShapeLayer?
     
     public var view: UIView! { get { return self }}
-    public var heightForView: CGFloat! { get { return 48 }}
-    public var offsetToBeganLoading: CGFloat! { get { return self.heightForView }}
-    public var offsetToArriveSecondFloor: CGFloat?
+    public var offsetToBeganLoading: CGFloat! { get { return 48 }}
+    public var heightForView: CGFloat! { get { return 360 + self.offsetToBeganLoading}}
+    public var offsetToArriveSecondFloor: CGFloat? { get { return 100 }}
     public var enabled: Bool! = true
+    public var secondFloorView:UIButton?
+    
     
     public func pullAnimation(_ offset: CGFloat) {
         self.shapeLayer?.removeAnimation(forKey: "rotation")
         self.shapeLayer?.opacity = 1.0
         self.doneShapeLayer?.opacity = 0.0
-        let beganY = (self.heightForView-shapeSize.height)/2.0 + 8
+        let beganY:CGFloat = 14
         if offset < beganY {
             self.shapeLayer?.strokeEnd = 0
             return
         }
-        let strokeEnd = max(0, min(1, (offset-beganY)/(self.heightForView-beganY)))
+        let strokeEnd = max(0, min(1, (offset-beganY)/(self.offsetToBeganLoading-beganY)))
         self.shapeLayer?.strokeEnd = strokeEnd
     }
     
@@ -65,10 +68,6 @@ public class HCRefreshHeaderView: UIView, HCPullToRefreshViewProtocol {
         }
     }
     
-    public func secondFloorAnimation() {
-        
-    }
-    
     deinit {
         print("HCRefreshView deinit")
     }
@@ -76,6 +75,24 @@ public class HCRefreshHeaderView: UIView, HCPullToRefreshViewProtocol {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.clear
+        
+        let view = UIButton.init(type: UIButtonType.custom)
+        view.backgroundColor = UIColor.brown
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        view.setTitle("第二层视图", for: UIControlState.normal)
+        view.setTitleColor(UIColor.white, for: UIControlState.normal)
+        self.addSubview(view)
+        view.snp.makeConstraints { (make) in
+            make.top.equalTo(0)
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+            make.height.equalTo(360)
+        }
+        self.secondFloorView = view
+    }
+    
+    func secondFloorAnimation() {
+        self.shapeLayer?.opacity = 0.0
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -107,7 +124,7 @@ public class HCRefreshHeaderView: UIView, HCPullToRefreshViewProtocol {
         
         self.shapeLayer = CAShapeLayer.init()
         self.shapeLayer?.backgroundColor = UIColor.clear.cgColor
-        self.shapeLayer?.frame = CGRect.init(x: (rect.size.width-shapeSize.width)/2, y: (rect.size.height-shapeSize.height)/2, width: shapeSize.width, height: shapeSize.height)
+        self.shapeLayer?.frame = CGRect.init(x: (rect.size.width-shapeSize.width)/2, y: self.heightForView - self.offsetToBeganLoading + (self.offsetToBeganLoading - shapeSize.height)/2, width: shapeSize.width, height: shapeSize.height)
         self.shapeLayer?.path = bezierPath.cgPath
         self.shapeLayer?.strokeColor = fillColor.cgColor
         self.shapeLayer?.fillColor = UIColor.clear.cgColor
@@ -138,5 +155,5 @@ public class HCRefreshHeaderView: UIView, HCPullToRefreshViewProtocol {
         
         self.layer.addSublayer(self.doneShapeLayer!)
     }
-    
+
 }

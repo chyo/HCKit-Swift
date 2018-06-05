@@ -20,11 +20,15 @@ import SnapKit
  ## 支持获取更多
  内置获取更多动画，可自定义，参考HCRefreshFooterView实现，并赋值给refrehsFooterView
  
+ ## 支持两级下拉
+ 内置HCRefreshHeaderView未实现两级下拉，如果需要实现需自定义headerView，并设置offsetToArriveSecondFloor
+ 
  */
 public class HCRefreshTableView: UITableView, HCPullToRefreshProtocol {
     
     /// 原始缩进量
     var originalContentInsets:UIEdgeInsets!
+    var swipGesture:UISwipeGestureRecognizer?
     
     public var refreshHandler: HCPullToRefreshHandler?
     
@@ -105,14 +109,19 @@ public class HCRefreshTableView: UITableView, HCPullToRefreshProtocol {
     
     func contentOffsetDidChange(_ point: CGPoint) {
         // 当下拉/上托可用，并且列表未处于加载中的动画时才判断拖动事件
-        guard originalContentInsets != nil && (self.refreshHeaderView?.enabled == true || self.refreshFooterView?.enabled == true) && self.refreshState != .loading else {
+        guard originalContentInsets != nil && (self.refreshHeaderView?.enabled == true || self.refreshFooterView?.enabled == true) && self.refreshState != .loading && self.refreshState != .secondFloor else {
             return
         }
         let offsetY = point.y + self.originalContentInsets.top
         // 判断是否是下拉，并且下拉刷新是否启用
         if offsetY <= 0 && self.refreshHeaderView?.enabled == true {
-            // 手指释放，并且处于减速状态时判断是否已经拖动到可以刷新的位置，因为reloadData等操作也会触发contentOffset的变化，所以加一个减速判断
-            if !self.isDragging && fabs(offsetY) > self.refreshHeaderView!.offsetToBeganLoading {
+            // 进入下拉第二层级
+            if !self.isDragging && self.isDecelerating && self.refreshHeaderView!.offsetToArriveSecondFloor != nil && fabs(offsetY) > self.refreshHeaderView!.offsetToArriveSecondFloor! {
+                self.showsSecondFloor()
+                return
+            }
+            // 手指释放时判断是否已经拖动到可以刷新的位置
+            else if !self.isDragging && self.isDecelerating && fabs(offsetY) > self.refreshHeaderView!.offsetToBeganLoading {
                 self.startRefreshingAnimation()
                 return
             }
@@ -124,7 +133,7 @@ public class HCRefreshTableView: UITableView, HCPullToRefreshProtocol {
             self.refreshHeaderView?.pullAnimation(fabs(offsetY))
         }
         // 判断拖动获取更多
-        else if (offsetY > 0 && self.refreshFooterView?.enabled == true){
+        else if (offsetY > 0 && self.refreshFooterView?.enabled == true && !self.isDragging){
             var contentHeight = self.contentSize.height
             if self.refreshFooterView != nil {
                 contentHeight -= self.refreshFooterView!.heightForView
@@ -251,6 +260,55 @@ public class HCRefreshTableView: UITableView, HCPullToRefreshProtocol {
                 weakSelf!.refreshState = .stop
             }
         }
+    }
+    
+    public func showsSecondFloor() {
+        if self.refreshHeaderView == nil {
+            print("refreshHeaderView为nil")
+            return
+        }
+        DispatchQueue.main.async {
+            // 更新缩进和偏移量
+            self.swipGesture = UISwipeGestureRecognizer.init(target: self, action: #selector(self.swipeToHideSecondFloor))
+            self.swipGesture?.direction = UISwipeGestureRecognizerDirection.up
+            self.addGestureRecognizer(self.swipGesture!)
+            self.isScrollEnabled = false
+            self.refreshState = .secondFloor
+            self.refreshHeaderView!.secondFloorAnimation()
+            var insets = self.originalContentInsets!
+            insets.top = self.refreshHeaderView!.heightForView
+            UIView.animate(withDuration: 0.35) {
+                self.contentInset = insets
+                self.contentOffset = CGPoint.init(x: 0, y: -insets.top)
+            }
+            if self.refreshHandler != nil {
+                self.refreshHandler!(HCPullToRefreshViewType.secondFloor)
+            }
+        }
+    }
+    
+    public func hidesSecondFloor (){
+        weak var weakSelf = self
+        self.isScrollEnabled = true
+        self.refreshState = .stop
+        if self.swipGesture != nil {
+            self.removeGestureRecognizer(self.swipGesture!)
+            self.swipGesture = nil
+        }
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.2, animations: {
+                if #available(iOS 11.0, *) {
+                    weakSelf!.contentInset = UIEdgeInsets.zero
+                } else {
+                    weakSelf!.contentInset = weakSelf!.originalContentInsets
+                }
+                weakSelf!.contentOffset = CGPoint.init(x: 0, y: -weakSelf!.originalContentInsets.top)
+            })
+        }
+    }
+    
+    @objc func swipeToHideSecondFloor () {
+        self.hidesSecondFloor()
     }
     
     func setup() {

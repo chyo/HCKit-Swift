@@ -10,6 +10,12 @@ import UIKit
 import SnapKit
 
 public class HCRefreshFooterView: UIView, HCPullToRefreshViewProtocol {
+    public var offsetToArriveSecondFloor: CGFloat?
+    
+    public func secondFloorAnimation() {
+        
+    }
+    
     
     var label:UILabel?
     var indicator:UIActivityIndicatorView?
@@ -25,7 +31,7 @@ public class HCRefreshFooterView: UIView, HCPullToRefreshViewProtocol {
             if enabled {
                 self.label?.text = "获取更多"
             } else {
-                self.label?.text = ""
+                self.label?.text = "- END -"
                 self.indicator?.stopAnimating()
             }
         }
@@ -42,7 +48,7 @@ public class HCRefreshFooterView: UIView, HCPullToRefreshViewProtocol {
     }
     
     public func doneAnimation(_ complete: (() -> Void)!) {
-        self.label?.text = self.enabled ? "获取更多" : ""
+        self.label?.text = self.enabled ? "获取更多" : "- END -"
         self.indicator?.stopAnimating()
         if complete != nil {
             complete()

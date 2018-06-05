@@ -14,6 +14,7 @@ class ScrollViewVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "下拉刷新ScrollView"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "两级下拉", style: UIBarButtonItemStyle.plain, target: self, action: #selector(enabledSecondFloor))
         weak var weakSelf = self
         self.scrollView.refreshHandler = { type in
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2) {
@@ -25,7 +26,7 @@ class ScrollViewVC: UIViewController {
                 }
             }
         }
-        self.scrollView.startLoadMoreAnimation()
+        self.scrollView.startRefreshingAnimation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +34,10 @@ class ScrollViewVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @objc func enabledSecondFloor () {
+        let headerView = SecondFloorHeaderView.init(frame: CGRect.zero)
+        self.scrollView.refreshHeaderView = headerView
+    }
 
     /*
     // MARK: - Navigation
