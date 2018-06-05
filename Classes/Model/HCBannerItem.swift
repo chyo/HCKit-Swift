@@ -8,9 +8,12 @@
 
 import UIKit
 
+/// 轮播组件Model
 public class HCBannerItem: NSObject {
 
+    /// 任意数据，可为nil
     public var data:Any?
+    /// 图片绝对地址
     public var imgUrl:String!
     
     public init(data:Any?, imgUrl:String!) {

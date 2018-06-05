@@ -8,7 +8,9 @@
 
 import UIKit
 
+/// 默认轮播指示器
 public class HCBannerIndicatorView: UIPageControl, HCBannerIndicatorProtocol {
+    
     public var totalPages: Int {
         get { return self.numberOfPages }
         set (newValue) {

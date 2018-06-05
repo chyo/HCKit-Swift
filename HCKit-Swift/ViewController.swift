@@ -7,19 +7,47 @@
 //
 
 import UIKit
+import SnapKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
     let rowArray = [
         ["text":"轮播组件（HCBannerView）", "storyboard":"Example", "identifier":"BannerViewVC", "push":true],
-        ["text":"字母组件（HCLetterView）", "storyboard":nil, "identifier":"LetterViewVC", "push":true]
+        ["text":"字母组件（HCLetterView）", "storyboard":nil, "identifier":"LetterViewVC", "push":true],
+        ["text":"下拉刷新组件（HCRefreshTableView）", "storyboard":"Example", "identifier":"TableViewVC", "push":true],
+        ["text":"下拉刷新组件（HCRefreshScrollView）", "storyboard":"Example", "identifier":"ScrollViewVC", "push":true]
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "HCKit-Swift组件库"
+        self.title = "HC_Swift组件库"
         self.navigationController?.navigationBar.tintColor = UIColor.darkGray
         self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        
+        
+        let footerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 70))
+        footerView.backgroundColor = UIColor.clear
+        let label = UILabel.init(frame: CGRect.zero)
+        label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.light)
+        label.textColor = UIColor.init(red: 189/255.0, green: 189/255.0, blue: 189/255.0, alpha: 1)
+        label.textAlignment = NSTextAlignment.center
+        label.text = "Copyright © 2018 ChenHongchao"
+        label.backgroundColor = UIColor.clear
+        footerView.addSubview(label)
+        label.snp.makeConstraints { (make) in
+            make.edges.equalTo(footerView)
+        }
+        let sep = UIView.init()
+        sep.backgroundColor = UIColor.init(red: 224/255.0, green: 224/255.0, blue: 224/255.0, alpha: 1.0)
+        footerView.addSubview(sep)
+        sep.snp.makeConstraints { (make) in
+            make.top.equalTo(0)
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+            make.height.equalTo(0.5)
+        }
+        self.tableView.tableFooterView = footerView
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,7 +84,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let vc:UIViewController!
         if storyboard == nil {
             let cls = NSClassFromString(HCConfig.hc_bundleName() + "." + identifier!) as! UIViewController.Type
-            print("cls:\(cls)")
             vc = cls.init()
         } else {
             vc = UIStoryboard.init(name: storyboard!, bundle: nil).instantiateViewController(withIdentifier: identifier!)

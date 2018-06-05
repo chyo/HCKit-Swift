@@ -8,9 +8,12 @@
 
 import UIKit
 
+/// 字母组件Model
 public class HCLetterItem: NSObject {
     
+    /// 字母，默认#
     public var letter:String! = "#"
+    /// 关联的数据，可为nil
     public var data:Any?
     
     public init(letter:String!, data:Any?) {

@@ -68,6 +68,10 @@ public class HCLetterView: UIView {
     /// 字母选择回调
     public var selectionHandler:HCLetterViewSelectionHandler?
     
+    deinit {
+//        print("HCLetterView deinit")
+    }
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.setup()

@@ -30,7 +30,7 @@ public protocol HCBannerIndicatorProtocol {
  假设有3个item，分别为A B C，在列表中的呈现是 C A B C A， 前后添加一个item，当移动到第0个或最后一个item时，自动无动画移动回第3个或者1个，由于开启了pageEnabled，用户只能一页一页翻，因此对用户是无感知的。
  
  ## 支持拖动放大
- 当父组件是UIScrollView及其子类时，父组件滚动到顶部后继续下拉会触发拖动放大的效果。父组件会自动获取，也可以手动设置。
+ 当父组件是UIScrollView及其子类时，父组件滚动到顶部后继续下拉会触发拖动放大的效果。需要在scrollViewDidScroll方法中调用bannerViewDidZoom方法
  
  ## 支持自动播放
  间隔3秒会自动移动到下一页
@@ -63,19 +63,6 @@ public class HCBannerView: UIView, UICollectionViewDelegate, UICollectionViewDat
             }
         }
     }
-    /// 父组件（UIScrollView、UITableView、UICollectionView等）在layoutSubviews时会自动获取，并且监听该组件的contentOffset
-    public weak var parentScrollView:UIScrollView? {
-        willSet {
-            if parentScrollView != nil {
-                parentScrollView?.removeObserver(self, forKeyPath: "contentOffset")
-            }
-        }
-        didSet {
-            parentScrollView?.addObserver(self, forKeyPath: "contentOffset", options: [.old, .new], context: nil)
-        }
-    }
-    /// 当父组件zooming的时候是否支持拖动放大的效果，默认启用
-    public var dragToZoomEnabled = true
     
     /// 刷新
     public func reloadData () {
@@ -95,10 +82,7 @@ public class HCBannerView: UIView, UICollectionViewDelegate, UICollectionViewDat
     
     /// BannerView跟随scrollView做zooming，需要在scrollViewDidScroll中调用此方法。
     /// - Parameter scrollView: scrollview
-    func bannerViewDidZooming(_ scrollView:UIScrollView!) {
-        if !self.dragToZoomEnabled {
-            return
-        }
+    public func bannerViewDidZooming(_ scrollView:UIScrollView!) {
         if itemArray.count == 0 {
             return
         }
@@ -129,7 +113,7 @@ public class HCBannerView: UIView, UICollectionViewDelegate, UICollectionViewDat
     }
     
     deinit {
-        self.parentScrollView?.removeObserver(self, forKeyPath: "contentOffset")
+        print("HCBannerView deinit")
     }
     
     public override init(frame: CGRect) {
@@ -208,16 +192,6 @@ public class HCBannerView: UIView, UICollectionViewDelegate, UICollectionViewDat
         collectionView.contentInset = UIEdgeInsets.zero
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.never
-        }
-        if self.parentScrollView == nil {
-            var aView = self.superview
-            while aView != nil {
-                if aView!.isKind(of: UIScrollView.classForCoder()) {
-                    self.parentScrollView = aView as? UIScrollView
-                    break
-                }
-                aView = aView?.superview
-            }
         }
         super.layoutSubviews()
     }
@@ -319,12 +293,6 @@ public class HCBannerView: UIView, UICollectionViewDelegate, UICollectionViewDat
         }
         if self.selectionHandler != nil {
             self.selectionHandler!(weakSelf, item)
-        }
-    }
-    
-    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "contentOffset" {
-            self.bannerViewDidZooming(self.parentScrollView)
         }
     }
 }

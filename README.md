@@ -1,7 +1,8 @@
 # 一个简单的Swift库，一个森罗万象的Swift库
 ## 包含组件
-1. 轮播组件：HCBannerView
-  
+1. 轮播组件：HCBannerView，常见场景：App顶部广告
+2. 字母组件：HCLetterView ，常见场景：通讯录侧边字母
+ 
 用法详见各组件说明以及Examples文件夹
 
 ## 其他
