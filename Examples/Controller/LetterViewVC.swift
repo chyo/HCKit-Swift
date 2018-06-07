@@ -29,7 +29,7 @@ class LetterViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         self.tableView!.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view)
         }
-        var itemArray:Array<HCLetterItem!> = []
+        var itemArray:Array<HCLetterItem> = []
         for letter in letters {
             itemArray.append(HCLetterItem.init(letter: letter, data: nil))
         }

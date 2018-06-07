@@ -60,7 +60,7 @@ public class HCRefreshScrollView: UIScrollView, HCPullToRefreshProtocol {
     }
     
     deinit {
-        print("HCRefreshScrollView deinit")
+//        print("HCRefreshScrollView deinit")
     }
     
     public override init(frame: CGRect) {

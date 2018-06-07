@@ -80,6 +80,35 @@ public extension Date {
         return Int(different/(3600*24))+1;
     }
     
+    /// 返回上个月的同一天
+    ///
+    /// - Returns: 上个月同一天
+    public func hc_lastMonth () -> Date {
+        let calendar = Calendar.current
+        var components = DateComponents.init()
+        components.month = -1
+        return calendar.date(byAdding: components, to: self)!
+    }
+    
+    /// 返回本月第一天
+    ///
+    /// - Returns: 本月第一天
+    public func hc_firstDayOfMonth () -> Date {
+        var components = self.hc_dateComponents()
+        components.day = 1
+        return components.date!
+    }
+    
+    /// 返回下个月同一天
+    ///
+    /// - Returns: 下个月同一天
+    public func hc_nextMonth () -> Date {
+        let calendar = Calendar.current
+        var components = DateComponents.init()
+        components.month = 1
+        return calendar.date(byAdding: components, to: self)!
+    }
+    
     /// 差值运算符
     /// 计算日期1和日期2之间相差的天数，只计算day，不考虑时分秒。
     /// 即1月1日23:59:59与1月2日00:00:00秒相差1天。
@@ -87,7 +116,7 @@ public extension Date {
     ///   - left: 日期1
     ///   - right: 日期2
     /// - Returns: 天数
-    static func - (left:Date, right:Date) -> Int {
+    public static func - (left:Date, right:Date) -> Int {
         return left.hc_dayOfYear() - right.hc_dayOfYear()
     }
     

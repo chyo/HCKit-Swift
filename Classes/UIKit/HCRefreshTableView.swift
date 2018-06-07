@@ -71,7 +71,7 @@ public class HCRefreshTableView: UITableView, HCPullToRefreshProtocol {
     }
 
     deinit {
-        print("HCRefreshTableView deinit")
+//        print("HCRefreshTableView deinit")
     }
     
     public override init(frame: CGRect, style: UITableViewStyle) {

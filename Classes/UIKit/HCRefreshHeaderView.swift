@@ -70,7 +70,7 @@ public class HCRefreshHeaderView: UIView, HCPullToRefreshViewProtocol {
     }
     
     deinit {
-        print("HCRefreshView deinit")
+//        print("HCRefreshView deinit")
     }
     
     public override init(frame: CGRect) {

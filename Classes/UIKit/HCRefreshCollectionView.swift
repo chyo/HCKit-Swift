@@ -92,7 +92,7 @@ public class HCRefreshCollectionView: UICollectionView {
     }
     
     deinit {
-        print("HCRefreshCollectionView deinit")
+//        print("HCRefreshCollectionView deinit")
     }
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
