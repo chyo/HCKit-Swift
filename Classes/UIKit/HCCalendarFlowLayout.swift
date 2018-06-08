@@ -56,6 +56,7 @@ class HCCalendarFlowLayout: UICollectionViewFlowLayout {
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         /// 这边需要使用copy，否则会报xxx is modifying attributes returned by UICollectionViewFlowLayout without copying them警告
         let attr = super.layoutAttributesForItem(at: indexPath)?.copy() as? UICollectionViewLayoutAttributes
+        /// 让item横向排列
         if attr?.representedElementKind == nil {
             let itemSize = attr!.frame.size
             let index = attr!.indexPath.item

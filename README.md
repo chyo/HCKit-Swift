@@ -2,6 +2,8 @@
 ## 包含组件
 1. 轮播组件：HCBannerView，常见场景：App顶部广告
 2. 字母组件：HCLetterView ，常见场景：通讯录侧边字母
+3. 下拉刷新组件：HCRefreshTableView、HCRefreshScrollView、HCRefreshCollectionView，支持两段式下拉，第一段为刷新数据，第二段为额外视图。常见场景：微信聊天列表头部小程序，淘宝二楼
+4. 日历组件：HCCalendarView、HCYearMonthPicker
  
 用法详见各组件说明以及Examples文件夹
 

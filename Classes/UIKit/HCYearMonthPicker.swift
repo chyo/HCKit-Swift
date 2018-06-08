@@ -9,24 +9,47 @@
 import UIKit
 import SnapKit
 
+/// 年月选择器模式
+///
+/// - year: 只显示年
+/// - month: 只显示月
+/// - yearMonth: 同时显示年、月
 public enum HCYearMonthPickerMode {
     case year, month, yearMonth
 }
 
+/// 选中回调
 public typealias HCMonthPickerSelectionHandler = ((_ year:Int, _ month:Int)->Void)
 
+/***
+ # 年月选择器 V1.0.0
+ 
+ ## 仅支持弹窗模式
+ 调用showAsDialog方法显示弹窗
+ 
+ */
 public class HCYearMonthPicker: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    /// 弹窗高度
     let ViewHeight:CGFloat = 340
+    /// 默认前后100年
     let numbersOfYear:Int = 200
+    /// 弹窗遮罩
     var cover:UIControl?
+    /// 取消按钮
     var cancelButton:UIButton?
+    /// 确认按钮
     var confirmButton:UIButton?
+    /// 标题
     var titleLabel:UILabel?
+    /// 选择器
     var pickerView:UIPickerView?
+    /// 回调
     var selectionHandler:HCMonthPickerSelectionHandler?
+    /// 年
     var yearArray:Array<Int> = []
-    var monthArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    /// 月
+    let monthArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     
     public var mode:HCYearMonthPickerMode! = .yearMonth
     
@@ -49,11 +72,11 @@ public class HCYearMonthPicker: UIView, UIPickerViewDelegate, UIPickerViewDataSo
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.setup()
+        assert(false, "HCYearMonthPicker - 请使用init(selectionHandler:HCMonthPickerSelectionHandler!)方法构造")
     }
     
     func setup () {
-        
+        // 标题
         self.titleLabel = UILabel.init()
         titleLabel?.backgroundColor = UIColor.clear
         titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
@@ -65,7 +88,7 @@ public class HCYearMonthPicker: UIView, UIPickerViewDelegate, UIPickerViewDataSo
             make.height.equalTo(40)
         })
         
-        /// 取消按钮，默认隐藏，只有在弹窗模式才会显示
+        /// 取消按钮
         self.cancelButton = UIButton.init(type: UIButtonType.custom)
         self.cancelButton?.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         self.cancelButton?.setTitleColor(UIColor.black, for: UIControlState.normal)
@@ -79,7 +102,7 @@ public class HCYearMonthPicker: UIView, UIPickerViewDelegate, UIPickerViewDataSo
             make.width.equalTo(60)
             make.height.equalTo(40)
         })
-        /// 确认按钮，默认隐藏，只有在弹窗模式才会显示
+        /// 确认按钮
         self.confirmButton = UIButton.init(type: UIButtonType.custom)
         self.confirmButton?.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         self.confirmButton?.setTitleColor(UIColor.init(red: 56.0/255.0, green: 141.0/255.0, blue: 94.0/255.0, alpha: 1), for: UIControlState.normal)
@@ -110,7 +133,7 @@ public class HCYearMonthPicker: UIView, UIPickerViewDelegate, UIPickerViewDataSo
             make.left.equalTo(0)
             make.right.equalTo(0)
         })
-        
+        // 初始化年，当前年的前后100年
         let now = Date.init()
         let year = now.hc_dateComponents().year! - numbersOfYear / 2
         for i in 0 ..< numbersOfYear {
@@ -122,6 +145,7 @@ public class HCYearMonthPicker: UIView, UIPickerViewDelegate, UIPickerViewDataSo
         self.pickerView?.selectRow(now.hc_dateComponents().month!-1, inComponent: 1, animated: false)
     }
     
+    /// 确认选择
     @objc func actionConfirm () {
         var year = 0
         var month = 1
@@ -147,6 +171,7 @@ public class HCYearMonthPicker: UIView, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
+    /// 隐藏弹窗
     @objc public func dismissDialog (){
         self.snp.updateConstraints { (make) in
             make.bottom.equalTo(ViewHeight)
@@ -159,6 +184,7 @@ public class HCYearMonthPicker: UIView, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
+    /// 显示弹窗
     public func showAsDialog () {
         
         self.cancelButton?.isHidden = false
@@ -188,6 +214,12 @@ public class HCYearMonthPicker: UIView, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
+    /// 刷新数据
+    ///
+    /// - Parameters:
+    ///   - selectedYear: 选中的年，可为nil，默认当前年
+    ///   - selectedMonth: 选中的月，可为nil，默认当前月
+    ///   - mode: 年月选择器模式
     public func reloadData (selectedYear:Int?, selectedMonth:Int?, mode:HCYearMonthPickerMode!) {
         self.mode = mode
         self.pickerView?.reloadAllComponents()

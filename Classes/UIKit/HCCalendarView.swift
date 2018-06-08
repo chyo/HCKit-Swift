@@ -13,17 +13,32 @@ import SnapKit
 public typealias CalendarViewDidSelectItemHandler = ((_ item:HCCalendarItem)->Void)
 
 /**
+ # 日历组件 V1.0.0
+ 
+ ## 支持弹窗模式
+ 使用init(didSelectItemHandler:CalendarViewDidSelectItemHandler!)构造后，调用showAsDialog方法显示弹窗
+ 
+ ## 支持添加到任意视图上
+ 非弹窗模式下，会自动隐藏‘取消’和‘确认’按钮，点击某一日期时会自动调用回调方法didSelectItemHandler
  
  */
 public class HCCalendarView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     
+    /// 默认视图高度（弹窗）
     let ViewHeight:CGFloat = 340
+    /// 弹窗遮罩
     var cover:UIControl?
+    /// 取消按钮
     var cancelButton:UIButton?
+    /// 确认按钮
     var confirmButton:UIButton?
+    /// 月份按钮
     var monthButton:UIButton?
+    /// 日期列表
     var collectionView:UICollectionView!
+    /// 月份列表，长度为3，分别为 上一月 指定月 下一月
     var monthArray:Array<HCCalendarMonth>! = []
+    /// 选中的日期
     var selectedDayItem:HCCalendarItem?
     
     /// CELL选中回调
@@ -35,6 +50,9 @@ public class HCCalendarView: UIView, UICollectionViewDelegate, UICollectionViewD
         self.collectionView.dataSource = nil
     }
     
+    /// 弹窗构造器
+    ///
+    /// - Parameter didSelectItemHandler: 选中回调
     public convenience init(didSelectItemHandler:CalendarViewDidSelectItemHandler!) {
         self.init(frame: CGRect.zero)
         self.didSelectItemHandler = didSelectItemHandler
@@ -66,6 +84,9 @@ public class HCCalendarView: UIView, UICollectionViewDelegate, UICollectionViewD
         super.layoutSubviews()
     }
     
+    /// 点击上一月和下一月的时间
+    ///
+    /// - Parameter button: 按钮
     @objc func changeMonth(button:UIButton!) -> Void {
         if button.tag == 100 {
             self.reloadData(pageIndex: 0)
@@ -207,6 +228,9 @@ public class HCCalendarView: UIView, UICollectionViewDelegate, UICollectionViewD
         self.reloadData(date: nil)
     }
     
+    /// 刷新数据
+    ///
+    /// - Parameter date: 默认选中的日期，可以为nil。当date=nil时默认显示当前月
     public func reloadData (date:Date?) {
         self.collectionView.isScrollEnabled = false
         var now = date
@@ -223,15 +247,21 @@ public class HCCalendarView: UIView, UICollectionViewDelegate, UICollectionViewD
         self.reloadCollectionView()
     }
     
+    /// 内部刷新数据
+    ///
+    /// - Parameter pageIndex: 当前页码，只可能为 0 1 2三种
     func reloadData (pageIndex:Int) {
         var array:Array<HCCalendarMonth> = []
         self.collectionView.isScrollEnabled = false
+        // 获取更早之前一个月
         if pageIndex == 0 {
             array.append(HCCalendarMonth.init(date: self.monthArray[0].date.hc_lastMonth(), selectedItem: &self.selectedDayItem))
             array.append(self.monthArray[0])
             array.append(self.monthArray[1])
             self.monthArray = array
-        } else if pageIndex == 2{
+        }
+        // 获取再接下去的一个月
+        else if pageIndex == 2{
             array.append(self.monthArray[1])
             array.append(self.monthArray[2])
             array.append(HCCalendarMonth.init(date: self.monthArray[2].date.hc_nextMonth(), selectedItem: &self.selectedDayItem))
@@ -240,6 +270,7 @@ public class HCCalendarView: UIView, UICollectionViewDelegate, UICollectionViewD
         self.reloadCollectionView()
     }
     
+    /// 点击月份按钮切换月份
     @objc func actionPickMonth () {
         weak var weakSelf = self
         let monthPicker = HCYearMonthPicker.init { (year, month) in
@@ -258,6 +289,7 @@ public class HCCalendarView: UIView, UICollectionViewDelegate, UICollectionViewD
         monthPicker.showAsDialog()
     }
     
+    /// 确认选中
     @objc func actionConfirm () {
         self.snp.updateConstraints { (make) in
             make.bottom.equalTo(ViewHeight)
@@ -273,6 +305,7 @@ public class HCCalendarView: UIView, UICollectionViewDelegate, UICollectionViewD
         }
     }
     
+    /// 隐藏弹窗
     @objc public func dismissDialog (){
         self.snp.updateConstraints { (make) in
             make.bottom.equalTo(ViewHeight)
@@ -285,6 +318,7 @@ public class HCCalendarView: UIView, UICollectionViewDelegate, UICollectionViewD
         }
     }
     
+    /// 以弹窗的形式显示日历控件
     public func showAsDialog () {
         
         self.cancelButton?.isHidden = false
@@ -319,6 +353,7 @@ public class HCCalendarView: UIView, UICollectionViewDelegate, UICollectionViewD
         self.reloadData(pageIndex: pageIndex)
     }
     
+    /// 刷新日期列表，由于collectionView的reloadData方法存在bug，因此需要显示指定在主线程刷新（该bug不是必现的）
     func reloadCollectionView () {
         DispatchQueue.main.async {
             self.collectionView?.reloadData()

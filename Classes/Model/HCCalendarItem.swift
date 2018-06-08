@@ -8,8 +8,13 @@
 
 import UIKit
 
+/**
+ 日历对象
+ */
 public class HCCalendarItem: NSObject {
     
+    /// 日期详细数据
+    var dateComponents:DateComponents?
     /// 日期
     public let date:Date?
     /// 是否选中
@@ -17,15 +22,15 @@ public class HCCalendarItem: NSObject {
     
     /// 日
     public var day:Int! {
-        get { return date != nil ? date!.hc_dateComponents().day : 0 }
+        get { return dateComponents != nil ? dateComponents!.day : 0 }
     }
     /// 月
     public var month:Int! {
-        get { return date != nil ? date!.hc_dateComponents().month : 0 }
+        get { return dateComponents != nil ? dateComponents!.month : 0 }
     }
     /// 年
     public var year:Int! {
-        get { return date != nil ? date!.hc_dateComponents().year! : 0 }
+        get { return dateComponents != nil ? dateComponents!.year! : 0 }
     }
     /// 是否周末
     public var isWeekend:Bool {
@@ -39,6 +44,7 @@ public class HCCalendarItem: NSObject {
     
     public init(date:Date?) {
         self.date = date
+        self.dateComponents = date?.hc_dateComponents()
         super.init()
     }
     
