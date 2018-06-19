@@ -64,7 +64,10 @@ public class HCConfig : NSObject {
                 let confirmAction = UIAlertAction.init(title: confirmTitle, style: UIAlertActionStyle.destructive, handler:confirmHandler)
                 alert.addAction(confirmAction)
             }
-            let rootVC = UIApplication.shared.keyWindow?.rootViewController
+            var rootVC = UIApplication.shared.keyWindow?.rootViewController
+            while rootVC?.presentedViewController != nil {
+                rootVC = rootVC!.presentedViewController
+            }
             rootVC!.present(alert, animated: true, completion: nil)
         }
     }
@@ -81,7 +84,9 @@ public class HCConfig : NSObject {
         }
         else if status == AVAuthorizationStatus.notDetermined {
             AVCaptureDevice.requestAccess(for: AVMediaType.video) { (granted) in
-                authorizationHandler(granted)
+                DispatchQueue.main.async {
+                    authorizationHandler(granted)
+                }
             }
         }
         else if openSettingsIfNeeded {
@@ -107,7 +112,9 @@ public class HCConfig : NSObject {
         }
         else if status == PHAuthorizationStatus.notDetermined {
             PHPhotoLibrary.requestAuthorization { (status) in
-                authorizationHandler(status==PHAuthorizationStatus.authorized)
+                DispatchQueue.main.async {
+                    authorizationHandler(status==PHAuthorizationStatus.authorized)
+                }
             }
         }
         else if openSettingsIfNeeded {
@@ -133,7 +140,9 @@ public class HCConfig : NSObject {
         }
         else if permission == AVAudioSessionRecordPermission.undetermined {
             AVAudioSession.sharedInstance().requestRecordPermission { (granted) in
-                authorizationHandler(granted)
+                DispatchQueue.main.async {
+                    authorizationHandler(granted)
+                }
             }
         }
         else if openSettingsIfNeeded {

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00122D6920CE17C1003324DF /* Array+HCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00122D6820CE17C1003324DF /* Array+HCExtension.swift */; };
+		00122D6B20CE1A72003324DF /* HCPhotoToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00122D6A20CE1A72003324DF /* HCPhotoToolbar.swift */; };
+		00122D6D20CE4FA7003324DF /* HCPhotoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00122D6C20CE4FA7003324DF /* HCPhotoItem.swift */; };
+		00122D6F20CE6D05003324DF /* UIImage+HCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00122D6E20CE6D05003324DF /* UIImage+HCExtension.swift */; };
 		001250BB20C8D1C0007A82BB /* HCCalendarMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001250BA20C8D1C0007A82BB /* HCCalendarMonth.swift */; };
 		001250C120C9309C007A82BB /* HCYearMonthPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001250C020C9309C007A82BB /* HCYearMonthPicker.swift */; };
 		0012542B20BBA68300D6FFE9 /* HCLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012542A20BBA68300D6FFE9 /* HCLetterView.swift */; };
@@ -16,6 +20,11 @@
 		0012547A20BBD84000D6FFE9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0012547920BBD84000D6FFE9 /* AVFoundation.framework */; };
 		0012547C20BBDBAF00D6FFE9 /* LetterViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012547B20BBDBAF00D6FFE9 /* LetterViewVC.swift */; };
 		0012547E20BBFF1400D6FFE9 /* HCLetterHudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0012547D20BBFF1400D6FFE9 /* HCLetterHudView.swift */; };
+		001EC59C20CA6065001E2841 /* HCPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001EC59B20CA6065001E2841 /* HCPhotoVC.swift */; };
+		001EC59E20CA609B001E2841 /* HCPhotoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001EC59D20CA609B001E2841 /* HCPhotoListVC.swift */; };
+		001EC5A020CA6957001E2841 /* HCPhotoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001EC59F20CA6957001E2841 /* HCPhotoListCell.swift */; };
+		0023780D20D360E4007244BC /* HCPhotoBrowserTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0023780C20D360E4007244BC /* HCPhotoBrowserTransitionAnimator.swift */; };
+		0023780F20D3979D007244BC /* HCPhotoBrowserFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0023780E20D3979D007244BC /* HCPhotoBrowserFlowLayout.swift */; };
 		0034FAB520B6B2B800BB4344 /* Timer+HCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0034FAB420B6B2B800BB4344 /* Timer+HCExtension.swift */; };
 		0034FAB720B6B60600BB4344 /* HCWeakTimerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0034FAB620B6B60600BB4344 /* HCWeakTimerProxy.swift */; };
 		004C574820C625070012551F /* HCRefreshScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004C574720C625070012551F /* HCRefreshScrollView.swift */; };
@@ -50,13 +59,20 @@
 		00643BA220B416F200649894 /* UIViewController+HCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B9820B416F200649894 /* UIViewController+HCExtension.swift */; };
 		00643BA320B416F200649894 /* HCTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B9A20B416F200649894 /* HCTimer.swift */; };
 		00643BA420B416F200649894 /* HCConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B9B20B416F200649894 /* HCConfig.swift */; };
+		007FC20A20CF5ED800086221 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007FC20920CF5ED800086221 /* PhotoVC.swift */; };
 		008927E420B7AB2000B5FA8B /* HCBannerIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008927E320B7AB2000B5FA8B /* HCBannerIndicatorView.swift */; };
 		0092604120C11B4000167EAB /* HCRefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0092604020C11B4000167EAB /* HCRefreshHeaderView.swift */; };
 		0092604320C121FD00167EAB /* HCRefreshFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0092604220C121FD00167EAB /* HCRefreshFooterView.swift */; };
+		00E2794F20D2161700CFA84C /* HCPhotoBrowserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E2794E20D2161700CFA84C /* HCPhotoBrowserVC.swift */; };
+		00E2795120D2180F00CFA84C /* HCPhotoBrowserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E2795020D2180F00CFA84C /* HCPhotoBrowserCell.swift */; };
 		85BF71D359815301E721BDA9 /* Pods_HCKit_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4E0BCBF5D52B2952C39E22 /* Pods_HCKit_Swift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00122D6820CE17C1003324DF /* Array+HCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+HCExtension.swift"; sourceTree = "<group>"; };
+		00122D6A20CE1A72003324DF /* HCPhotoToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPhotoToolbar.swift; sourceTree = "<group>"; };
+		00122D6C20CE4FA7003324DF /* HCPhotoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPhotoItem.swift; sourceTree = "<group>"; };
+		00122D6E20CE6D05003324DF /* UIImage+HCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+HCExtension.swift"; sourceTree = "<group>"; };
 		001250BA20C8D1C0007A82BB /* HCCalendarMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCCalendarMonth.swift; sourceTree = "<group>"; };
 		001250C020C9309C007A82BB /* HCYearMonthPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCYearMonthPicker.swift; sourceTree = "<group>"; };
 		0012542A20BBA68300D6FFE9 /* HCLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCLetterView.swift; sourceTree = "<group>"; };
@@ -66,6 +82,11 @@
 		0012547920BBD84000D6FFE9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		0012547B20BBDBAF00D6FFE9 /* LetterViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterViewVC.swift; sourceTree = "<group>"; };
 		0012547D20BBFF1400D6FFE9 /* HCLetterHudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCLetterHudView.swift; sourceTree = "<group>"; };
+		001EC59B20CA6065001E2841 /* HCPhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPhotoVC.swift; sourceTree = "<group>"; };
+		001EC59D20CA609B001E2841 /* HCPhotoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPhotoListVC.swift; sourceTree = "<group>"; };
+		001EC59F20CA6957001E2841 /* HCPhotoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPhotoListCell.swift; sourceTree = "<group>"; };
+		0023780C20D360E4007244BC /* HCPhotoBrowserTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPhotoBrowserTransitionAnimator.swift; sourceTree = "<group>"; };
+		0023780E20D3979D007244BC /* HCPhotoBrowserFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPhotoBrowserFlowLayout.swift; sourceTree = "<group>"; };
 		0034FAAC20B65FC100BB4344 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0034FAB420B6B2B800BB4344 /* Timer+HCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+HCExtension.swift"; sourceTree = "<group>"; };
 		0034FAB620B6B60600BB4344 /* HCWeakTimerProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCWeakTimerProxy.swift; sourceTree = "<group>"; };
@@ -105,9 +126,12 @@
 		00643B9B20B416F200649894 /* HCConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCConfig.swift; sourceTree = "<group>"; };
 		00643BA720B4170000649894 /* libapple_crypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libapple_crypto.tbd; path = usr/lib/libapple_crypto.tbd; sourceTree = SDKROOT; };
 		00643BAA20B4173400649894 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		007FC20920CF5ED800086221 /* PhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
 		008927E320B7AB2000B5FA8B /* HCBannerIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCBannerIndicatorView.swift; sourceTree = "<group>"; };
 		0092604020C11B4000167EAB /* HCRefreshHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCRefreshHeaderView.swift; sourceTree = "<group>"; };
 		0092604220C121FD00167EAB /* HCRefreshFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCRefreshFooterView.swift; sourceTree = "<group>"; };
+		00E2794E20D2161700CFA84C /* HCPhotoBrowserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPhotoBrowserVC.swift; sourceTree = "<group>"; };
+		00E2795020D2180F00CFA84C /* HCPhotoBrowserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPhotoBrowserCell.swift; sourceTree = "<group>"; };
 		80D3A469A67BAAE3CBC9A67D /* Pods-HCKit-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCKit-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-HCKit-Swift/Pods-HCKit-Swift.release.xcconfig"; sourceTree = "<group>"; };
 		8D4E0BCBF5D52B2952C39E22 /* Pods_HCKit_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HCKit_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8E2A70F28A1242B76F6920 /* Pods-HCKit-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCKit-Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCKit-Swift/Pods-HCKit-Swift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +196,13 @@
 				004D9FD020C7879E007B3DB0 /* HCCalendarCell.swift */,
 				004D9FD620C7D40A007B3DB0 /* HCCalendarFlowLayout.swift */,
 				001250C020C9309C007A82BB /* HCYearMonthPicker.swift */,
+				001EC59B20CA6065001E2841 /* HCPhotoVC.swift */,
+				001EC59D20CA609B001E2841 /* HCPhotoListVC.swift */,
+				001EC59F20CA6957001E2841 /* HCPhotoListCell.swift */,
+				00122D6A20CE1A72003324DF /* HCPhotoToolbar.swift */,
+				00E2794E20D2161700CFA84C /* HCPhotoBrowserVC.swift */,
+				0023780E20D3979D007244BC /* HCPhotoBrowserFlowLayout.swift */,
+				00E2795020D2180F00CFA84C /* HCPhotoBrowserCell.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -184,6 +215,8 @@
 				005018F720BD46AD006637A2 /* HCPullToRefreshProtocol.swift */,
 				004D9FD220C78C21007B3DB0 /* HCCalendarItem.swift */,
 				001250BA20C8D1C0007A82BB /* HCCalendarMonth.swift */,
+				00122D6C20CE4FA7003324DF /* HCPhotoItem.swift */,
+				0023780C20D360E4007244BC /* HCPhotoBrowserTransitionAnimator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -205,6 +238,7 @@
 				004C574920C628450012551F /* ScrollViewVC.swift */,
 				004C574D20C666D30012551F /* CollectionViewVC.swift */,
 				004D9FD420C7D0CE007B3DB0 /* CalendarVC.swift */,
+				007FC20920CF5ED800086221 /* PhotoVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -264,6 +298,8 @@
 				00643B9720B416F200649894 /* Dictionary+HCExtension.swift */,
 				00643B9820B416F200649894 /* UIViewController+HCExtension.swift */,
 				0034FAB420B6B2B800BB4344 /* Timer+HCExtension.swift */,
+				00122D6820CE17C1003324DF /* Array+HCExtension.swift */,
+				00122D6E20CE6D05003324DF /* UIImage+HCExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -434,14 +470,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				004D9FCF20C78774007B3DB0 /* HCCalendarView.swift in Sources */,
+				00122D6F20CE6D05003324DF /* UIImage+HCExtension.swift in Sources */,
 				0012542B20BBA68300D6FFE9 /* HCLetterView.swift in Sources */,
 				00643BA220B416F200649894 /* UIViewController+HCExtension.swift in Sources */,
 				001250BB20C8D1C0007A82BB /* HCCalendarMonth.swift in Sources */,
 				004C574820C625070012551F /* HCRefreshScrollView.swift in Sources */,
 				00643BA420B416F200649894 /* HCConfig.swift in Sources */,
+				001EC59C20CA6065001E2841 /* HCPhotoVC.swift in Sources */,
+				007FC20A20CF5ED800086221 /* PhotoVC.swift in Sources */,
 				00555F3420B55CD20008A368 /* HCBannerCell.swift in Sources */,
 				00643BA120B416F200649894 /* Dictionary+HCExtension.swift in Sources */,
+				0023780F20D3979D007244BC /* HCPhotoBrowserFlowLayout.swift in Sources */,
+				001EC5A020CA6957001E2841 /* HCPhotoListCell.swift in Sources */,
 				00643B8320B416BA00649894 /* ViewController.swift in Sources */,
+				00122D6B20CE1A72003324DF /* HCPhotoToolbar.swift in Sources */,
 				00643B9F20B416F200649894 /* String+HCExtension.swift in Sources */,
 				004D9FD320C78C21007B3DB0 /* HCCalendarItem.swift in Sources */,
 				0034FAB720B6B60600BB4344 /* HCWeakTimerProxy.swift in Sources */,
@@ -450,6 +492,7 @@
 				00555F2F20B550E50008A368 /* HCBannerView.swift in Sources */,
 				0012547C20BBDBAF00D6FFE9 /* LetterViewVC.swift in Sources */,
 				00555F3220B559650008A368 /* HCBannerItem.swift in Sources */,
+				00122D6920CE17C1003324DF /* Array+HCExtension.swift in Sources */,
 				004D9FD520C7D0CE007B3DB0 /* CalendarVC.swift in Sources */,
 				0034FAB520B6B2B800BB4344 /* Timer+HCExtension.swift in Sources */,
 				004C574E20C666D30012551F /* CollectionViewVC.swift in Sources */,
@@ -457,8 +500,10 @@
 				00643B8120B416BA00649894 /* AppDelegate.swift in Sources */,
 				001250C120C9309C007A82BB /* HCYearMonthPicker.swift in Sources */,
 				004C575520C67A900012551F /* SecondFloorHeaderView.swift in Sources */,
+				0023780D20D360E4007244BC /* HCPhotoBrowserTransitionAnimator.swift in Sources */,
 				004D9FD120C7879E007B3DB0 /* HCCalendarCell.swift in Sources */,
 				0092604320C121FD00167EAB /* HCRefreshFooterView.swift in Sources */,
+				00122D6D20CE4FA7003324DF /* HCPhotoItem.swift in Sources */,
 				005018FA20BD532C006637A2 /* HCRefreshTableView.swift in Sources */,
 				004D9FD720C7D40A007B3DB0 /* HCCalendarFlowLayout.swift in Sources */,
 				00643B9E20B416F200649894 /* Date+HCExtension.swift in Sources */,
@@ -466,8 +511,11 @@
 				005018FC20BD545E006637A2 /* TableViewVC.swift in Sources */,
 				00555F3A20B55DF30008A368 /* BannerViewVC.swift in Sources */,
 				008927E420B7AB2000B5FA8B /* HCBannerIndicatorView.swift in Sources */,
+				001EC59E20CA609B001E2841 /* HCPhotoListVC.swift in Sources */,
+				00E2794F20D2161700CFA84C /* HCPhotoBrowserVC.swift in Sources */,
 				0012542F20BBAA2E00D6FFE9 /* HCLetterItem.swift in Sources */,
 				004C574C20C666400012551F /* HCRefreshCollectionView.swift in Sources */,
+				00E2795120D2180F00CFA84C /* HCPhotoBrowserCell.swift in Sources */,
 				004C574A20C628450012551F /* ScrollViewVC.swift in Sources */,
 				0012547E20BBFF1400D6FFE9 /* HCLetterHudView.swift in Sources */,
 			);

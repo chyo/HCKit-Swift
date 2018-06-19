@@ -45,7 +45,7 @@ public class HCCalendarView: UIView, UICollectionViewDelegate, UICollectionViewD
     public var didSelectItemHandler:CalendarViewDidSelectItemHandler?
     
     deinit {
-        print("HCRefreshCollectionView deinit")
+//        print("HCRefreshCollectionView deinit")
         self.collectionView.delegate = nil
         self.collectionView.dataSource = nil
     }

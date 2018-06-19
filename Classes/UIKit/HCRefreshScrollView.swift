@@ -208,6 +208,7 @@ public class HCRefreshScrollView: UIScrollView, HCPullToRefreshProtocol {
             self.swipGesture?.direction = UISwipeGestureRecognizerDirection.up
             self.addGestureRecognizer(self.swipGesture!)
             self.isScrollEnabled = false
+            self.decelerationRate = 0.0
             self.refreshState = .secondFloor
             self.refreshHeaderView!.secondFloorAnimation()
             var insets = self.originalContentInsets!
@@ -225,6 +226,7 @@ public class HCRefreshScrollView: UIScrollView, HCPullToRefreshProtocol {
     public func hidesSecondFloor (){
         weak var weakSelf = self
         self.isScrollEnabled = true
+        self.decelerationRate = 1.0
         self.refreshState = .stop
         if self.swipGesture != nil {
             self.removeGestureRecognizer(self.swipGesture!)

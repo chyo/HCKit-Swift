@@ -54,7 +54,7 @@ public class HCYearMonthPicker: UIView, UIPickerViewDelegate, UIPickerViewDataSo
     public var mode:HCYearMonthPickerMode! = .yearMonth
     
     deinit {
-        print("HCYearMonthPicker deinit")
+//        print("HCYearMonthPicker deinit")
         self.pickerView?.dataSource = nil
         self.pickerView?.delegate = nil
     }

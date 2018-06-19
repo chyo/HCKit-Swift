@@ -18,7 +18,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         ["text":"下拉刷新组件（HCRefreshTableView）", "storyboard":"Example", "identifier":"TableViewVC", "push":true],
         ["text":"下拉刷新组件（HCRefreshScrollView）", "storyboard":"Example", "identifier":"ScrollViewVC", "push":true],
         ["text":"下拉刷新组件（HCRefreshCollectionView）", "storyboard":"Example", "identifier":"CollectionViewVC", "push":true],
-        ["text":"日历组件（HCCalendarView）", "storyboard":"Example", "identifier":"CalendarVC", "push":true]
+        ["text":"日历组件（HCCalendarView）", "storyboard":"Example", "identifier":"CalendarVC", "push":true],
+        ["text":"照片选择组件（HCPhotoVC）", "storyboard":"Example", "identifier":"PhotoVC", "push":true]
     ]
     
     override func viewDidLoad() {
