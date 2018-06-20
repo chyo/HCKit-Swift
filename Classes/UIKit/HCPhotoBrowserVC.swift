@@ -77,9 +77,6 @@ public class HCPhotoBrowserVC: UIViewController, UICollectionViewDelegate, UICol
         self.selectedIndex = index
         self.photoManager = cacheManager
         self.collectionView?.reloadData()
-        DispatchQueue.main.async {
-            self.collectionView?.scrollToItem(at: IndexPath.init(item: self.selectedIndex, section: 0), at: UICollectionViewScrollPosition.left, animated: false)
-        }
     }
 
     override public func didReceiveMemoryWarning() {
@@ -162,25 +159,30 @@ public class HCPhotoBrowserVC: UIViewController, UICollectionViewDelegate, UICol
         } else if (self.photoArray != nil) {
             asset = self.photoArray![indexPath.row]
         }
+        cell.showsImage(image: nil)
+        cell.index = indexPath.row
         if asset != nil {
             self.photoManager?.requestImage(for: asset!, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.aspectFit, options: nil, resultHandler: { (image, info) in
-                cell.showsImage(image: image!)
+                // 理论上CELL应该会被block拷贝到堆上使用，但是在iOS9出现很奇怪的问题，选择第二张照片后打开此控制器，照片会变成第一张，但实际位置还是index=1，iOS10和11都未发现此问题，因此加了一个index的判断
+                if cell.index == indexPath.item {
+                    cell.showsImage(image: image!)
+                }
             })
-        } else {
-            cell.showsImage(image: nil)
         }
         return cell
     }
     
     public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         // 已经缓存的CELL不会经过cellForItemAt方法，如果该Cell的图片被缩放过，移动回来的时候会保持缩放状态，并影响新绘制的CELL。因此在这个地方将CELL的缩放状态改回1
-        let bCell = cell as! HCPhotoBrowserCell
-        bCell.showsImage(image: bCell.imageView?.image)
+        if #available(iOS 10, *) {
+            let bCell = cell as! HCPhotoBrowserCell
+            bCell.showsImage(image: bCell.imageView?.image)
+        }
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: false)
-        self.dismiss(animated: true, completion: nil)
+        self.actionBack(tap: self.tapGesture)
     }
     
     public func animationImage () -> UIImage? {

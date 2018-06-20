@@ -68,7 +68,7 @@ class HCPhotoListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             for asset in array {
                 weakSelf?.photoManager?.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.default, options: options, resultHandler: { (image, info) in
                     queue.async {
-                        let item = HCPhotoItem.init(fullImage: image, thumbnailWidth: weakSelf?.options?.thumbnailWidth, quality: 0.8)
+                        let item = HCPhotoItem.init(fullImage: image, options: weakSelf?.options)
                         photoArray.append(item)
                         if weakSelf != nil && photoArray.count == array.count {
                             DispatchQueue.main.async {
@@ -102,7 +102,6 @@ class HCPhotoListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     
     @objc func actionCancel () {
-        self.photoManager?.stopCachingImagesForAllAssets()
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
 
@@ -243,10 +242,16 @@ class HCPhotoListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     
     func animationFrame(image: UIImage?) -> CGRect {
+        // 获取cell相对于self.view的frame
         if self.animationCell == nil {
             return CGRect.init(x: self.view.center.x, y: self.view.center.y, width: 0, height: 0)
         }
-        return self.animationCell!.superview!.convert(self.animationCell!.frame, to: self.view)
+        var frame = self.animationCell!.superview!.convert(self.animationCell!.frame, to: self.view)
+        // iOS11以下的平台进入大图浏览返回后，会出现contentOffset变成0，获得的frame往上偏移了64px，导致动画位置不正确
+        if Double(UIDevice.current.systemVersion)! < 11.0 && self.animationCell?.superview == self.collectionView && self.collectionView?.contentInset.top == 0 {
+            frame.origin.y += 64
+        }
+        return frame
     }
     
     func prepare() {

@@ -42,9 +42,6 @@ class HCPhotoToolbar: UIVisualEffectView, UICollectionViewDelegate, UICollection
     }
     
     func setup () {
-        
-        self.photoManager = PHCachingImageManager.init()
-        
         // 分割线
         let sep = UIView.init()
         sep.backgroundColor = UIColor.init(red: 230/255.0, green: 230/255.0, blue: 230/255.0, alpha: 1)
@@ -137,6 +134,10 @@ class HCPhotoToolbar: UIVisualEffectView, UICollectionViewDelegate, UICollection
     }
     
     func append (asset:PHAsset) {
+        // PHCachingImageManager只能在用户同意照片权限的时候初始化，否则deinit的时候会报错，调用append的方式表示已经获得了照片权限
+        if self.photoManager == nil {
+            self.photoManager = PHCachingImageManager.init()
+        }
         self.assetArray.append(asset)
         DispatchQueue.main.async {
             self.collectionView?.reloadData()

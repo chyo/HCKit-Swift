@@ -60,6 +60,7 @@
 		00643BA320B416F200649894 /* HCTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B9A20B416F200649894 /* HCTimer.swift */; };
 		00643BA420B416F200649894 /* HCConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B9B20B416F200649894 /* HCConfig.swift */; };
 		007FC20A20CF5ED800086221 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007FC20920CF5ED800086221 /* PhotoVC.swift */; };
+		008239A420DA2F6500E63E32 /* HCPhotoRequestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008239A320DA2F6500E63E32 /* HCPhotoRequestOptions.swift */; };
 		008927E420B7AB2000B5FA8B /* HCBannerIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008927E320B7AB2000B5FA8B /* HCBannerIndicatorView.swift */; };
 		0092604120C11B4000167EAB /* HCRefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0092604020C11B4000167EAB /* HCRefreshHeaderView.swift */; };
 		0092604320C121FD00167EAB /* HCRefreshFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0092604220C121FD00167EAB /* HCRefreshFooterView.swift */; };
@@ -127,6 +128,7 @@
 		00643BA720B4170000649894 /* libapple_crypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libapple_crypto.tbd; path = usr/lib/libapple_crypto.tbd; sourceTree = SDKROOT; };
 		00643BAA20B4173400649894 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		007FC20920CF5ED800086221 /* PhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
+		008239A320DA2F6500E63E32 /* HCPhotoRequestOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPhotoRequestOptions.swift; sourceTree = "<group>"; };
 		008927E320B7AB2000B5FA8B /* HCBannerIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCBannerIndicatorView.swift; sourceTree = "<group>"; };
 		0092604020C11B4000167EAB /* HCRefreshHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCRefreshHeaderView.swift; sourceTree = "<group>"; };
 		0092604220C121FD00167EAB /* HCRefreshFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCRefreshFooterView.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				001250BA20C8D1C0007A82BB /* HCCalendarMonth.swift */,
 				00122D6C20CE4FA7003324DF /* HCPhotoItem.swift */,
 				0023780C20D360E4007244BC /* HCPhotoBrowserTransitionAnimator.swift */,
+				008239A320DA2F6500E63E32 /* HCPhotoRequestOptions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				0023780F20D3979D007244BC /* HCPhotoBrowserFlowLayout.swift in Sources */,
 				001EC5A020CA6957001E2841 /* HCPhotoListCell.swift in Sources */,
 				00643B8320B416BA00649894 /* ViewController.swift in Sources */,
+				008239A420DA2F6500E63E32 /* HCPhotoRequestOptions.swift in Sources */,
 				00122D6B20CE1A72003324DF /* HCPhotoToolbar.swift in Sources */,
 				00643B9F20B416F200649894 /* String+HCExtension.swift in Sources */,
 				004D9FD320C78C21007B3DB0 /* HCCalendarItem.swift in Sources */,

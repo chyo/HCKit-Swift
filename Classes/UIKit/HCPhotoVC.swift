@@ -11,25 +11,6 @@ import UIKit
 /// 图片选择回调
 public typealias HCPhotoSelectionHandler = ((_ photoArray:Array<HCPhotoItem>)->Void)
 
-public class HCPhotoRequestOptions: NSObject {
-    
-    public var maximumNumber:Int = 1
-    public var thumbnailWidth:CGFloat?
-    
-    public init(maximumNumber:Int) {
-        self.maximumNumber = maximumNumber
-        
-        super.init()
-    }
-    
-    public override init() {
-        maximumNumber = 1
-        thumbnailWidth = 200
-        super.init()
-    }
-    
-}
-
 /**
  # 照片选择器 V1.0.0
  
@@ -38,15 +19,6 @@ public class HCPhotoRequestOptions: NSObject {
  */
 public class HCPhotoVC: UINavigationController, UINavigationControllerDelegate {
 
-    override public func viewDidLoad() {
-        super.viewDidLoad()
-        self.delegate = self
-    }
-
-    override public func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     static public func showsPhotoVC (fromViewController:UIViewController, options:HCPhotoRequestOptions,  selectionHandler:@escaping HCPhotoSelectionHandler) -> HCPhotoVC {
         let photoListVC = HCPhotoListVC.init(nibName: nil, bundle: nil)
         photoListVC.selectionHandler = selectionHandler
@@ -54,6 +26,15 @@ public class HCPhotoVC: UINavigationController, UINavigationControllerDelegate {
         let photoVC = HCPhotoVC.init(rootViewController: photoListVC)
         fromViewController.present(photoVC, animated: true, completion: nil)
         return photoVC
+    }
+    
+    override public func viewDidLoad() {
+        super.viewDidLoad()
+        self.delegate = self
+    }
+
+    override public func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
     public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {

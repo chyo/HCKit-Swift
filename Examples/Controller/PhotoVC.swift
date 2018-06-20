@@ -24,7 +24,8 @@ class PhotoVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     @IBAction func actionChoose(_ sender: Any) {
         weak var weakSelf = self
         let options = HCPhotoRequestOptions.init(maximumNumber: Int(self.tfNumber.text!)!)
-        options.thumbnailWidth = 1000
+        options.thumbnailWidth = 200
+        options.compressionQuality = 0.8
         HCPhotoVC.showsPhotoVC(fromViewController: self, options: options) { (array) in
             for item in array {
                 weakSelf?.array.append(item)
