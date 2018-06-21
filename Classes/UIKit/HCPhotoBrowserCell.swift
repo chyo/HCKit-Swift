@@ -13,7 +13,6 @@ class HCPhotoBrowserCell: UICollectionViewCell, UIScrollViewDelegate {
     
     var scrollView:UIScrollView?
     var imageView:UIImageView?
-    var assets:PHAsset?
     var index:Int?
     
     deinit {

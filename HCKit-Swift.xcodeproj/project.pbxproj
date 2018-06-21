@@ -47,6 +47,8 @@
 		00555F3420B55CD20008A368 /* HCBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00555F3320B55CD20008A368 /* HCBannerCell.swift */; };
 		00555F3820B55DD10008A368 /* Example.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00555F3720B55DD10008A368 /* Example.storyboard */; };
 		00555F3A20B55DF30008A368 /* BannerViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00555F3920B55DF30008A368 /* BannerViewVC.swift */; };
+		005E614B20DB38CF00B2620C /* HCHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E614A20DB38CF00B2620C /* HCHud.swift */; };
+		005E614D20DB45E400B2620C /* HudVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E614C20DB45E400B2620C /* HudVC.swift */; };
 		00643B8120B416BA00649894 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B8020B416BA00649894 /* AppDelegate.swift */; };
 		00643B8320B416BA00649894 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B8220B416BA00649894 /* ViewController.swift */; };
 		00643B8620B416BA00649894 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00643B8420B416BA00649894 /* Main.storyboard */; };
@@ -111,6 +113,8 @@
 		00555F3320B55CD20008A368 /* HCBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCBannerCell.swift; sourceTree = "<group>"; };
 		00555F3720B55DD10008A368 /* Example.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Example.storyboard; sourceTree = "<group>"; };
 		00555F3920B55DF30008A368 /* BannerViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewVC.swift; sourceTree = "<group>"; };
+		005E614A20DB38CF00B2620C /* HCHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCHud.swift; sourceTree = "<group>"; };
+		005E614C20DB45E400B2620C /* HudVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudVC.swift; sourceTree = "<group>"; };
 		00643B7D20B416BA00649894 /* HCKit-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HCKit-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00643B8020B416BA00649894 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00643B8220B416BA00649894 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 				00E2794E20D2161700CFA84C /* HCPhotoBrowserVC.swift */,
 				0023780E20D3979D007244BC /* HCPhotoBrowserFlowLayout.swift */,
 				00E2795020D2180F00CFA84C /* HCPhotoBrowserCell.swift */,
+				005E614A20DB38CF00B2620C /* HCHud.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -242,6 +247,7 @@
 				004C574D20C666D30012551F /* CollectionViewVC.swift */,
 				004D9FD420C7D0CE007B3DB0 /* CalendarVC.swift */,
 				007FC20920CF5ED800086221 /* PhotoVC.swift */,
+				005E614C20DB45E400B2620C /* HudVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -503,10 +509,12 @@
 				005018F820BD46AD006637A2 /* HCPullToRefreshProtocol.swift in Sources */,
 				00643B8120B416BA00649894 /* AppDelegate.swift in Sources */,
 				001250C120C9309C007A82BB /* HCYearMonthPicker.swift in Sources */,
+				005E614B20DB38CF00B2620C /* HCHud.swift in Sources */,
 				004C575520C67A900012551F /* SecondFloorHeaderView.swift in Sources */,
 				0023780D20D360E4007244BC /* HCPhotoBrowserTransitionAnimator.swift in Sources */,
 				004D9FD120C7879E007B3DB0 /* HCCalendarCell.swift in Sources */,
 				0092604320C121FD00167EAB /* HCRefreshFooterView.swift in Sources */,
+				005E614D20DB45E400B2620C /* HudVC.swift in Sources */,
 				00122D6D20CE4FA7003324DF /* HCPhotoItem.swift in Sources */,
 				005018FA20BD532C006637A2 /* HCRefreshTableView.swift in Sources */,
 				004D9FD720C7D40A007B3DB0 /* HCCalendarFlowLayout.swift in Sources */,
