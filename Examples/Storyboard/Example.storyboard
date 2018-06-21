@@ -571,7 +571,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UzG-u4-mHF">
-                                <rect key="frame" x="12" y="368" width="351" height="36"/>
+                                <rect key="frame" x="12" y="320" width="351" height="36"/>
                                 <color key="backgroundColor" red="0.08235294118" green="0.4941176471" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="G8R-VF-sCT"/>
@@ -583,7 +583,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ajd-Z2-ll7">
-                                <rect key="frame" x="12" y="416" width="351" height="36"/>
+                                <rect key="frame" x="12" y="368" width="351" height="36"/>
                                 <color key="backgroundColor" red="0.08235294118" green="0.4941176471" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="Vfg-ya-Zo5"/>
@@ -595,7 +595,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcQ-HR-gEe">
-                                <rect key="frame" x="12" y="320" width="351" height="36"/>
+                                <rect key="frame" x="12" y="416" width="351" height="36"/>
                                 <color key="backgroundColor" red="0.08235294118" green="0.4941176471" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="CsA-7f-UnD"/>
@@ -611,6 +611,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="FDx-mQ-x9o" secondAttribute="trailing" constant="12" id="0HS-5I-IBO"/>
                             <constraint firstAttribute="trailing" secondItem="js2-lS-6vA" secondAttribute="trailing" constant="12" id="2wp-XM-Acu"/>
+                            <constraint firstItem="UzG-u4-mHF" firstAttribute="top" secondItem="4Y3-Ee-e9M" secondAttribute="bottom" constant="12" id="7qf-eL-Ikf"/>
                             <constraint firstAttribute="trailing" secondItem="urP-sZ-A6V" secondAttribute="trailing" constant="12" id="96o-jL-yfB"/>
                             <constraint firstItem="4Y3-Ee-e9M" firstAttribute="top" secondItem="js2-lS-6vA" secondAttribute="bottom" constant="12" id="AEf-wu-qcK"/>
                             <constraint firstAttribute="trailing" secondItem="UzG-u4-mHF" secondAttribute="trailing" constant="12" id="Az2-b6-9rt"/>
@@ -628,14 +629,13 @@
                             <constraint firstItem="Ajd-Z2-ll7" firstAttribute="leading" secondItem="5JF-gz-7mF" secondAttribute="leading" constant="12" id="bF0-71-o1f"/>
                             <constraint firstItem="urP-sZ-A6V" firstAttribute="leading" secondItem="5JF-gz-7mF" secondAttribute="leading" constant="12" id="bio-6O-zQV"/>
                             <constraint firstItem="28y-Ct-f56" firstAttribute="leading" secondItem="5JF-gz-7mF" secondAttribute="leading" constant="12" id="c7z-mY-grW"/>
-                            <constraint firstItem="DcQ-HR-gEe" firstAttribute="top" secondItem="4Y3-Ee-e9M" secondAttribute="bottom" constant="12" id="cJ2-HK-XzZ"/>
+                            <constraint firstItem="DcQ-HR-gEe" firstAttribute="top" secondItem="Ajd-Z2-ll7" secondAttribute="bottom" constant="12" id="clJ-NX-UmZ"/>
                             <constraint firstAttribute="trailing" secondItem="O45-QH-mUg" secondAttribute="trailing" constant="12" id="dcw-Vq-bFN"/>
                             <constraint firstAttribute="trailing" secondItem="DcQ-HR-gEe" secondAttribute="trailing" constant="12" id="eI1-Rt-Ybt"/>
                             <constraint firstItem="urP-sZ-A6V" firstAttribute="top" secondItem="Zcs-tK-D1k" secondAttribute="bottom" constant="12" id="fEJ-3K-guA"/>
                             <constraint firstItem="FDx-mQ-x9o" firstAttribute="top" secondItem="28y-Ct-f56" secondAttribute="bottom" constant="12" id="iBX-Te-iVJ"/>
                             <constraint firstItem="28y-Ct-f56" firstAttribute="top" secondItem="O45-QH-mUg" secondAttribute="bottom" constant="12" id="iNo-NZ-QbS"/>
                             <constraint firstAttribute="trailing" secondItem="28y-Ct-f56" secondAttribute="trailing" constant="12" id="wla-cP-cGM"/>
-                            <constraint firstItem="UzG-u4-mHF" firstAttribute="top" secondItem="DcQ-HR-gEe" secondAttribute="bottom" constant="12" id="x1C-n0-sOs"/>
                         </constraints>
                     </view>
                     <connections>
@@ -646,7 +646,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gwY-ze-QMi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5105" y="-142"/>
+            <point key="canvasLocation" x="5104.8000000000002" y="-142.57871064467767"/>
         </scene>
     </scenes>
 </document>
