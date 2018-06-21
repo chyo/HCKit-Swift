@@ -17,8 +17,10 @@ public typealias HCHudCompleteHandler = (()->Void)
 /// - text: 文本
 /// - loading: 加载
 /// - loadingWithText: 带提示文字的加载
+/// - progress: 进度
+/// - progressWithText: 带提示文字的进度
 public enum HCHudMode {
-    case text, loading, loadingWithText
+    case text, loading, loadingWithText, progress, progressWithText
 }
 
 /// HUD风格
@@ -36,7 +38,7 @@ public enum HCHudStyle {
  ## 支持两种风格
  初始化时设定HCHudStyle
  
- ## 支持三种模式
+ ## 支持五种模式
  初始化时设定HCHudMode
  
  ## 支持锁定触摸
@@ -66,6 +68,12 @@ public class HCHud: UIVisualEffectView {
     }
     /// 隐藏Hud时是否从父组件移除（显示时会自动添加）
     public var removeOnHide:Bool = true
+    /// 进度，进当mode=progress或progressWithText有效
+    public var progress:CGFloat = 0 {
+        didSet {
+            self.progressLayer?.strokeEnd = progress
+        }
+    }
     
     /// 模式
     var mode:HCHudMode
@@ -73,6 +81,14 @@ public class HCHud: UIVisualEffectView {
     var style:HCHudStyle
     /// 父容器
     weak var inView:UIView?
+    /// 进度主视图
+    var progressView:UIView?
+    /// 进度视图
+    var progressLayer:CAShapeLayer?
+    
+    deinit {
+        print("HCHud deinit")
+    }
     
     public init(in view:UIView, mode:HCHudMode, style:HCHudStyle) {
         self.mode = mode
@@ -102,6 +118,7 @@ public class HCHud: UIVisualEffectView {
         self.layer.cornerRadius = 6
         self.clipsToBounds = true
         self.isUserInteractionEnabled = false
+        // 初始化加载指示器
         if self.mode == .loading || self.mode == .loadingWithText {
             self.indicator = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
             self.indicator?.hidesWhenStopped = false
@@ -115,10 +132,43 @@ public class HCHud: UIVisualEffectView {
                     make.top.equalTo(14)
                 }
             }
-        } else if self.mode == .text {
+        }
+        // 设定纯文本的最小Size
+        else if self.mode == .text {
             self.minSize = CGSize.init(width: 28, height: 28)
         }
-        if self.mode != .loading {
+        // 初始化进度指示器
+        else if self.mode == .progress || self.mode == .progressWithText {
+            self.progressView = UIView.init()
+            self.progressView?.backgroundColor = UIColor.clear
+            self.progressView?.layer.cornerRadius = 19
+            self.progressView?.clipsToBounds = true
+            self.progressView?.layer.borderColor = UIColor.white.cgColor
+            self.progressView?.layer.borderWidth = 1.5
+            self.contentView.addSubview(self.progressView!)
+            self.progressView!.snp.makeConstraints { (make) in
+                make.centerX.equalTo(self)
+                make.width.equalTo(38)
+                make.height.equalTo(38)
+                if self.mode == .progress {
+                    make.centerY.equalTo(self)
+                } else {
+                    make.top.equalTo(14)
+                }
+            }
+            let path = UIBezierPath.init(arcCenter: CGPoint.init(x: 15, y: 15), radius: 7.5, startAngle: -0.5*CGFloat.pi, endAngle: 1.5*CGFloat.pi, clockwise: true)
+            self.progressLayer = CAShapeLayer.init()
+            self.progressLayer?.frame = CGRect.init(x: 4, y: 4, width: 30, height: 30)
+            self.progressLayer?.fillColor = UIColor.clear.cgColor
+            self.progressLayer?.strokeColor = UIColor.white.cgColor
+            self.progressLayer?.strokeStart = 0
+            self.progressLayer?.strokeEnd = 0
+            self.progressLayer?.lineWidth = 15
+            self.progressLayer?.path = path.cgPath
+            self.progressView?.layer.addSublayer(self.progressLayer!)
+        }
+        // 初始化文本
+        if self.mode != .loading && self.mode != .progress {
             self.label = UILabel.init()
             self.label?.backgroundColor = UIColor.clear
             self.label?.font = UIFont.systemFont(ofSize: 14)
@@ -133,15 +183,22 @@ public class HCHud: UIVisualEffectView {
                 make.width.lessThanOrEqualTo(300)
                 if self.indicator != nil {
                     make.top.equalTo(self.indicator!.snp.bottom).offset(8)
-                } else {
+                }
+                else if self.progressView != nil {
+                    make.top.equalTo(self.progressView!.snp.bottom).offset(8)
+                }
+                else {
                     make.top.equalTo(14)
                 }
             })
         }
         
         if self.style == .light {
-            self.indicator?.color = UIColor.init(red: 59/255.0, green: 59/255.0, blue: 59/255.0, alpha: 1)
-            self.label?.textColor = UIColor.init(red: 59/255.0, green: 59/255.0, blue: 59/255.0, alpha: 1)
+            let color = UIColor.init(red: 59/255.0, green: 59/255.0, blue: 59/255.0, alpha: 1)
+            self.indicator?.color = color
+            self.label?.textColor = color
+            self.progressView?.layer.borderColor = UIColor.darkGray.cgColor
+            self.progressLayer?.strokeColor = UIColor.darkGray.cgColor
             self.contentView.backgroundColor = UIColor.init(red: 1, green: 1, blue: 1, alpha: 0.8)
         }
     }
@@ -167,24 +224,22 @@ public class HCHud: UIVisualEffectView {
     ///   - animated: 是否需要动画
     ///   - complete: 显示后回调
     public func show (animated:Bool, complete:HCHudCompleteHandler?) {
-        DispatchQueue.main.async {
-            if self.superview == nil && self.inView != nil {
-                self.inView!.addSubview(self)
-                self.snp.makeConstraints { (make) in
-                    make.center.equalTo(self.inView!)
-                    make.width.greaterThanOrEqualTo(self.minSize.width)
-                    make.height.greaterThanOrEqualTo(self.minSize.height)
-                }
-            } else {
-                self.superview?.bringSubview(toFront: self)
+        if self.superview == nil && self.inView != nil {
+            self.inView!.addSubview(self)
+            self.snp.makeConstraints { (make) in
+                make.center.equalTo(self.inView!)
+                make.width.greaterThanOrEqualTo(self.minSize.width)
+                make.height.greaterThanOrEqualTo(self.minSize.height)
             }
+        } else {
             self.superview?.bringSubview(toFront: self)
-            UIView.animate(withDuration: (animated ? 0.2:0), animations: {
-                self.alpha = 1.0
-            }, completion: { (finish) in
-                complete?()
-            })
         }
+        self.superview?.bringSubview(toFront: self)
+        UIView.animate(withDuration: (animated ? 0.2:0), animations: {
+            self.alpha = 1.0
+        }, completion: { (finish) in
+            complete?()
+        })
     }
     
     /// 隐藏Hud
@@ -202,16 +257,26 @@ public class HCHud: UIVisualEffectView {
     ///   - afterDelay: 指定秒数
     ///   - complete: 隐藏后回调
     public func hide (animated:Bool, afterDelay:TimeInterval, complete:HCHudCompleteHandler?) {
+        self.superview?.bringSubview(toFront: self)
+        UIView.animate(withDuration: (animated ? 0.2:0), delay: afterDelay, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+            self.alpha = 0.0
+        }, completion: { (finish) in
+            complete?()
+            if self.removeOnHide {
+                self.removeFromSuperview()
+            }
+        })
+    }
+    
+    /// 显示并在指定时间后自动隐藏
+    /// 
+    /// - Parameters:
+    ///   - afterDelay: 指定时间
+    ///   - complete: 隐藏后回调
+    public func toast (afterDelay:TimeInterval, complete: HCHudCompleteHandler?) {
         DispatchQueue.main.async {
-            self.superview?.bringSubview(toFront: self)
-            UIView.animate(withDuration: (animated ? 0.2:0), delay: afterDelay, options: UIViewAnimationOptions.curveEaseInOut, animations: {
-                self.alpha = 0.0
-            }, completion: { (finish) in
-                complete?()
-                if self.removeOnHide {
-                    self.removeFromSuperview()
-                }
-            })
+            self.show(animated: true)
+            self.hide(animated: true, afterDelay: afterDelay, complete: complete)
         }
     }
 

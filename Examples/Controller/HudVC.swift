@@ -15,6 +15,7 @@ class HudVC: UIViewController {
     @IBOutlet weak var tfText: UITextField!
     @IBOutlet weak var tfSize: UITextField!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var slider: UISlider!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +71,32 @@ class HudVC: UIViewController {
     @IBAction func actionHideWithEvent(_ sender: Any) {
         self.hud?.hide(animated: true, afterDelay: 1.5, complete: {
             print("Hud隐藏后回调")
+        })
+    }
+    @IBAction func actionProgressChanged(_ sender: Any) {
+        self.hud?.progress = CGFloat(self.slider.value)
+    }
+
+    @IBAction func actionProgress(_ sender: Any) {
+        self.hud?.hide(animated: false)
+        self.hud = HCHud.init(in: self.view, mode: .progress, style: self.segmentedControl.selectedSegmentIndex == 0 ? .dark:.light)
+        self.hud?.minSize = self.hudSize()
+        self.hud?.progress = CGFloat(self.slider.value)
+        self.hud?.show(animated: true)
+    }
+    @IBAction func actionProgressWithText(_ sender: Any) {
+        self.hud?.hide(animated: false)
+        self.hud = HCHud.init(in: self.view, mode: .progressWithText, style: self.segmentedControl.selectedSegmentIndex == 0 ? .dark:.light)
+        self.hud?.minSize = self.hudSize()
+        self.hud?.label?.text = self.tfText.text
+        self.hud?.progress = CGFloat(self.slider.value)
+        self.hud?.show(animated: true)
+    }
+    @IBAction func actionToast(_ sender: Any) {
+        let hud = HCHud.init(in: self.view, mode: .text, style: self.segmentedControl.selectedSegmentIndex == 0 ? .dark:.light)
+        hud.label?.text = self.tfText.text
+        hud.toast(afterDelay: 1.5, complete: {
+            print("回调")
         })
     }
 }

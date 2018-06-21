@@ -10,7 +10,6 @@ import UIKit
 
 class PhotoVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    var hud:HCHud?
     var array:Array<HCPhotoItem> = []
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tfNumber: UITextField!
@@ -23,20 +22,16 @@ class PhotoVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     @IBAction func actionChoose(_ sender: Any) {
-        if self.hud == nil {
-            hud = HCHud.init(in: self.view, mode: .loading, style: .dark)
+        weak var weakSelf = self
+        let options = HCPhotoRequestOptions.init(maximumNumber: Int(self.tfNumber.text!)!)
+        options.thumbnailWidth = 200
+        options.compressionQuality = 0.8
+        HCPhotoVC.showsPhotoVC(fromViewController: self, options: options) { (array) in
+            for item in array {
+                weakSelf?.array.append(item)
+            }
+            weakSelf?.collectionView.reloadData()
         }
-        hud!.show(animated: true)
-//        weak var weakSelf = self
-//        let options = HCPhotoRequestOptions.init(maximumNumber: Int(self.tfNumber.text!)!)
-//        options.thumbnailWidth = 200
-//        options.compressionQuality = 0.8
-//        HCPhotoVC.showsPhotoVC(fromViewController: self, options: options) { (array) in
-//            for item in array {
-//                weakSelf?.array.append(item)
-//            }
-//            weakSelf?.collectionView.reloadData()
-//        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

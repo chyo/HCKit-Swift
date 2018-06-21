@@ -20,6 +20,7 @@ class HCPhotoListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     var photoManager:PHCachingImageManager?
     var selectionHandler:HCPhotoSelectionHandler?
     var options:HCPhotoRequestOptions?
+    var hud:HCHud?
     
     var animationParentView:UIView?
     var animationIndex:Int = 0
@@ -59,26 +60,31 @@ class HCPhotoListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                 }
                 return
             }
+            let hud = HCHud.init(in: weakSelf!.view, mode: .loading, style: .dark)
+            hud.isUserInteractionEnabled = true
+            hud.show(animated: true)
             var photoArray:Array<HCPhotoItem> = []
             let options = PHImageRequestOptions.init()
             options.isSynchronous = true
             options.resizeMode = .exact
             options.deliveryMode = .fastFormat
             let queue = DispatchQueue.init(label: "HCKit_Swift.PhotoListVCReadPhoto", qos: DispatchQoS.unspecified, attributes: DispatchQueue.Attributes.concurrent, autoreleaseFrequency: DispatchQueue.AutoreleaseFrequency.inherit, target: nil)
-            for asset in array {
-                weakSelf?.photoManager?.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.default, options: options, resultHandler: { (image, info) in
-                    queue.async {
+            queue.async {
+                for asset in array {
+                    weakSelf?.photoManager?.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.default, options: options, resultHandler: { (image, info) in
                         let item = HCPhotoItem.init(fullImage: image, options: weakSelf?.options)
                         photoArray.append(item)
                         if weakSelf != nil && photoArray.count == array.count {
                             DispatchQueue.main.async {
+                                hud.hide(animated: true)
                                 weakSelf!.selectionHandler!(photoArray)
                                 weakSelf!.actionCancel()
                             }
                         }
-                    }
-                })
+                    })
+                }
             }
+            
         }
         let selectionHandler:HCPhotoToolbarSelectionHandler = {(cell, array, index) in
             let browserVC = HCPhotoBrowserVC()
@@ -210,6 +216,9 @@ class HCPhotoListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                 // 如果超过了最大选择数量，则取消当前cell的勾选
                 else {
                     cell.checkButton?.isSelected = false
+                    let hud = HCHud.init(in: weakSelf!.view, mode: .text, style: .dark)
+                    hud.label?.text = "最多只能选择\(weakSelf!.options!.maximumNumber)张照片"
+                    hud.toast(afterDelay: 1.5, complete: nil)
                 }
             }
         }
