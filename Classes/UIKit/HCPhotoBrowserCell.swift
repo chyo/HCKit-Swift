@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import Kingfisher
 
 class HCPhotoBrowserCell: UICollectionViewCell, UIScrollViewDelegate {
     
@@ -58,10 +59,9 @@ class HCPhotoBrowserCell: UICollectionViewCell, UIScrollViewDelegate {
     func showsImage (image:UIImage?) {
         // 将图片的比例重新设定为1
         self.imageView?.image = image
-        var w:CGFloat = self.scrollView!.bounds.size.width
+        let w:CGFloat = self.scrollView!.bounds.size.width
         var h:CGFloat = w
         if image != nil {
-            w = min(image!.size.width / UIScreen.main.scale, self.scrollView!.frame.size.width)
             h = image!.size.height/(image!.size.width/w)
         }
         var contentSize = self.bounds.size
@@ -73,6 +73,34 @@ class HCPhotoBrowserCell: UICollectionViewCell, UIScrollViewDelegate {
         self.scrollView?.contentOffset = CGPoint.init(x: 0, y: contentSize.height/2-scrollView!.bounds.size.height/2)
         self.imageView?.frame = CGRect.init(x: 0, y: 0, width: w, height: h)
         self.imageView?.center = CGPoint.init(x: self.scrollView!.frame.size.width/2, y: self.scrollView!.frame.size.height/2)
+    }
+    
+    func showsImage (item:HCPhotoItem) {
+        weak var weakSelf = self
+        let queue = DispatchQueue.init(label: "HCKit_Swift.HCPhotoBrowserCellImageReadQueue", qos: DispatchQoS.default, attributes: DispatchQueue.Attributes.concurrent, autoreleaseFrequency: DispatchQueue.AutoreleaseFrequency.inherit, target: nil)
+        if item.fullImageUrl!.hasPrefix("http") {
+            self.showsImage(image: item.thumbnail)
+            self.imageView?.kf.setImage(with: URL.init(string: item.fullImageUrl!), placeholder: nil, options: [.fromMemoryCacheOrRefresh], progressBlock: nil, completionHandler: { (image, error, type, url) in
+                if weakSelf != nil && image != nil {
+                    DispatchQueue.main.async {
+                        weakSelf!.showsImage(image: image)
+                    }
+                }
+            })
+        } else if item.fullImageUrl!.contains("/") {
+            queue.async {
+                let data = try? Data.init(contentsOf: URL.init(fileURLWithPath: item.fullImageUrl!))
+                if data != nil {
+                    let image = UIImage.init(data: data!)
+                    DispatchQueue.main.async {
+                        self.showsImage(image: image)
+                    }
+                }
+            }
+        } else {
+            let image = UIImage.init(named: item.fullImageUrl!)
+            self.showsImage(image: image)
+        }
     }
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {

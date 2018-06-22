@@ -106,7 +106,6 @@ public class HCPhotoBrowserPushAnimator: HCPhotoBrowserAnimator {
 public class HCPhotoBrowserPopAnimator: HCPhotoBrowserAnimator {
     public override func excuteTransition() {
         self.containerView.backgroundColor = UIColor.clear
-        self.fromVC.view.removeFromSuperview()
         self.containerView.addSubview(self.toVC.view)
         let bg = UIView.init(frame: self.containerView.bounds)
         bg.backgroundColor = UIColor.black

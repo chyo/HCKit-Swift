@@ -14,7 +14,7 @@ public class HCPhotoItem: NSObject {
     /// 缩略图
     public var thumbnail:UIImage?
     /// 完整图的地址
-    public var fullImageUrl:URL?
+    public var fullImageUrl:String?
     
     /// 将图片以指定参数+jpg的形式转存到指定目录下，同步执行。
     ///
@@ -41,9 +41,15 @@ public class HCPhotoItem: NSObject {
         do {
             let url = URL.init(fileURLWithPath: path)
             try data?.write(to: url, options: Data.WritingOptions.atomic)
-            self.fullImageUrl = url
+            self.fullImageUrl = path
         } catch (let error) {
             print(error)
         }
+    }
+    
+    public init(thumbnail:UIImage?, fullImageUrl:String) {
+        self.thumbnail = thumbnail
+        self.fullImageUrl = fullImageUrl
+        super.init()
     }
 }

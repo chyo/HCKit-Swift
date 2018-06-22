@@ -19,11 +19,14 @@ public class HCPhotoBrowserVC: UIViewController, UICollectionViewDelegate, UICol
     var titleAttribute:[NSAttributedStringKey : Any]?
     var tapGesture:UITapGestureRecognizer!
     var collectionView:UICollectionView?
-    var photoManager:PHCachingImageManager?
-    var photoArray:Array<PHAsset>?
-    var assetsFetchResults:PHFetchResult<PHAsset>?
+    weak var photoManager:PHCachingImageManager?
     var selectedIndex:Int = 0
     var photoBrowserDidScrollHandler:HCPhotoBrowserDidScrollHandler?
+    
+    var photoArray:Array<PHAsset>?
+    var assetsFetchResults:PHFetchResult<PHAsset>?
+    var itemArray:Array<HCPhotoItem>?
+    var total:Int = 0
     
     deinit {
         print("HCPhotoBrowserVC deinit")
@@ -34,10 +37,11 @@ public class HCPhotoBrowserVC: UIViewController, UICollectionViewDelegate, UICol
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "", style: .plain, target: nil, action: nil)
         self.barTintColor = self.navigationController?.navigationBar.barTintColor
         self.tintColor = self.navigationController?.navigationBar.tintColor
         self.titleAttribute = self.navigationController?.navigationBar.titleTextAttributes
-        self.view.backgroundColor = UIColor.black
+        self.view.backgroundColor = UIColor.clear
         self.tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(self.actionBack(tap:)))
         self.view.addGestureRecognizer(self.tapGesture)
         
@@ -67,8 +71,9 @@ public class HCPhotoBrowserVC: UIViewController, UICollectionViewDelegate, UICol
         self.photoArray = assetArray
         self.selectedIndex = index
         self.collectionView?.reloadData()
-        DispatchQueue.main.async {
-            self.collectionView?.scrollToItem(at: IndexPath.init(item: self.selectedIndex, section: 0), at: UICollectionViewScrollPosition.left, animated: false)
+        if assetArray.count != 1 {
+            self.total = assetArray.count
+            self.title = "\(index+1)/\(self.total)"
         }
     }
     
@@ -77,6 +82,20 @@ public class HCPhotoBrowserVC: UIViewController, UICollectionViewDelegate, UICol
         self.selectedIndex = index
         self.photoManager = cacheManager
         self.collectionView?.reloadData()
+        if assetsFetchResults.count != 1 {
+            self.total = assetsFetchResults.count
+            self.title = "\(index+1)/\(self.total)"
+        }
+    }
+    
+    public func reloadData (itemArray:Array<HCPhotoItem>, selectAt index:Int) {
+        self.itemArray = itemArray
+        self.selectedIndex = index
+        self.collectionView?.reloadData()
+        if itemArray.count != 1 {
+            self.total = itemArray.count
+            self.title = "\(index+1)/\(self.total)"
+        }
     }
 
     override public func didReceiveMemoryWarning() {
@@ -86,7 +105,7 @@ public class HCPhotoBrowserVC: UIViewController, UICollectionViewDelegate, UICol
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.hc_setNavigationBarTransparent(true)
-        self.hc_setNavigationBarStyle(barTintColor: UIColor.clear, tintColor: UIColor.white, titleTextAttributes: nil)
+        self.hc_setNavigationBarStyle(barTintColor: UIColor.clear, tintColor: UIColor.white, titleTextAttributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         DispatchQueue.main.async {
             self.collectionView?.scrollToItem(at: IndexPath.init(item: self.selectedIndex, section: 0), at: UICollectionViewScrollPosition.left, animated: false)
@@ -109,10 +128,9 @@ public class HCPhotoBrowserVC: UIViewController, UICollectionViewDelegate, UICol
     }
     
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if self.photoBrowserDidScrollHandler != nil {
-            let index = self.collectionView?.indexPath(for: self.collectionView!.visibleCells.first!)?.item
-            self.photoBrowserDidScrollHandler!(index!)
-        }
+        let index = self.collectionView?.indexPath(for: self.collectionView!.visibleCells.first!)?.item
+        self.title = "\(index!+1)/\(self.total)"
+        self.photoBrowserDidScrollHandler?(index!)
     }
     
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -128,9 +146,14 @@ public class HCPhotoBrowserVC: UIViewController, UICollectionViewDelegate, UICol
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if self.assetsFetchResults != nil {
             return self.assetsFetchResults!.count
-        } else if self.photoArray != nil {
+        }
+        else if self.photoArray != nil {
             return self.photoArray!.count
-        } else {
+        }
+        else if self.itemArray != nil {
+            return self.itemArray!.count
+        }
+        else {
             return 0
         }
     }
@@ -154,10 +177,13 @@ public class HCPhotoBrowserVC: UIViewController, UICollectionViewDelegate, UICol
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HCPhotoBrowserCell", for: indexPath) as! HCPhotoBrowserCell
         var asset:PHAsset?
+        var item:HCPhotoItem?
         if self.assetsFetchResults != nil {
             asset = self.assetsFetchResults![indexPath.row]
-        } else if (self.photoArray != nil) {
+        } else if self.photoArray != nil {
             asset = self.photoArray![indexPath.row]
+        } else if self.itemArray != nil {
+            item = self.itemArray![indexPath.row]
         }
         cell.showsImage(image: nil)
         cell.index = indexPath.row
@@ -168,6 +194,9 @@ public class HCPhotoBrowserVC: UIViewController, UICollectionViewDelegate, UICol
                     cell.showsImage(image: image!)
                 }
             })
+        }
+        else if item != nil {
+            cell.showsImage(item: item!)
         }
         return cell
     }
