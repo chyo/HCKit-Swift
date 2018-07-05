@@ -8,21 +8,6 @@
 
 import UIKit
 
-/// 图片浏览控制器过渡动画协议
-public protocol HCPhotoBrowserAnimatorProtocal {
-    /// 预先执行的方法，比如在图片浏览回来后，需要将图片列表偏移量设定为刚好可以显示对应图片的程度，更好的满足动画需求。
-    func prepare()
-    /// 返回用于动画的图片
-    ///
-    /// - Returns: 图片
-    func animationImage() -> UIImage?
-    /// 返回该图片相对于控制器视图的frame
-    ///
-    /// - Parameter image: 参考计算用的image
-    /// - Returns: frame
-    func animationFrame(image:UIImage?) -> CGRect
-}
-
 /// 图片浏览动画基础类
 public class HCPhotoBrowserAnimator:NSObject, UIViewControllerAnimatedTransitioning {
     
@@ -38,13 +23,13 @@ public class HCPhotoBrowserAnimator:NSObject, UIViewControllerAnimatedTransition
     var transitionContext:UIViewControllerContextTransitioning!
     
     /// 动画图片
-    public var fromImage:UIImage!
+    public var fromImage:UIImage?
     /// 动画起始位置
     public var fromFrame:CGRect!
     /// 动画目标位置
     public var toFrame:CGRect!
     
-    public init(fromImage:UIImage, fromFrame:CGRect, toFrame:CGRect) {
+    public init(fromImage:UIImage?, fromFrame:CGRect, toFrame:CGRect) {
         self.fromImage = fromImage
         self.fromFrame = fromFrame
         self.toFrame = toFrame
@@ -76,7 +61,7 @@ public class HCPhotoBrowserAnimator:NSObject, UIViewControllerAnimatedTransition
 }
 
 /// 图片浏览push动画
-public class HCPhotoBrowserPushAnimator: HCPhotoBrowserAnimator {
+public class HCPhotoBrowserPresentAnimator: HCPhotoBrowserAnimator {
     public override func excuteTransition() {
         self.containerView.backgroundColor = UIColor.clear
         self.containerView.addSubview(self.toVC.view)
@@ -103,13 +88,16 @@ public class HCPhotoBrowserPushAnimator: HCPhotoBrowserAnimator {
 }
 
 /// 图片浏览pop动画
-public class HCPhotoBrowserPopAnimator: HCPhotoBrowserAnimator {
+public class HCPhotoBrowserDismissAnimator: HCPhotoBrowserAnimator {
+    
+    public var fromAlpha:CGFloat = 1.0
+    
     public override func excuteTransition() {
         self.containerView.backgroundColor = UIColor.clear
-        self.containerView.addSubview(self.toVC.view)
+        self.fromVC.view.alpha = 0.0
         let bg = UIView.init(frame: self.containerView.bounds)
-        bg.backgroundColor = UIColor.black
-        bg.alpha = 1.0
+        bg.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 1)
+        bg.alpha = fromAlpha
         self.containerView.addSubview(bg)
         let iv = UIImageView.init(frame: self.fromFrame)
         iv.image = self.fromImage

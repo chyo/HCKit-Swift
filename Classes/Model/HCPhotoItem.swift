@@ -23,13 +23,15 @@ public class HCPhotoItem: NSObject {
     ///   - options: 处理参数，可以不传
     public init (fullImage:UIImage!, options:HCPhotoRequestOptions? = nil) {
         super.init()
+        // 调整图片质量
         let data = UIImageJPEGRepresentation(fullImage, (options?.compressionQuality != nil ? options!.compressionQuality : 1.0))
+        // 生成缩略图
         if options?.thumbnailWidth != nil && fullImage.size.width > options!.thumbnailWidth! {
             self.thumbnail = UIImage.init(data: data!)!.hc_fixToWidth(width: options!.thumbnailWidth!)
         } else {
             self.thumbnail = UIImage.init(data: data!)!
         }
-        
+        // 保存到指定目录
         let fileName = String.init(format: "%.0f", Date.init().timeIntervalSince1970*10000) + ".jpg"
         var path:String!
         if options == nil {
@@ -47,6 +49,11 @@ public class HCPhotoItem: NSObject {
         }
     }
     
+    /// 构造函数
+    ///
+    /// - Parameters:
+    ///   - thumbnail: 缩略图
+    ///   - fullImageUrl: 原图路径
     public init(thumbnail:UIImage?, fullImageUrl:String) {
         self.thumbnail = thumbnail
         self.fullImageUrl = fullImageUrl

@@ -8,12 +8,16 @@
 
 import UIKit
 
+/// 图片点击事件
 typealias HCPhotoListCellSelectionHandler = ((_ cell:HCPhotoListCell)->Void)
 
 class HCPhotoListCell: UICollectionViewCell {
     
+    /// 图片
     var imageView:UIImageView?
+    /// 选择按钮
     var checkButton:UIButton?
+    /// 点击事件
     var selectionHandler:HCPhotoListCellSelectionHandler?
     
     required init?(coder aDecoder: NSCoder) {

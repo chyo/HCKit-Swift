@@ -10,20 +10,27 @@ import UIKit
 import SnapKit
 import Photos
 
+/// 发送按钮事件
 typealias HCPhotoToolbarSendHandler = ((_ assetArray:Array<PHAsset>)->Void)
+/// 图片点击事件
 typealias HCPhotoToolbarSelectionHandler = ((_ cell:HCPhotoListCell, _ assetArray:Array<PHAsset>, _ index:Int)->Void)
 
+/// 照片选择控制器底部工具条
 class HCPhotoToolbar: UIVisualEffectView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    /// 选中的图片
     private var assetArray:Array<PHAsset> = []
+    /// 发送按钮
     var sendButton:UIButton?
+    /// 集合视图
     var collectionView:UICollectionView?
+    /// 照片缓存对象
     var photoManager:PHCachingImageManager?
     var sendHandler:HCPhotoToolbarSendHandler?
     var selectionHandler:HCPhotoToolbarSelectionHandler?
     
     deinit {
-        print("HCPhotoToolbar deinit")
+//        print("HCPhotoToolbar deinit")
         self.collectionView?.delegate = nil
         self.collectionView?.dataSource = nil
     }
@@ -151,6 +158,7 @@ class HCPhotoToolbar: UIVisualEffectView, UICollectionViewDelegate, UICollection
     }
     
     func scrollToItem (at index:Int) -> HCPhotoListCell?{
+        // 将cell移动到可视范围内
         let cell = self.collectionView?.cellForItem(at: IndexPath.init(item: index, section: 0)) as? HCPhotoListCell
         if cell == nil {
             var position:UICollectionViewScrollPosition = .right

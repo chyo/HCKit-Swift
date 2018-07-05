@@ -14,6 +14,11 @@ class PhotoVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     var array:Array<HCPhotoItem> = []
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tfNumber: UITextField!
+    
+    var animationIndex:Int = 0
+    var animationFrame:CGRect = CGRect.zero
+    var animationImage:UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "PhotoVC"
@@ -87,9 +92,49 @@ class PhotoVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        weak var weakSelf = self
         collectionView.deselectItem(at: indexPath, animated: false)
-        let browser = HCPhotoBrowserVC.init(nibName: nil, bundle: nil)
-        browser.reloadData(itemArray: self.array, selectAt: indexPath.row)
-        self.navigationController?.pushViewController(browser, animated: true)
+        let browser = HCPhotoBrowserVC.init(itemArray: self.array, selectAt: indexPath.row, animationFrameHandler: { (idx) -> CGRect in
+            weakSelf?.animationIndex = idx
+            weakSelf?.scrollAnimationCellToVisible()
+            return weakSelf!.animationFrame
+        }) { (idx) -> UIImage? in
+            weakSelf?.animationIndex = idx
+            weakSelf?.scrollAnimationCellToVisible()
+            return weakSelf?.animationImage
+        }
+        self.present(browser, animated: true, completion: nil)
+    }
+    
+    /// 将动画CELL滚动到可视位置
+    func scrollAnimationCellToVisible() {
+        var cell = self.collectionView.cellForItem(at: IndexPath.init(item: self.animationIndex, section: 0))
+        if cell == nil {
+            var position = UICollectionViewScrollPosition.bottom
+            if self.collectionView!.indexPath(for: self.collectionView!.visibleCells.first!)!.item > self.animationIndex {
+                position = .top
+            }
+            self.collectionView!.scrollToItem(at: IndexPath.init(item: self.animationIndex, section: 0), at: position, animated: false)
+            self.collectionView?.layoutIfNeeded()
+            cell = self.collectionView!.cellForItem(at: IndexPath.init(item: self.animationIndex, section: 0))
+        }
+        var offset = self.collectionView!.contentOffset
+        let frame = self.collectionView.convert(cell!.frame, to: UIApplication.shared.keyWindow)
+        if #available(iOS 11, *){
+            if frame.origin.y <= self.collectionView!.safeAreaInsets.top {
+                offset.y -= (self.collectionView!.safeAreaInsets.top - frame.origin.y)
+            }
+        } else {
+            if frame.origin.y <= self.collectionView!.contentInset.top {
+                offset.y -= (self.collectionView!.contentInset.top - frame.origin.y)
+            }
+        }
+        if (frame.origin.y + frame.size.height > self.view.bounds.size.height) {
+            offset.y += (frame.origin.y + frame.size.height - self.view.bounds.size.height)
+        }
+        collectionView?.contentOffset = offset
+        let imageView = cell!.viewWithTag(100) as! UIImageView
+        self.animationImage = imageView.image
+        self.animationFrame = self.collectionView.convert(cell!.frame, to: UIApplication.shared.keyWindow)
     }
 }

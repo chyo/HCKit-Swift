@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// 图片浏览器用的自定义布局，主要是为在图片与图片之前有间距的情况下，每一次滑动都能跳过间距
 class HCPhotoBrowserFlowLayout: UICollectionViewFlowLayout {
     
     override func prepare() {

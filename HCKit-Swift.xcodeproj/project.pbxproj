@@ -68,6 +68,7 @@
 		0092604320C121FD00167EAB /* HCRefreshFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0092604220C121FD00167EAB /* HCRefreshFooterView.swift */; };
 		00E2794F20D2161700CFA84C /* HCPhotoBrowserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E2794E20D2161700CFA84C /* HCPhotoBrowserVC.swift */; };
 		00E2795120D2180F00CFA84C /* HCPhotoBrowserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E2795020D2180F00CFA84C /* HCPhotoBrowserCell.swift */; };
+		00E6F24520EC61B30081BC46 /* HCNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E6F24420EC61B30081BC46 /* HCNavigationBar.swift */; };
 		85BF71D359815301E721BDA9 /* Pods_HCKit_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4E0BCBF5D52B2952C39E22 /* Pods_HCKit_Swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -138,6 +139,7 @@
 		0092604220C121FD00167EAB /* HCRefreshFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCRefreshFooterView.swift; sourceTree = "<group>"; };
 		00E2794E20D2161700CFA84C /* HCPhotoBrowserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPhotoBrowserVC.swift; sourceTree = "<group>"; };
 		00E2795020D2180F00CFA84C /* HCPhotoBrowserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPhotoBrowserCell.swift; sourceTree = "<group>"; };
+		00E6F24420EC61B30081BC46 /* HCNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCNavigationBar.swift; sourceTree = "<group>"; };
 		80D3A469A67BAAE3CBC9A67D /* Pods-HCKit-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCKit-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-HCKit-Swift/Pods-HCKit-Swift.release.xcconfig"; sourceTree = "<group>"; };
 		8D4E0BCBF5D52B2952C39E22 /* Pods_HCKit_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HCKit_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8E2A70F28A1242B76F6920 /* Pods-HCKit-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCKit-Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCKit-Swift/Pods-HCKit-Swift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				0023780E20D3979D007244BC /* HCPhotoBrowserFlowLayout.swift */,
 				00E2795020D2180F00CFA84C /* HCPhotoBrowserCell.swift */,
 				005E614A20DB38CF00B2620C /* HCHud.swift */,
+				00E6F24420EC61B30081BC46 /* HCNavigationBar.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				001EC5A020CA6957001E2841 /* HCPhotoListCell.swift in Sources */,
 				00643B8320B416BA00649894 /* ViewController.swift in Sources */,
 				008239A420DA2F6500E63E32 /* HCPhotoRequestOptions.swift in Sources */,
+				00E6F24520EC61B30081BC46 /* HCNavigationBar.swift in Sources */,
 				00122D6B20CE1A72003324DF /* HCPhotoToolbar.swift in Sources */,
 				00643B9F20B416F200649894 /* String+HCExtension.swift in Sources */,
 				004D9FD320C78C21007B3DB0 /* HCCalendarItem.swift in Sources */,

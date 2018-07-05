@@ -10,24 +10,35 @@ import UIKit
 import Photos
 import SnapKit
 
-class HCPhotoListVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HCPhotoBrowserAnimatorProtocal {
+/// 照片选择控制器
+class HCPhotoListVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    
+    /// 照片之间的间距
     let margin:CGFloat = 2
+    /// 底部工具栏
     var toolbar:HCPhotoToolbar?
+    /// 集合视图
     var collectionView:UICollectionView?
+    /// 照片结果集
     var assetsFetchResults:PHFetchResult<PHAsset>!
+    /// 照片缓存对象
     var photoManager:PHCachingImageManager?
+    /// 选择回调
     var selectionHandler:HCPhotoSelectionHandler?
+    /// 处理函数
     var options:HCPhotoRequestOptions?
+    /// 提示
     var hud:HCHud?
     
-    var animationParentView:UIView?
+    /// 点击的照片的祖视图，self.view或者self.toolbar，点击照片时会赋值，用于区分该照片的来源
+    weak var animationParentView:UIView?
+    /// 点击的照片的位置
     var animationIndex:Int = 0
+    /// 点击的照片的来源cell
     weak var animationCell:HCPhotoListCell?
     
     deinit {
-        print("HCPhotoListVC deinit")
+//        print("HCPhotoListVC deinit")
     }
     
     override func viewDidLoad() {
@@ -36,7 +47,7 @@ class HCPhotoListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         self.title = "选择照片"
         self.navigationController?.navigationBar.tintColor = UIColor.darkGray
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "取消", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.actionCancel))
-        self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        
         let flowLayout = UICollectionViewFlowLayout.init()
         flowLayout.scrollDirection = UICollectionViewScrollDirection.vertical
         self.collectionView = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: flowLayout)
@@ -52,7 +63,14 @@ class HCPhotoListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             make.right.equalTo(0)
             make.bottom.equalTo(0)
         })
+        
+        self.setupToolbar()
+    }
+    
+    /// 初始化底部工具条
+    func setupToolbar () {
         weak var weakSelf = self
+        // 发送按钮事件
         let sendHandler:HCPhotoToolbarSendHandler = {(array) in
             if weakSelf?.selectionHandler == nil {
                 DispatchQueue.main.async {
@@ -60,20 +78,24 @@ class HCPhotoListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                 }
                 return
             }
+            // 显示加载指示器
             let hud = HCHud.init(in: weakSelf!.view, mode: .loading, style: .dark)
             hud.isUserInteractionEnabled = true
             hud.show(animated: true)
             var photoArray:Array<HCPhotoItem> = []
+            // 从照片图库中读取图片的配置参数
             let options = PHImageRequestOptions.init()
             options.isSynchronous = true
             options.resizeMode = .exact
             options.deliveryMode = .fastFormat
+            // 开一条线程，防止卡主线
             let queue = DispatchQueue.init(label: "HCKit_Swift.PhotoListVCReadPhoto", qos: DispatchQoS.unspecified, attributes: DispatchQueue.Attributes.concurrent, autoreleaseFrequency: DispatchQueue.AutoreleaseFrequency.inherit, target: nil)
             queue.async {
                 for asset in array {
                     weakSelf?.photoManager?.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.default, options: options, resultHandler: { (image, info) in
                         let item = HCPhotoItem.init(fullImage: image, options: weakSelf?.options)
                         photoArray.append(item)
+                        // 当获得的最终图片和要求图片数量一致时，返回结果
                         if weakSelf != nil && photoArray.count == array.count {
                             DispatchQueue.main.async {
                                 hud.hide(animated: true)
@@ -86,15 +108,21 @@ class HCPhotoListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
             }
             
         }
+        // 点击事件处理，打开大图浏览
         let selectionHandler:HCPhotoToolbarSelectionHandler = {(cell, array, index) in
-            let browserVC = HCPhotoBrowserVC()
-            browserVC.photoBrowserDidScrollHandler = {(index) in
-                weakSelf?.animationIndex = index
+            let browserVC = HCPhotoBrowserVC.init(assetArray: array, selectAt: index, cacheManager: weakSelf!.toolbar!.photoManager!, animationFrameHandler: { (idx) -> CGRect in
+                // 获取图片在本控制器中的frame
+                weakSelf?.animationIndex = idx
+                weakSelf?.scrollAnimationCellToVisible()
+                return weakSelf!.animationFrame()
+            }) { (idx) -> UIImage? in
+                // 获取本控制器中对应的图片
+                weakSelf?.animationIndex = idx
+                weakSelf?.scrollAnimationCellToVisible()
+                return weakSelf?.animationCell?.imageView?.image
             }
-            weakSelf?.animationIndex = index
             weakSelf?.animationParentView = weakSelf?.toolbar
-            browserVC.reloadData(assetArray: array, selectAt: index, cacheManager: weakSelf!.toolbar!.photoManager!)
-            weakSelf?.navigationController?.pushViewController(browserVC, animated: true)
+            weakSelf?.present(browserVC, animated: true, completion: nil)
         }
         let toolbar = HCPhotoToolbar.toolbar(sendHandler: sendHandler, selectionHandler: selectionHandler)
         self.view.addSubview(toolbar)
@@ -120,6 +148,7 @@ class HCPhotoListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         self.hc_setNavigationBarTransparent(false)
         weak var weakSelf = self
         DispatchQueue.main.async {
+            // 请求照片权限
             HCConfig.hc_isAuthorizedPhoto(openSettingsIfNeeded: true) { (granted) in
                 if granted == false || (weakSelf?.assetsFetchResults != nil && weakSelf?.assetsFetchResults.count != 0) {
                     return
@@ -161,6 +190,7 @@ class HCPhotoListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        // 调整集合视图底部缩进
         if #available(iOS 11.0, *) {
             return UIEdgeInsets.init(top: margin, left: margin, bottom: self.toolbar!.bounds.size.height-self.view.safeAreaInsets.bottom+margin, right: margin)
         } else {
@@ -232,16 +262,24 @@ class HCPhotoListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         weak var weakSelf = self
         collectionView.deselectItem(at: indexPath, animated: false)
-        let browserVC = HCPhotoBrowserVC()
-        browserVC.photoBrowserDidScrollHandler = {(index) in
-            weakSelf?.animationIndex = index
+        let browserVC = HCPhotoBrowserVC.init(assetsFetchResults: self.assetsFetchResults, selectAt: indexPath.row, cacheManager: self.photoManager!, animationFrameHandler: { (idx) -> CGRect in
+            // 获取动画图片对应的frame
+            weakSelf?.animationIndex = idx
+            weakSelf?.scrollAnimationCellToVisible()
+            return weakSelf!.animationFrame()
+        }) { (idx) -> UIImage? in
+            // 获取动画图片
+            weakSelf?.animationIndex = idx
+            weakSelf?.scrollAnimationCellToVisible()
+            return weakSelf?.animationCell?.imageView?.image
         }
-        weakSelf?.animationIndex = indexPath.row
-        weakSelf?.animationParentView = self.view
-        browserVC.reloadData(assetsFetchResults: self.assetsFetchResults, selectAt: indexPath.row, cacheManager: self.photoManager!)
-        weakSelf?.navigationController?.pushViewController(browserVC, animated: true)
+        self.animationParentView = self.view
+        self.present(browserVC, animated: true, completion: nil)
     }
     
+    /// 获取动画图片
+    ///
+    /// - Returns: 图片
     func animationImage () -> UIImage? {
         if self.animationCell?.imageView?.image == nil {
             return UIImage.init()
@@ -250,24 +288,26 @@ class HCPhotoListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
         }
     }
     
-    func animationFrame(image: UIImage?) -> CGRect {
-        // 获取cell相对于self.view的frame
+    /// 获取动画CELL相对于UIWindow的Frame
+    ///
+    /// - Returns: frame
+    func animationFrame() -> CGRect {
         if self.animationCell == nil {
             return CGRect.init(x: self.view.center.x, y: self.view.center.y, width: 0, height: 0)
         }
-        var frame = self.animationCell!.superview!.convert(self.animationCell!.frame, to: self.view)
-        // iOS11以下的平台进入大图浏览返回后，会出现contentOffset变成0，获得的frame往上偏移了64px，导致动画位置不正确
-        if Double(UIDevice.current.systemVersion)! < 11.0 && self.animationCell?.superview == self.collectionView && self.collectionView?.contentInset.top == 0 {
-            frame.origin.y += 64
-        }
-        return frame
+        return self.animationCell!.superview!.convert(self.animationCell!.frame, to: UIApplication.shared.keyWindow)
     }
     
-    func prepare() {
+    /// 将动画CELL滚动到可视位置
+    func scrollAnimationCellToVisible() {
+        // 来源位置是底部toolbar
         if self.animationParentView == self.toolbar {
             self.animationCell = self.toolbar?.scrollToItem(at: self.animationIndex)
-        } else if self.animationParentView == self.view {
+        }
+        // 来源位置是中间集合视图
+        else if self.animationParentView == self.view {
             self.animationCell = self.collectionView!.cellForItem(at: IndexPath.init(item: self.animationIndex, section: 0)) as? HCPhotoListCell
+            // 如果找不到，说明CELL在屏幕外，现将cell滚动到屏幕可视区域再次获取
             if self.animationCell == nil {
                 var position = UICollectionViewScrollPosition.bottom
                 if self.collectionView!.indexPath(for: self.collectionView!.visibleCells.first!)!.item > self.animationIndex {
@@ -277,8 +317,9 @@ class HCPhotoListVC: UIViewController, UICollectionViewDelegate, UICollectionVie
                 self.collectionView?.layoutIfNeeded()
                 self.animationCell = self.collectionView!.cellForItem(at: IndexPath.init(item: self.animationIndex, section: 0)) as? HCPhotoListCell
             }
+            // 确保cell完整显示在屏幕中
             var offset = self.collectionView!.contentOffset
-            let frame = self.animationFrame(image: nil)
+            let frame = self.animationFrame()
             if #available(iOS 11, *){
                 if frame.origin.y <= self.collectionView!.safeAreaInsets.top {
                     offset.y -= (self.collectionView!.safeAreaInsets.top + margin - frame.origin.y)

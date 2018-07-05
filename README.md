@@ -5,6 +5,8 @@
 3. 下拉刷新组件：HCRefreshTableView、HCRefreshScrollView、HCRefreshCollectionView，支持两段式下拉，第一段为刷新数据，第二段为额外视图。常见场景：微信聊天列表头部小程序，淘宝二楼
 4. 日历组件：HCCalendarView、HCYearMonthPicker
 5. 指示器组件：HCHud
+6. 照片选择组件：HCPhotoVC
+7. 图片浏览组件：HCPhotoBrowserVC（支持手势返回效果）
  
 用法详见各组件说明以及Examples文件夹
 

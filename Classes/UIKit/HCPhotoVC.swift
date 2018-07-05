@@ -16,9 +16,24 @@ public typealias HCPhotoSelectionHandler = ((_ photoArray:Array<HCPhotoItem>)->V
  
  ## 需要配置
  Privacy - Photo Library Usage Description
+ 
+ ## 处理参数
+ 目前支持对选择的照片质量、生成的缩略图大小、缓存路径等参数进行设置，详见HCPhotoRequestOptions
+ 
  */
-public class HCPhotoVC: UINavigationController, UINavigationControllerDelegate {
-
+public class HCPhotoVC: UINavigationController {
+    
+    deinit {
+//        print("HCPhotoVC deinit")
+    }
+    
+    /// 显示照片选择控制器
+    ///
+    /// - Parameters:
+    ///   - fromViewController: 来源控制器
+    ///   - options: 图片处理参数
+    ///   - selectionHandler: 回调
+    /// - Returns: photoVC
     static public func showsPhotoVC (fromViewController:UIViewController, options:HCPhotoRequestOptions,  selectionHandler:@escaping HCPhotoSelectionHandler) -> HCPhotoVC {
         let photoListVC = HCPhotoListVC.init(nibName: nil, bundle: nil)
         photoListVC.selectionHandler = selectionHandler
@@ -30,30 +45,5 @@ public class HCPhotoVC: UINavigationController, UINavigationControllerDelegate {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        self.delegate = self
-    }
-
-    override public func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        if operation == UINavigationControllerOperation.push && fromVC.isKind(of: HCPhotoListVC.classForCoder()) && toVC.isKind(of: HCPhotoBrowserVC.classForCoder()) {
-            let listVC = fromVC as! HCPhotoBrowserAnimatorProtocal
-            let browserVC = toVC as! HCPhotoBrowserAnimatorProtocal
-            listVC.prepare()
-            let animator = HCPhotoBrowserPushAnimator.init(fromImage: listVC.animationImage()!, fromFrame: listVC.animationFrame(image: nil), toFrame: browserVC.animationFrame(image: listVC.animationImage()))
-            return animator
-        }
-        else if operation == .pop && fromVC.isKind(of: HCPhotoBrowserVC.classForCoder()) && toVC.isKind(of: HCPhotoListVC.classForCoder()) {
-            let listVC = toVC as! HCPhotoBrowserAnimatorProtocal
-            let browserVC = fromVC as! HCPhotoBrowserAnimatorProtocal
-            listVC.prepare()
-            let animator = HCPhotoBrowserPopAnimator.init(fromImage: browserVC.animationImage()!, fromFrame: browserVC.animationFrame(image:nil), toFrame: listVC.animationFrame(image: nil))
-            return animator
-        }
-        else {
-            return nil
-        }
     }
 }
