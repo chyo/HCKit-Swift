@@ -7,7 +7,8 @@
 5. 指示器组件：HCHud
 6. 照片选择组件：HCPhotoVC
 7. 图片浏览组件：HCPhotoBrowserVC（支持手势返回效果）
- 
+8. 拍照组件：HCCameraVC（采用的是视频流的实现方式）
+
 用法详见各组件说明以及Examples文件夹
 
 ## 其他
