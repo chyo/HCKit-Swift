@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
 # 项目名
 s.name         = "HCKit-Swift"
 # 版本号
-s.version      = "0.3.0"
+s.version      = "0.4.0"
 # 摘要
 s.summary      = "一个简单的Swift库"
 # 描述
@@ -28,7 +28,7 @@ s.source_files  = "Classes/**/*.swift", "Module/*.modulemap"
 s.resources = "Resources/*"
 # 依赖系统库
 # s.framework  = "SomeFramework"
-  s.frameworks = "Photos", "CoreLocation", "AVFoundation"
+  s.frameworks = "Photos", "CoreLocation", "AVFoundation", "CoreMotion"
 # s.library   = "apple_crypto"
 # s.libraries = "iconv", "xml2"
 # ARC

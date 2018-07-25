@@ -23,6 +23,7 @@
 		001EC59C20CA6065001E2841 /* HCPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001EC59B20CA6065001E2841 /* HCPhotoVC.swift */; };
 		001EC59E20CA609B001E2841 /* HCPhotoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001EC59D20CA609B001E2841 /* HCPhotoListVC.swift */; };
 		001EC5A020CA6957001E2841 /* HCPhotoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001EC59F20CA6957001E2841 /* HCPhotoListCell.swift */; };
+		001F47EB21072029003A3AEC /* HCCameraRequestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F47EA21072029003A3AEC /* HCCameraRequestOptions.swift */; };
 		0023780D20D360E4007244BC /* HCPhotoBrowserTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0023780C20D360E4007244BC /* HCPhotoBrowserTransitionAnimator.swift */; };
 		0023780F20D3979D007244BC /* HCPhotoBrowserFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0023780E20D3979D007244BC /* HCPhotoBrowserFlowLayout.swift */; };
 		0034FAB520B6B2B800BB4344 /* Timer+HCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0034FAB420B6B2B800BB4344 /* Timer+HCExtension.swift */; };
@@ -49,6 +50,8 @@
 		00555F3A20B55DF30008A368 /* BannerViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00555F3920B55DF30008A368 /* BannerViewVC.swift */; };
 		005E614B20DB38CF00B2620C /* HCHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E614A20DB38CF00B2620C /* HCHud.swift */; };
 		005E614D20DB45E400B2620C /* HudVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E614C20DB45E400B2620C /* HudVC.swift */; };
+		0063409C20F59B2400531067 /* HCCameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063409B20F59B2400531067 /* HCCameraVC.swift */; };
+		0063409E20F5F64A00531067 /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063409D20F5F64A00531067 /* CameraVC.swift */; };
 		00643B8120B416BA00649894 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B8020B416BA00649894 /* AppDelegate.swift */; };
 		00643B8320B416BA00649894 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00643B8220B416BA00649894 /* ViewController.swift */; };
 		00643B8620B416BA00649894 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00643B8420B416BA00649894 /* Main.storyboard */; };
@@ -89,6 +92,7 @@
 		001EC59B20CA6065001E2841 /* HCPhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPhotoVC.swift; sourceTree = "<group>"; };
 		001EC59D20CA609B001E2841 /* HCPhotoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPhotoListVC.swift; sourceTree = "<group>"; };
 		001EC59F20CA6957001E2841 /* HCPhotoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPhotoListCell.swift; sourceTree = "<group>"; };
+		001F47EA21072029003A3AEC /* HCCameraRequestOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCCameraRequestOptions.swift; sourceTree = "<group>"; };
 		0023780C20D360E4007244BC /* HCPhotoBrowserTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPhotoBrowserTransitionAnimator.swift; sourceTree = "<group>"; };
 		0023780E20D3979D007244BC /* HCPhotoBrowserFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCPhotoBrowserFlowLayout.swift; sourceTree = "<group>"; };
 		0034FAAC20B65FC100BB4344 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -116,6 +120,8 @@
 		00555F3920B55DF30008A368 /* BannerViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewVC.swift; sourceTree = "<group>"; };
 		005E614A20DB38CF00B2620C /* HCHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCHud.swift; sourceTree = "<group>"; };
 		005E614C20DB45E400B2620C /* HudVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudVC.swift; sourceTree = "<group>"; };
+		0063409B20F59B2400531067 /* HCCameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCCameraVC.swift; sourceTree = "<group>"; };
+		0063409D20F5F64A00531067 /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
 		00643B7D20B416BA00649894 /* HCKit-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HCKit-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00643B8020B416BA00649894 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		00643B8220B416BA00649894 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -213,6 +219,7 @@
 				00E2795020D2180F00CFA84C /* HCPhotoBrowserCell.swift */,
 				005E614A20DB38CF00B2620C /* HCHud.swift */,
 				00E6F24420EC61B30081BC46 /* HCNavigationBar.swift */,
+				0063409B20F59B2400531067 /* HCCameraVC.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -228,6 +235,7 @@
 				00122D6C20CE4FA7003324DF /* HCPhotoItem.swift */,
 				0023780C20D360E4007244BC /* HCPhotoBrowserTransitionAnimator.swift */,
 				008239A320DA2F6500E63E32 /* HCPhotoRequestOptions.swift */,
+				001F47EA21072029003A3AEC /* HCCameraRequestOptions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -251,6 +259,7 @@
 				004D9FD420C7D0CE007B3DB0 /* CalendarVC.swift */,
 				007FC20920CF5ED800086221 /* PhotoVC.swift */,
 				005E614C20DB45E400B2620C /* HudVC.swift */,
+				0063409D20F5F64A00531067 /* CameraVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -487,6 +496,7 @@
 				00643BA220B416F200649894 /* UIViewController+HCExtension.swift in Sources */,
 				001250BB20C8D1C0007A82BB /* HCCalendarMonth.swift in Sources */,
 				004C574820C625070012551F /* HCRefreshScrollView.swift in Sources */,
+				0063409C20F59B2400531067 /* HCCameraVC.swift in Sources */,
 				00643BA420B416F200649894 /* HCConfig.swift in Sources */,
 				001EC59C20CA6065001E2841 /* HCPhotoVC.swift in Sources */,
 				007FC20A20CF5ED800086221 /* PhotoVC.swift in Sources */,
@@ -507,6 +517,7 @@
 				0012547C20BBDBAF00D6FFE9 /* LetterViewVC.swift in Sources */,
 				00555F3220B559650008A368 /* HCBannerItem.swift in Sources */,
 				00122D6920CE17C1003324DF /* Array+HCExtension.swift in Sources */,
+				0063409E20F5F64A00531067 /* CameraVC.swift in Sources */,
 				004D9FD520C7D0CE007B3DB0 /* CalendarVC.swift in Sources */,
 				0034FAB520B6B2B800BB4344 /* Timer+HCExtension.swift in Sources */,
 				004C574E20C666D30012551F /* CollectionViewVC.swift in Sources */,
@@ -527,6 +538,7 @@
 				005018FC20BD545E006637A2 /* TableViewVC.swift in Sources */,
 				00555F3A20B55DF30008A368 /* BannerViewVC.swift in Sources */,
 				008927E420B7AB2000B5FA8B /* HCBannerIndicatorView.swift in Sources */,
+				001F47EB21072029003A3AEC /* HCCameraRequestOptions.swift in Sources */,
 				001EC59E20CA609B001E2841 /* HCPhotoListVC.swift in Sources */,
 				00E2794F20D2161700CFA84C /* HCPhotoBrowserVC.swift in Sources */,
 				0012542F20BBAA2E00D6FFE9 /* HCLetterItem.swift in Sources */,

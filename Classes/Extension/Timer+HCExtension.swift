@@ -11,7 +11,7 @@ import Foundation
 public extension Timer {
     
     /// 使用此方法避免未调用invalidate所带来的循环引用问题
-    ///
+    /// 默认添加到RunLoopMode.commonModes中
     /// - Parameters:
     ///   - ti: 时间间隔
     ///   - aTarget: 对象
